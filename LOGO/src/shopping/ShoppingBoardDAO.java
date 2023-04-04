@@ -6,10 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ShoppingBoardDAO {
-	Date nowDate = new Date();
-	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
-	String strNowDate = simpleDateFormat.format(nowDate); 
-	
+
 	Connection conn = null;
 	Statement st = null;
 
@@ -18,7 +15,7 @@ public class ShoppingBoardDAO {
 	}
 
 	public void dbConnect() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "okek8277");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 
@@ -30,24 +27,45 @@ public class ShoppingBoardDAO {
 		conn.close();
 	}
 
-	public void reviewInsert(String u_id, String pd_title, String pd_comment) throws Exception {
+	public void reviewInsert(String u_id, String pd_title, String pd_comment, String pd_image) throws Exception {
 
 		try {
 			dbConnect();
 
 			st = conn.createStatement();
 
-			String s = "insert into pd_review(pd_id,pd_number,u_id,pd_title,pd_comment,grade,date,hits)values(NULL,'','"
-					+ u_id + "','" + pd_title + "','" + pd_comment + "','', DATE_FORMAT(now(), '%Y-%m-%d'),NULL);";
-			
-			//update pd_review set hits = (SELECT hits FROM (SELECT hits from pd_review WHERE pd_id = '42') as HIT)+1  WHERE pd_id = '42';
-			
+			String s = "insert into pd_review(pd_id,pd_number,u_id,pd_title,pd_comment,grade,date,hits,pd_reply,pd_image)values(NULL,'','"
+					+ u_id + "','" + pd_title + "','" + pd_comment
+					+ "','', DATE_FORMAT(now(), '%Y-%m-%d'),NULL,'','" + pd_image + "');";
+
+			// update pd_review set hits = (SELECT hits FROM (SELECT hits from pd_review
+			// WHERE pd_id = '42') as HIT)+1 WHERE pd_id = '42';
+
 			System.out.println(s);
 			st.executeUpdate(s);
+			
 		} finally {
 			dbDisConnect();
 		}
 	}
+	
+	public void hitsUpdate(int pd_id) throws Exception {
+
+	      try {
+	    	  dbConnect();
+	         
+	         st = conn.createStatement();
+	         String s = "update pd_review set hits = hits +1 where pd_id = " + pd_id + " ;";
+	         
+	         
+	         
+	         System.out.println(s);
+	         st.executeUpdate(s);
+	      } finally {
+	    	  dbDisConnect();
+	      }
+	      
+	   }
 
 	public ArrayList<ShoppingBoardDTO> reviewSelect() throws Exception {
 
@@ -67,6 +85,8 @@ public class ShoppingBoardDAO {
 				rv.setGrade(rs.getString("grade"));
 				rv.setDate(rs.getString("date"));
 				rv.setHits(rs.getInt("hits"));
+				rv.setPd_reply(rs.getString("pd_reply"));
+				rv.setPd_image(rs.getString("pd_image"));
 				arr.add(rv);
 			}
 		} finally {
@@ -76,11 +96,12 @@ public class ShoppingBoardDAO {
 	}
 
 //	삭제 메소드
-	public void delete(String u_id) throws Exception {
+	public void delete(String pd_id) throws Exception {
 		try {
 			dbConnect();
 			st = conn.createStatement();
-			int rowNum = st.executeUpdate("delete from pd_review where u_id = '" + u_id + "';");
+			int rowNum = st.executeUpdate("delete from pd_review where pd_id = " + pd_id + ";");
+		
 			if (rowNum < 1) {
 				throw new Exception("failde");
 			}

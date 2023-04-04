@@ -10,6 +10,21 @@ public class ShoppingBoardDTO {
 	private String pd_number;
 	private String date;
 	int hits;
+	private String pd_reply;
+	private String pd_image;
+	
+	public String getPd_reply() {
+		return pd_reply;
+	}
+	public void setPd_reply(String pd_reply) {
+		this.pd_reply = pd_reply;
+	}
+	public String getPd_image() {
+		return pd_image;
+	}
+	public void setPd_image(String pd_image) {
+		this.pd_image = pd_image;
+	}
 	public int getPd_id() {
 		return pd_id;
 	}

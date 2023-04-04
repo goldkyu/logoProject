@@ -40,4 +40,3 @@ pageEncoding="utf-8" %>
             
 %>
 
-<jsp:forward page="../pages/shoppingChange2.jsp"/> 

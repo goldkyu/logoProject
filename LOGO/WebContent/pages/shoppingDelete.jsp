@@ -4,12 +4,9 @@ pageEncoding="utf-8" %>
 <jsp:useBean id="dao" class="shopping.ShoppingBoardDAO" />
   
     <%
-    String u_id = request.getParameter("u_id");
-    dao.delete(u_id);
-        
-
-        
-        
+    String pd_id = request.getParameter("Pd_id");
+	System.out.println(pd_id);
+    dao.delete(pd_id);
 
         /* response.sendRedirect("../pages/shoppingBoard.jsp"); */
     %>

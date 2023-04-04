@@ -25,7 +25,7 @@
 	<div id="mainBox">
 	<section>
 		<form method="get" action="../pages/shoppingInsert.jsp">
-			<br><h1 style="margin-left: 150px;">상품 리뷰 게시판</h1>
+			<br><h1 style="margin-left: 150px;">REVIEW</h1>
 			<br>
 			<table>
 				<thead>
