@@ -1,0 +1,54 @@
+text,
+p,
+a,
+li,
+h,
+b,
+input,
+input::placeholder,
+.infos,
+th {
+    font-family: 'Poppins', sans-serif;
+}
+
+input{
+    outline: none !important;
+}
+
+section{
+    height: 740px !important;
+}
+
+#board {
+    width: 1010px;
+    height: 600px;
+    margin-left: 280px;
+}
+
+#bid{
+    width: 200px;
+    height: 30px;
+}
+
+#pname{
+    width: 800px;
+    height: 30px;
+}
+
+
+#content{
+    margin-top: 30px;
+    width: 1007px;
+    height: 450px;
+}
+
+#submit-btn{
+    margin-top: 20px;
+    float: right;
+    width: 60px;
+    height: 29px;
+    border: 0px;
+    border-radius: 5%;
+    background-color: rgba(0, 0, 0, 0.801);
+    color: whitesmoke;
+}

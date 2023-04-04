@@ -1,0 +1,176 @@
+* {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#mainHeader {
+    height: 120px;
+    background-color: #FACF1E;
+}
+
+header input {
+    border: 3px solid;
+    height: 40px;
+    width: 300px;
+    border-radius: 50px;
+    padding: 0 10px;
+    font-size: 14px;
+    background-color: #FACF1E;
+    outline: none;
+}
+
+#mainHeader a {
+    text-decoration: none;
+    font-size: medium;
+    color: #333333;
+}
+
+
+header li {
+    display: inline;
+    list-style: none;
+    margin: 30px;
+    float: left;
+}
+
+#logo {
+    font-size: 40px;
+    position: absolute;
+    top: 63px;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+.search-bar {
+    position: absolute;
+    top: 63px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*section css*/
+section{
+    margin-top: 120px;
+}
+
+#mainBox {
+    width: 1400px;
+    height: 1800px;
+    margin: 0 auto;
+/*    background-color: gray;*/
+}
+#cart{
+/*    text-align: center;*/
+/*    background-color: yellow;*/
+    float: left;
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+#box2 li{
+    width: 700px; 
+    display: inline;
+    list-style: non;
+}
+
+#box2{
+
+    float: left;
+    width: 600px;
+/*    height: 600px;*/
+    border: 5px solid;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin-left: -7%;
+    margin-top: 100px;
+/*    padding-top: 20px;*/
+  
+}
+
+#box3{
+    
+    width: 400px;
+    height: 200px;
+    border: 5px solid;
+    border-left: none;
+    border-right: none;
+    
+    float: right; 
+    margin-right: 12%;
+    margin-top: 100px;
+    border-color: #FACF1E;
+/*    padding-top: 20px;*/
+}
+
+#All{
+    width: 600px;
+    height: 30px;
+    margin-top: 10px;
+/*    background-color: gray;*/
+
+}
+
+#row{
+    width: 600px;
+    height: 5px;
+    background-color: gray;
+    margin-bottom: 30px;
+}
+
+.row-1{
+    width: 600px;
+    height: 5px;
+    background-color: gray;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.order{
+
+    width: 165px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+/*    border: 1px solid;*/
+    float: left;
+    display: inline;
+s
+}
+
+#order-button{
+    width: 250px;
+    height:  50px;
+    margin-top: 30px;
+    margin-left: 120px;
+
+
+}
+/*.qq{*/
+    width: 20px;
+    height:  20px;
+    float: right;
+    border: 1px solid;
+
+
+}
+
+footer{
+    width: 100%;
+    background-color: whitesmoke;
+    clear: both;
+}
+#mainFooter{
+    width: 1400px;
+    height: 100px;
+    margin: 0 auto;
+}
