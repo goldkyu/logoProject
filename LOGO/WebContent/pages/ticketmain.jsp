@@ -140,7 +140,7 @@ $(document).ready(function() {
                           <img src="../image/T_banner02.jpg" class="bannerimg">
                           </a>
                    
-                    </div>
+                    
                         <div> 
                           <a href="#">
                           <img src="../image/T_banner03.jpg" class="bannerimg">
@@ -166,6 +166,7 @@ $(document).ready(function() {
                           <img src="../image/T_banner07.jpg" class="bannerimg">
                           </a> 
                         </div>
+                    </div>    
                     </div>
 
                 </div>

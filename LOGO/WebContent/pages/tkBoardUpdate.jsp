@@ -1,48 +1,70 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <link rel="stylesheet" href="../CSS/tkBoardWrite.css" />
 </head>
 <body>
 	<jsp:include page="siteHead.jsp" />
 	<% request.setCharacterEncoding("utf-8"); %>
 	
+<% 	
 	request.getAttribute("ID");
 	request.getAttribute("TITLE");
 	request.getAttribute("CONTENT");
+	request.getAttribute("PFMID");
+	String imgName = (String)request.getAttribute("IMAGE");
+	
+	String filename1=request.getParameter("filename1");
+	String origfilename1=request.getParameter("origfilename1");
+	String real = "C:\\Users\\Yoo\\git\\logoProject\\LOGO\\logoProject\\LOGO\\WebContent\\file";
+	File viewFile = new File(real+"\\"+imgName);
+	
+%>	
 
 <section>
 <div id="mainBox">
  <div class="page-title">
 	   <div class="container">
-            <h3>°ü¶÷ÈÄ±â</h3>
+            <h3>ê´€ëžŒí›„ê¸°</h3>
         </div>
   	</div>
   	
-<form method="get" action="../pages/tkBoardUpdatedb.jsp">
+<form method="get" action="../pages/tkBoardUpdatedb.jsp" >
 	<table>
 		
 		<tr>
-		<td style="width:100px", bgcolor="#F6F6F6">¾ÆÀÌµð</td>
+		<td style="width:100px", bgcolor="#F6F6F6">ì•„ì´ë””</td>
 		<td><input type=text name=u_id class="textbox" value="${ID}"></td>
 		</tr>
 		
 		<tr>
-		<td bgcolor="#F6F6F6">Á¦¸ñ</td>
+		<td bgcolor="#F6F6F6">ì œëª©</td>
 		<td><input type=text name=pfmtitle class="textbox01" value="${TITLE}"></td>
 		</tr>
 		
 		<tr>
-		<td bgcolor="#F6F6F6">³»¿ë</td>
+		<td bgcolor="#F6F6F6">ë‚´ìš©</td>
 		<td><textarea name=pfmcomment cols=140 rows=25 >${CONTENT}</textarea></td>
 		</tr>
+		
+		<tr>
+		<td bgcolor="#F6F6F6">íŒŒì¼</td>
+		<td colspan="6"><img src = "../file/<%=imgName%>" width="200px" height="200px"><br></td>
+		</tr>
+		
+		
 	</table>
 	<div class="btn">
-	<input type="submit" value="¼öÁ¤" class="write">
-	<input type="button" value="»èÁ¦" class="write" onclick="location.href='../pages/tkBoardDelete.jsp?u_id=${ID}'">
+	<input type="submit" value="ìˆ˜ì •" class="write">
+	<input type="button" value="ì‚­ì œ" class="write" onclick="location.href='tkBoardDelete.jsp?pfm_id=${PFMID}'">
 	</div>
 </section>	
 

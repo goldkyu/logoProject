@@ -6,6 +6,7 @@ pageEncoding="utf-8" %>
 		String uid = request.getParameter("u_id");
         String pfmtitle = request.getParameter("pfmtitle");
         String pfmcomment = request.getParameter("pfmcomment");
+     
         
         System.out.println(uid);
 		System.out.println(pfmtitle);
@@ -22,6 +23,7 @@ pageEncoding="utf-8" %>
             }
             st = conn.createStatement();
             String command = String.format("update pfm_review set pfm_title = '"+pfmtitle+"', pfm_comment := '"+pfmcomment+"' where u_id = '"+uid+"';", pfmtitle,pfmcomment,uid);
+        
             int rowNum = st.executeUpdate(command);
             if(rowNum < 1){
                 throw new Exception("데이터 입력 실패");

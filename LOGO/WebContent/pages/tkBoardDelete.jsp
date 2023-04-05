@@ -5,8 +5,8 @@ pageEncoding="utf-8" %>
 <jsp:useBean id="dao" class="ticketSystem.TkBoardDAO" />
   
     <%
-    String u_id = request.getParameter("u_id");
-    dao.tkdelete(u_id);
+    String pfm_id = request.getParameter("pfm_id");
+    dao.tkdelete(pfm_id);
         
 
     %>

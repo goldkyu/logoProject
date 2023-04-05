@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <link rel="stylesheet" href="../CSS/tkBoardWrite.css" />
 </head>
 <body>
@@ -14,33 +15,38 @@
 <div id="mainBox">
  <div class="page-title">
 	   <div class="container">
-            <h3>°ü¶÷ÈÄ±â</h3>
+            <h3>ê´€ëžŒí›„ê¸°</h3>
         </div>
   	</div>
   	
   	
-<form method="post" action="../pages/tkBoardProc.jsp">
+<form method="post" action="tkBoardProc.jsp" enctype="multipart/form-data">
 	<table>
 		
 		<tr>
-		<td style="width:100px", bgcolor="#F6F6F6" >¾ÆÀÌµð</td>
+		<td style="width:100px", bgcolor="#F6F6F6" >ì•„ì´ë””</td>
 		<td><input type=text name=u_id class="textbox"></td>
 		</tr>
-		
+	
 		<tr>
-		<td bgcolor="#F6F6F6" >Á¦¸ñ</td>
+		<td bgcolor="#F6F6F6" >ì œëª©</td>
 		<td><input type=text name=pfm_title class="textbox01"></td>
 		</tr>
 		
 		<tr>
-		<td bgcolor="#F6F6F6">³»¿ë</td>
+		<td bgcolor="#F6F6F6">ë‚´ìš©</td>
 		<td><textarea name=pfm_comment cols=140 rows=25 ></textarea></td>
+		</tr>
+		
+		<tr>
+		<td bgcolor="#F6F6F6">íŒŒì¼</td>
+		<td><input type=file name=file ></td>
 		</tr>
 		
 	</table>
 	<div class="btn">
-	<input type="button" value="Ãë¼Ò" class="write" onclick="location.href='../pages/tkBoard.jsp' "> 
-	<input type="submit" value="µî·Ï" class="write">
+	<input type="button" value="ì·¨ì†Œ" class="write" onclick="location.href='tkBoard.jsp' "> 
+	<input type="submit" value="ë“±ë¡" class="write">
 	</div>
 </form>
 </div>
