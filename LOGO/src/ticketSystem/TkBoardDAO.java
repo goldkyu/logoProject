@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class TkBoardDAO {
 	Date nowDate = new Date();
-	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy년 MM월 dd일");
+	SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy�뀈 MM�썡 dd�씪");
 	String strNowDate = simpleDateFormat.format(nowDate);
 
 	Connection conn = null;
@@ -21,7 +21,7 @@ public class TkBoardDAO {
 	}
 
 	public void dbCon() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false", "root", "okek8277");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "1234");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 
@@ -34,14 +34,14 @@ public class TkBoardDAO {
 		conn.close();
 	}
 
-	public void boardInsert(String u_id, String pfm_title, String pfm_comment) throws Exception {
+	public void boardInsert(String u_id, String pfm_title, String pfm_comment, String image) throws Exception {
 		try {
 			dbCon();
 
 			st = conn.createStatement();
 
-			String sql = "insert into pfm_review(pfm_id,p_code,u_id,pfm_title,pfm_comment,date,hits)values(NULL,'','"
-					+ u_id + "','" + pfm_title + "','" + pfm_comment + "',DATE_FORMAT(now(), '%Y-%m-%d'),NULL);";
+			String sql = "insert into pfm_review(pfm_id,p_code,u_id,pfm_title,pfm_comment,date,hits,image)values(NULL,'','"
+					+ u_id + "','" + pfm_title + "','" + pfm_comment + "',DATE_FORMAT(now(), '%Y-%m-%d'),NULL,'" + image + "');";
 
 			st.executeUpdate(sql);
 		} finally {
@@ -56,7 +56,7 @@ public class TkBoardDAO {
 		try {
 			dbCon();
 			st = conn.createStatement();
-			ResultSet rs = st.executeQuery("select * from pfm_review;");
+			ResultSet rs = st.executeQuery("select * from pfm_review order by pfm_id desc;");
 			while (rs.next()) {
 				TkBoardDTO bod = new TkBoardDTO();
 				bod.setPfm_id(rs.getInt("pfm_id"));
@@ -74,11 +74,12 @@ public class TkBoardDAO {
 		return arr;
 	}
 
-	public void tkdelete(String u_id) throws Exception {
+	//삭제메소드
+	public void tkdelete(String pfm_id) throws Exception {
 		try {
 			dbCon();
 			st = conn.createStatement();
-			int rowNum = st.executeUpdate("delete from pfm_review where u_id = '" + u_id + "';");
+			int rowNum = st.executeUpdate("delete from pfm_review where pfm_id = '" + pfm_id + "';");
 			if (rowNum < 1) {
 				throw new Exception("failde");
 			}
@@ -86,4 +87,23 @@ public class TkBoardDAO {
 			dbClose();
 		}
 	}
+	
+	//조회수
+		public void hitsUpdate(int pfm_id) throws Exception {
+
+			try {
+				dbCon();
+				
+				st = conn.createStatement();
+				String s = ("update pfm_review set hits = hits +1 where pfm_id = '+ pfm_id +' ;");
+				
+				
+				
+				System.out.println(s);
+				st.executeUpdate(s);
+			} finally {
+				dbClose();
+			}
+			
+		}
 }
