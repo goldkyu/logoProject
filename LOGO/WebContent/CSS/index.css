@@ -13,14 +13,7 @@
 	height: 600px;
 	background-color: #FACF1E;
 	position: absolute;
-	z-index: 1;
 	margin-top: -20px;
-}
-
-#visual img {
-	width: 1000px;
-	height: 700px;
-	object-fit: cover;
 }
 
 /*...*/
@@ -538,48 +531,6 @@ th, td {
 }
 
 /* 정렬 */
-#visual {
-	position: relative;
-	width: 1000px;
-	height: 700px;
-	transition: all 0.5s;
-}
-
-#visual>li:nth-child(1) {
-	position: absolute;
-	top: 50px;
-	left: 44%;
-	width: 1000px;
-	height: 700px;
-	z-index: 2;
-}
-
-#visual>li:nth-child(2) {
-	position: absolute;
-	top: 50px;
-	left: 175%;
-	width: 1000px;
-	height: 700px;
-	z-index: 2;
-}
-
-#visual>li:nth-child(3) {
-	position: absolute;
-	top: 50px;
-	left: 306%;
-	width: 1000px;
-	height: 700px;
-	z-index: 2;
-}
-
-#visual>li:nth-child(4) {
-	position: absolute;
-	top: 50px;
-	left: 437%;
-	width: 1000px;
-	height: 700px;
-	z-index: 2;
-}
 
 .click-div {
 	position: absolute;
