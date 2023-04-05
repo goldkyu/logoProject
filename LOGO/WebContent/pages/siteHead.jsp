@@ -15,7 +15,7 @@
 
 <body>
 	<%
-	request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
 	%>
 	<header>
 		<div id="mainHeader">
@@ -31,17 +31,17 @@
 			<div id="rightNav">
 				<ul>
 					<%
-					if (session.getAttribute("userID") == null) {
+						if (session.getAttribute("userID") == null) {
 					%>
 					<li><a href="login.jsp?from=<%=request.getRequestURL()%>">LogIn</a></li>
 					<li><a href="join.jsp">Join</a></li>
 					<%
-					} else {
+						} else {
 					%>
 					<li><a href="#"><%=session.getAttribute("userID")%> </a></li>
 					<li><a href="logOut.jsp">LogOut</a></li>
 					<%
-					}
+						}
 					%>
 				</ul>
 			</div>
@@ -56,15 +56,16 @@
 				</div>
 			</form>
 
-			<div class="slideshow-container">
-				<div class="slide">
-					<img src="../image/headslide1.jpg" alt="#">
+		<div id="slide-con">
+			<div id="slideshow">
+				<div>
+					<img src="../image/headslide1.jpg" alt="Slideshow Image">
 				</div>
-				<div class="slide">
-					<img src="../image/headslide2.jpg" alt="#">
+				<div>
+					<img src="../image/headslide2.jpg" alt="Slideshow Image">
 				</div>
-				<div class="slide">
-					<img src="../image/headslide3.jpg" alt="#">
+				<div>
+					<img src="../image/headslide3.jpg" alt="Slideshow Image">
 				</div>
 			</div>
 		</div>
@@ -75,17 +76,19 @@
 </body>
 <script>
 
-const slides = $('.slideshow-container .slide');
-let currentSlide = 0;
+var slideIndex = 0;
+showSlides();
 
-setInterval(() => {
-	slides.eq(currentSlide).fadeOut(5000, function () {
-        $(this).removeClass('active');
-    });
-  currentSlide = (currentSlide + 1) % slides.length;
-  
-  slides.eq(currentSlide).fadeIn(5000, function () {
-      $(this).addClass('active');
-  });
-}, 5000);</script>
+function showSlides() {
+    var i;
+    var slides = document.getElementById("slideshow").getElementsByTagName("div");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+</script>
 </html>

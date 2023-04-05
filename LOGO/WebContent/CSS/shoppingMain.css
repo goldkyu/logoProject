@@ -44,7 +44,7 @@ header input {
 header li {
     display: inline;
     list-style: none;
-    margin: 30px;
+    /*margin: 30px;*/
     float: left;
     font-family: 'Noto Sans KR', sans-serif;
 

@@ -270,7 +270,7 @@ a.control_next {
 .bannerimg {
     overflow: auto;
     float: left;
-    margin: -300px auto;
+    /*margin: -300px auto;*/
 }
 
 
