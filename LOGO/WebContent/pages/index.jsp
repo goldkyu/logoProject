@@ -281,7 +281,7 @@
 						
 					<div id="linkbtn">
 						<form>
-							<a href="musicMain.html"> <input type="button" value="Music바로가기" class="btn">
+							<a href="musicMain.jsp"> <input type="button" value="Music바로가기" class="btn">
 							</a>
 						</form>
 					</div>

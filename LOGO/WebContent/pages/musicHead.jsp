@@ -23,7 +23,7 @@ pageEncoding="utf-8" %>
         <div id="leftNav">
           <ul>
             <li><a href="ticketmain.jsp">ticket</a></li>
-            <li><a href="shoppingMain.html">shopping</a></li>
+            <li><a href="shoppingMain.jsp">shopping</a></li>
             <li><a href="musicMain.jsp">Music</a></li>
           </ul>
         </div>
