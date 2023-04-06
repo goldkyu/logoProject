@@ -1,10 +1,8 @@
 <%@page import="java.util.Enumeration"%>
 <%@page import="org.apache.taglibs.standard.tag.el.fmt.ParseDateTag"%>
-<%@page
-	import="org.apache.taglibs.standard.tag.common.fmt.ParseDateSupport"%>
+<%@page	import="org.apache.taglibs.standard.tag.common.fmt.ParseDateSupport"%>
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>

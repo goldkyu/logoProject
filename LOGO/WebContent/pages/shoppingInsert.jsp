@@ -37,7 +37,7 @@
 								</tr>
 								<tr>
 									<td>파일첨부</td>
-									<td><input type=file name="pd_image" size=40
+									<td><input type=file name="pd_image"
 										required="required"></td>
 								</tr>
 								</td>
