@@ -41,7 +41,7 @@ public class TkBoardDAO {
 			st = conn.createStatement();
 
 			String sql = "insert into pfm_review(pfm_id,p_code,u_id,pfm_title,pfm_comment,date,hits,image)values(NULL,'','"
-					+ u_id + "','" + pfm_title + "','" + pfm_comment + "',DATE_FORMAT(now(), '%Y-%m-%d'),NULL,'" + image + "');";
+					+ u_id + "','" + pfm_title + "','" + pfm_comment + "',DATE_FORMAT(now(), '%Y-%m-%d'),'0','" + image + "');";
 
 			st.executeUpdate(sql);
 		} finally {
@@ -65,7 +65,11 @@ public class TkBoardDAO {
 				bod.setPfm_title(rs.getString("pfm_title"));
 				bod.setPfm_comment(rs.getString("pfm_comment"));
 				bod.setDate(rs.getString("date"));
-				bod.setHits(rs.getInt("hits"));
+				/* bod.setHits(rs.getInt("hits")); */
+				int bbsCount = rs.getInt("hits");
+				bod.setHits(bbsCount);
+				bbsCount++;
+				hitsUpdate(bbsCount);
 				arr.add(bod);
 			}
 		} finally {
@@ -88,16 +92,16 @@ public class TkBoardDAO {
 		}
 	}
 	
-	//조회수
+	//조회수 
 		public void hitsUpdate(int pfm_id) throws Exception {
 
 			try {
 				dbCon();
 				
 				st = conn.createStatement();
-				String s = ("update pfm_review set hits = hits +1 where pfm_id = '+ pfm_id +' ;");
-				
-				
+			
+			  String s =("update pfm_review set hits = hits +1 where pfm_id = '+ pfm_id +' ;");
+							
 				
 				System.out.println(s);
 				st.executeUpdate(s);

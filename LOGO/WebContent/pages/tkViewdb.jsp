@@ -11,7 +11,6 @@
 %>
 <jsp:useBean id="write" class="ticketSystem.TkBoardDAO" />
 
-
 <%
 
 	String path = "file";
@@ -79,7 +78,7 @@
 
 
 <%
-	RequestDispatcher disp = request.getRequestDispatcher("tkView.jsp");
+	RequestDispatcher disp = request.getRequestDispatcher("tkBoardUpdate.jsp");
 	disp.forward(request, response);
 %>
 
