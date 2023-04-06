@@ -20,6 +20,15 @@ $(function () {
         inText.innerHTML = '<form><a  href="shoppingMain.jsp"> <input type = "button" value = "Shop바로가기" class="btn" ></form>';
 
     });
+    
+    $(".rankup").each(function () {
+        var value = parseFloat($(this).text());
+        if (value < 0) {
+            $(this).css("color", "blue");
+        } else if (value > 0) {
+            $(this).css("color", "red");
+        }
+    });
 
 
 

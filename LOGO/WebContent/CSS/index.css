@@ -134,6 +134,12 @@ section {
 	float: left;
 }
 
+#box2-2 div:nth-of-type(1) div img {
+	width: 165px;
+	height: 165px;
+	object-fit: contain;
+}
+
 #curChart {
 	margin-top: 20px;
 	width: 455px;
@@ -142,7 +148,8 @@ section {
 
 #realtime {
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 5px;
+	margin-top: -10px;
 }
 
 #charts div {
@@ -156,34 +163,66 @@ section {
 	border-style: solid;
 	background-color: white;
 }
-
-/*랭킹*/
-#charts div div:nth-of-type(1) {
-	width: 45px;
+/* 랭킹*/
+.rankAl {
+	margin-top: 1px;
+	margin-left: 40px;
+	height: 46px;
+	width: 46px;
 	float: left;
 }
 
-/*등락*/
-#charts div div:nth-of-type(2) {
-	width: 40px;
+.rankAl img {
+	height: 46px;
+	width: 46px;
+	object-fit: contain;
+}
+
+th {
+	height: 50px;
+	margin-bottom: 2px;
+	margin-left: 2px;
+	border-bottom: 1px solid whitesmoke !important;
+	font-size: small;
+}
+
+th p {
+	margin-top: 15px;
+	font-family: 'Poppins', sans-serif !important;
+}
+
+th:nth-of-type(1) {
+	width: 20px;
+	float: left;
+	font-weight: bold;
+}
+
+th:nth-of-type(1) p {
+	margin-top: 10px;
+}
+
+table tr:nth-of-type(n+4):nth-of-type(-n+10) th:nth-of-type(1) p {
+	margin-top: 15px;
+}
+
+th:nth-of-type(2) {
+	width: 30px;
 	float: left;
 }
 
-/*음악이름*/
-#charts div div:nth-of-type(3) {
-	width: 240px;
+th:nth-of-type(3) {
+	width: 290px;
 	float: left;
 }
 
-/*가수명*/
-#charts div div:nth-of-type(4) {
+th:nth-of-type(4) {
 	width: 100px;
 	float: left;
 }
 
-/*바로가기버튼*/
-#menu article li {
-	display: inline;
+th:nth-of-type(5) {
+	width: 50px;
+	margin-right: 2px;
 	float: left;
 }
 
@@ -447,10 +486,6 @@ form {
 	font-size: 12px;
 }
 
-th, td {
-	border-bottom: 1px solid #444444;
-}
-
 /*경매탭 이동 버튼*/
 .tab_condition {
 	display: flex;
@@ -531,27 +566,26 @@ th, td {
 }
 
 /* 정렬 */
-
 .click-div {
 	position: absolute;
 	width: 100px;
 	height: 700px;
 	text-align: center;
-	z-index:2;
+	z-index: 2;
 }
 
-.click-div img{
-	width:30px;
+.click-div img {
+	width: 30px;
 	height: 30px;
-	padding-top:335px;
+	padding-top: 335px;
 }
 
-#left-div{
+#left-div {
 	top: 50px;
 	left: 16%;
 }
 
-#right-div{
+#right-div {
 	top: 50px;
 	left: 77.5%;
 }
@@ -574,92 +608,87 @@ th, td {
 }
 
 /* 추가 */
-
-.tkrank{
-    width: 450px;
-    height: 32px;
-    text-align: center;
+.tkrank {
+	width: 450px;
+	height: 32px;
+	text-align: center;
 	font-size: 30px;
-   /*  background-color : lightgrey; */
-    margin-left: 15px;
-    
-    
+	/*  background-color : lightgrey; */
+	margin-left: 15px;
 }
 
 .tkrank01 {
-   width: 450px;
-   height: 530px;
-/*    background-color : lightgrey; */
-   margin-top: 7px;
-   margin-left: 15px;
+	width: 450px;
+	height: 530px;
+	/*    background-color : lightgrey; */
+	margin-top: 7px;
+	margin-left: 15px;
 }
-
 
 /* 탭버튼 */
-#rank{
-	 float: right;
-	 margin-bottom : 5px;
-     margin-right: 5px;
-     outline: none;
-	 background-color: #ffffff;
-	 cursor: pointer;
-	 border-radius : 0px 5px 5px 0px;
+#rank {
+	float: right;
+	margin-bottom: 5px;
+	margin-right: 5px;
+	outline: none;
+	background-color: #ffffff;
+	cursor: pointer;
+	border-radius: 0px 5px 5px 0px;
 }
-#rank01{
-	 float: right;
-	 margin-bottom : 5px;
-     margin-right: 3px;
-     outline: none;
-	 background-color: #ffffff;
-	 cursor: pointer;
-	 border-radius : 5px 0px 0px 5px;
+
+#rank01 {
+	float: right;
+	margin-bottom: 5px;
+	margin-right: 3px;
+	outline: none;
+	background-color: #ffffff;
+	cursor: pointer;
+	border-radius: 5px 0px 0px 5px;
 }
 
 /* 중간배너 */
-
-#midbanner{
+#midbanner {
 	position: absolute;
-    height: 300px;
-    width: 100%;
-    min-width: 1300px;
- 	left: 50%;
-    transform: translate(-50%, 0);
-/*     overflow: hidden; */
+	height: 300px;
+	width: 100%;
+	min-width: 1300px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	/*     overflow: hidden; */
 }
 
-#eventbanner{
+#eventbanner {
 	width: 1100px;
 	height: 505px;
 	margin: 30px auto;
 	/* background-color: transparent; */
 }
 
-.textbox01{
+.textbox01 {
 	width: 100%;
 	height: 60px;
 	padding: 30px 0;
 	text-align: center;
 	font-size: 45px;
-	margin-top:20px;
-/* 	background-color: grey; */
-
-	
+	margin-top: 20px;
+	/* 	background-color: grey; */
 }
 
-.eventbox{
-	width : 360px;
-	height : 504px;
-	float : left;	
+.eventbox {
+	width: 360px;
+	height: 504px;
+	float: left;
 }
 
-.eventbox01{
-	width : 360px;
-	height : 504px;
-	float : left;
+.eventbox01 {
+	width: 360px;
+	height: 504px;
+	float: left;
 	margin: 0px 10px auto;
 }
-.eventbox02{
-	width : 360px;
-	height : 504px;
-	float : right;	
+
+.eventbox02 {
+	width: 360px;
+	height: 504px;
+	float: right;
 }

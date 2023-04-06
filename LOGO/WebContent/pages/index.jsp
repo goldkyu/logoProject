@@ -8,6 +8,8 @@
 <title>LOGO</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../CSS/index.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 .slideshow {
 	width: 1000px;
@@ -99,15 +101,33 @@
 
 								<article id="box2-2">
 									<div id="albums">
-										<div>앨범 1</div>
-										<div>앨범 2</div>
-										<div>앨범 3</div>
-										<div>앨범 4</div>
-										<div>앨범 5</div>
-										<div>앨범 6</div>
-										<div>앨범 7</div>
-										<div>앨범 8</div>
-										<div>앨범 9</div>
+										<div>
+											<img src="../image/a1.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a2.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a3.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a4.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a5.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a6.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a7.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a8.jpg" alt="">
+										</div>
+										<div>
+											<img src="../image/a9.jpg" alt="">
+										</div>
 									</div>
 								</article>
 							</li>
@@ -118,76 +138,178 @@
 								<article id="curChart">
 									<div id="realtime">실시간 차트</div>
 									<div id="charts">
-										<div>
-											<div>1</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>2</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>3</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>4</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>5</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>6</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>7</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>8</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>9</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
-										<div>
-											<div>10</div>
-											<div>등락</div>
-											<div>음악 이름</div>
-											<div>가수명</div>
-
-										</div>
+										<table id="rtRank">
+											<tr>
+												<th>
+													<p class="ranked" style="font-size: 19px; color: #b99400">1</p>
+												</th>
+												<th>
+													<p class="rankup">+10</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r1.png" alt="">
+													</div>
+													<p class="rankmName">Into The Night</p>
+												</th>
+												<th>
+													<p class="aName">YOASOBI</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p class="ranked" style="font-size: 18px; color: #745c00">2</p>
+												</th>
+												<th>
+													<p class="rankup">-1</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r2.jpg" alt="">
+													</div>
+													<p class="rankmName">Stamp On It</p>
+												</th>
+												<th>
+													<p class="aName">GOT the beat</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p class="ranked" style="font-size: 17px; color: #352a00">3</p>
+												</th>
+												<th>
+													<p class="rankup">-</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r3.png" alt="">
+													</div>
+													<p class="rankmName">Unholy</p>
+												</th>
+												<th>
+													<p class="aName">Sam Smith</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>4</p>
+												</th>
+												<th>
+													<p class="rankup">-2</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r4.jpg" alt="">
+													</div>
+													<p class="rankmName">Yeah!(feat. Lil Jon, Ludacris)</p>
+												</th>
+												<th>
+													<p class="aName">Usher</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>5</p>
+												</th>
+												<th>
+													<p class="rankup">+5</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r5.jpg" alt="">
+													</div>
+													<p class="rankmName">OMG</p>
+												</th>
+												<th>
+													<p class="aName">NewJeans</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>6</p>
+												</th>
+												<th>
+													<p class="rankup">-3</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r6.jpg" alt="">
+													</div>
+													<p class="rankmName">맞네</p>
+												</th>
+												<th>
+													<p class="aName">LUCY</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>7</p>
+												</th>
+												<th>
+													<p class="rankup">+16</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r7.jpg" alt="">
+													</div>
+													<p class="rankmName">Insomnia</p>
+												</th>
+												<th>
+													<p class="aName">휘성</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>8</p>
+												</th>
+												<th>
+													<p class="rankup">-2</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r8.jpg" alt="">
+													</div>
+													<p class="rankmName">With Me</p>
+												</th>
+												<th>
+													<p class="aName">휘성</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>9</p>
+												</th>
+												<th>
+													<p class="rankup">+2</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r9.jpg" alt="">
+													</div>
+													<p class="rankmName">KICK BACK</p>
+												</th>
+												<th>
+													<p class="aName">Kenshi Yonezu</p>
+												</th>
+											</tr>
+											<tr>
+												<th>
+													<p>10</p>
+												</th>
+												<th>
+													<p class="rankup">+8</p>
+												</th>
+												<th>
+													<div class="rankAl">
+														<img src="../image/r10.jpg" alt="">
+													</div>
+													<p class="rankmName">seisyun complex</p>
+												</th>
+												<th>
+													<p class="aName">kessoku band</p>
+												</th>
+											</tr>
+										</table>
 									</div>
 									<li></li>
 								</article>
@@ -347,7 +469,7 @@
 					<div id="eventbanner">
 
 						<div class="eventbox">
-							<image src="../image/eventbanner01.png">
+							<a href="board.jsp"><image src="../image/eventbanner01.png"></a>
 						</div>
 
 						<div class="eventbox01">
@@ -371,6 +493,8 @@
 
 <script>
 	$(document).ready(
+			
+			 
 			function() {
 				var slideIndex = 0;
 				var slideTimer;
