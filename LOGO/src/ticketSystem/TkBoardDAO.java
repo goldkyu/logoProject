@@ -21,7 +21,7 @@ public class TkBoardDAO {
 	}
 
 	public void dbCon() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "1234");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "okek8277");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 

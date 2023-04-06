@@ -17,7 +17,7 @@ pageEncoding="utf-8" %>
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "root", "okek8277");
             if (conn == null) {
                 throw new Exception("데베 연결 없음");
             }
