@@ -12,7 +12,7 @@
 	<jsp:include page="siteHead.jsp" />
 	<%
 		request.setCharacterEncoding("utf-8");
-	     
+	     System.out.println("aaa");
 	%>
 	<h1>상품 리뷰</h1>
 	<form method="post" action="../pages/shoppingInsert2.jsp"
