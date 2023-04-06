@@ -55,7 +55,7 @@
          <td><a href="../pages/tkBoardWriteCall.jsp?Pfm_id=<%=b.getPfm_id() %>"><%= b.getPfm_title() %></td>
          <td><%= b.getU_id() %></td>
          <td><%= b.getDate() %></td>
-      	 <td><%= b.getHits() %></td>
+      	 <td><%= b.getHits() +1%></td>
       	 </tr>
          <%
 		}

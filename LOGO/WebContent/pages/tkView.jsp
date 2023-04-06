@@ -37,22 +37,21 @@
         </div>
   	</div>
   	
-<form method="get" action="tkBoardUpdatedb.jsp" >
+<form method="get" >
 	<table>
-		
 		<tr>
-		<td style="width:100px", bgcolor="#F6F6F6">아이디</td>
-		<td><input type=text name=u_id class="textbox" value="${ID}"></td>
+		<td width="8%" bgcolor="#F6F6F6">아이디</td>
+		<td name=u_id class="textbox">${ID}</td>
 		</tr>
 		
 		<tr>
 		<td bgcolor="#F6F6F6">제목</td>
-		<td><input type=text name=pfmtitle class="textbox01" value="${TITLE}"></td>
+		<td name=pfmtitle class="textbox01">${TITLE}</td>
 		</tr>
 		
 		<tr>
-		<td bgcolor="#F6F6F6">내용</td>
-		<td><textarea name=pfmcomment cols=140 rows=20 >${CONTENT}</textarea></td>
+		<td height="280" bgcolor="#F6F6F6">내용</td>
+		<td name=pfmcomment cols=140 rows=25 >${CONTENT}</td>
 		</tr>
 		
 		<tr>
@@ -63,8 +62,8 @@
 		
 	</table>
 	<div class="btn">
-	<input type="submit" value="수정" class="write">
-	<input type="button" value="삭제" class="write" onclick="location.href='tkBoardDelete.jsp?pfm_id=${PFMID}'">
+	<input type="button" value="수정" class="write" onclick="location.href='tkViewdb.jsp?Pfm_id=${PFMID}'">
+	<input type="button" value="삭제" class="write" onclick="location.href='tkBoardDelete.jsp?Pfm_id=${PFMID}'">
 	</div>
 </section>	
 
