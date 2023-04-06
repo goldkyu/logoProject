@@ -126,7 +126,7 @@
 											<img src="../image/a8.jpg" alt="">
 										</div>
 										<div>
-											<img src="../image/a9.jpg" alt="">
+											<img src="../image/a9.png" alt="">
 										</div>
 									</div>
 								</article>

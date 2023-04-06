@@ -1,7 +1,9 @@
-package BoardSystem;
+package dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+
+import BoardSystem.Board;
 
 public class BoardDAO {
     Connection conn = null;
