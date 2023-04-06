@@ -15,7 +15,7 @@
 </head>
 <body>
 
-ㅎㅎㅎ
+
 <!--  -->
 	<%
 		request.setCharacterEncoding("utf-8");
