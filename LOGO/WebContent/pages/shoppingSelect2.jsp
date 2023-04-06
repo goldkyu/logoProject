@@ -75,7 +75,7 @@
 	</form>
 	<br>
 	<br>
-
+<!--  -->
 	<footer>
 		<jsp:include page="siteFooter.jsp" />
 	</footer>
