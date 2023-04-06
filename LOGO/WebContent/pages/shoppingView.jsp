@@ -18,7 +18,6 @@
 	<%
 		request.setCharacterEncoding("utf-8");
 	%>
-	<!--  -->
 	<h1>상품 리뷰</h1>
 	<%
 		request.getAttribute("U_ID");

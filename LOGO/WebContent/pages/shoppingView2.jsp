@@ -10,7 +10,7 @@
 %>
 <jsp:useBean id="writing" class="shopping.ShoppingBoardDAO" />
 <%
-	
+	//String uploadPath = request.getRealPath("/WebContent/files");
 
 	String path = "files";
 

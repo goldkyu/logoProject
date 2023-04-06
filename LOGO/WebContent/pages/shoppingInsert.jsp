@@ -7,7 +7,7 @@
 <title>상품리뷰작성</title>
 <link rel="stylesheet" href="../CSS/shoppingInsert.css" />
 </head>
-<!--  -->
+
 <body style="overflow-x: hidden">
 	<jsp:include page="siteHead.jsp" />
 	<%
