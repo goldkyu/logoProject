@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../musicHead.jsp"></jsp:include>
+<jsp:include page="musicHead.jsp"></jsp:include>
 
 </body>
 </html>

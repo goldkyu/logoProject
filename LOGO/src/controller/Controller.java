@@ -9,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.*;
+import vo.*;
+
 @WebServlet("*.m")
 public class Controller {
 	protected void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -16,6 +19,12 @@ public class Controller {
 		String reqURI = req.getRequestURI(); // 프로젝트 + 파일명까지 전체 URI ex)LOGO/pages/board.jsp
 		String conPath = req.getContextPath(); // 프로젝트 이름 까지만 ex)LOGO
 		String command = reqURI.substring(conPath.length()); // reqURI에서 프로젝트 이름까지만 자름
-		
+		ActionForward actionFoward = null;
+		Action action = null;
+
+		if (command.equals("/music/musicinfo.m")) {
+			actionFoward = new ActionForward();
+			actionFoward.setPath("");
+		}
 	}
 }
