@@ -24,7 +24,7 @@
 				<ul>
 					<li><a href="ticketmain.jsp">ticket</a></li>
 					<li><a href="shoppingMain.jsp">shopping</a></li>
-					<li><a href="musicMain.jsp">Music</a></li>
+					<li><a href="musicMain.mu">Music</a></li>
 				</ul>
 
 			</div>
