@@ -35,7 +35,7 @@ public class MusicDAO {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		PreparedStatement prst = null;
 		try {
-			prst = conn.prepareStatement("select * from album_information order by album_id desc;");
+			prst = conn.prepareStatement("select * from album_information order by album_date desc;");
 			ResultSet rs = prst.executeQuery();
 			while (rs.next()) {
 				Album a = new Album();
@@ -43,7 +43,8 @@ public class MusicDAO {
 				a.setALBUM_NAME(rs.getString(2));
 				a.setALBUM_PUBLISHER(rs.getString(3));
 				a.setALBUM_DATE(rs.getString(4));
-				a.setALBUM_PHOTO(rs.getString(5));
+				a.setARTIST_ID(rs.getInt(5));
+				a.setALBUM_PHOTO(rs.getString(6));
 				albumList.add(a);
 			}
 
@@ -61,7 +62,7 @@ public class MusicDAO {
 		ArrayList<Music> musicListFromAlbum = new ArrayList<Music>();
 		PreparedStatement prst = null;
 		try {
-			prst = conn.prepareStatement("select * form m_information where album_id = "+album_idx+";");
+			prst = conn.prepareStatement("select * form m_information where album_id = "+album_idx+" order by m_track_num asc;");
 			ResultSet rs = prst.executeQuery();
 			while(rs.next()) {
 				Music m = new Music();

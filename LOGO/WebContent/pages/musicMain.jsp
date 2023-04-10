@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html;charset =utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="java.util.*"%>
+<%@ page import="vo.Album"%>
+<%@ page import="vo.Music"%>
 
 <!DOCTYPE html>
 <html>
@@ -170,54 +173,71 @@
 				<article id="newMusic">
 					<p>NEW Albums</p>
 					<div id="albums">
+						<%
+							ArrayList<Album> albums = (ArrayList<Album>) request.getAttribute("albums");
+						%>
 						<div>
-							<img id="a1" src="../image/a1.jpg" alt="">
+							<img id="a1" src="../albums/<%=albums.get(0).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t1">
 								<p>
-									<a href="musicAlbumInfo.m">New Jeans</a>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(0).getALBUM_ID() %>"><%= albums.get(0).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a2" src="../image/a2.jpg" alt="">
+							<img id="a2" src="../albums/<%=albums.get(1).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t2">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(1).getALBUM_ID() %>"><%= albums.get(1).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a3" src="../image/a3.jpg" alt="">
+							<img id="a3" src="../albums/<%=albums.get(2).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t3">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(2).getALBUM_ID() %>"><%= albums.get(2).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a4" src="../image/a4.jpg" alt="">
+							<img id="a4" src="../albums/<%=albums.get(3).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t4">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(3).getALBUM_ID() %>"><%= albums.get(3).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a5" src="../image/a5.jpg" alt="">
+							<img id="a5" src="../albums/<%=albums.get(4).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t5">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(4).getALBUM_ID() %>"><%= albums.get(4).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a6" src="../image/a6.jpg" alt="">
+							<img id="a6" src="../albums/<%=albums.get(5).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t6">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(5).getALBUM_ID() %>"><%= albums.get(5).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a7" src="../image/a7.jpg" alt="">
+							<img id="a7" src="../albums/<%=albums.get(6).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t7">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(6).getALBUM_ID() %>"><%= albums.get(6).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a8" src="../image/a8.jpg" alt="">
+							<img id="a8" src="../albums/<%=albums.get(7).getALBUM_PHOTO() %>" alt="">
 							<div class="album-name" id="t8">
-								<p>앨범 이름</p>
+								<p>
+									<a href="musicAlbumInfo.m?album_id?<%= albums.get(7).getALBUM_ID() %>"><%= albums.get(7).getALBUM_NAME() %></a>
+								</p>
 							</div>
 						</div>
 					</div>

@@ -181,10 +181,11 @@ th:nth-of-type(5) {
 
 
 
-.album-name p {
+.album-name p,.album-name a {
 
     padding-top: 80px;
     color: whitesmoke;
+    text-decoration: none; 	
 
 }
 
