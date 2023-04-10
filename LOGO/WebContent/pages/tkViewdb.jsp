@@ -11,7 +11,6 @@
 %>
 <jsp:useBean id="write" class="ticketSystem.TkBoardDAO" />
 
-
 <%
 
 	String path = "file";
@@ -29,7 +28,7 @@
 
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "root", "okek8277");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
 		
 		if (conn == null) {
 			throw new Exception("연결 없음");
@@ -79,7 +78,7 @@
 
 
 <%
-	RequestDispatcher disp = request.getRequestDispatcher("tkView.jsp");
+	RequestDispatcher disp = request.getRequestDispatcher("tkBoardUpdate.jsp");
 	disp.forward(request, response);
 %>
 

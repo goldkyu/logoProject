@@ -12,9 +12,11 @@
 <%
 	//String uploadPath = request.getRealPath("/WebContent/files");
 
+	String path = "files";
 
 	int size = 10 * 1024 * 1024;
-	
+	String name = "";
+	String subject = "";
 	String filename1 = "11";
 	String filename2 = "22";
 	String origfilename1 = "33";
@@ -34,13 +36,13 @@
 		
 		st = conn.createStatement();
 		ResultSet rs = st.executeQuery("select * from pd_review WHERE pd_id = '" + Pd_id + "';");
-		String pd_image = null;
-		String u_id = null;
+		
 		while (rs.next()) {
-			u_id = rs.getString("u_id");
+			String u_id = rs.getString("u_id");
+			System.out.println(u_id);
 			String pd_title = rs.getString("pd_title");
 			String pd_comment = rs.getString("pd_comment");
-			pd_image = rs.getString("pd_image");
+			String pd_image = rs.getString("pd_image");
 
 			request.setAttribute("U_ID", u_id);
 			request.setAttribute("PD_TITLE", pd_title);
@@ -50,7 +52,8 @@
 			
 
 		}
-
+		
+		
 	} finally {
 		try {
 			st.close();
@@ -75,9 +78,6 @@
 </html>
 
 
-<%	RequestDispatcher disp = request.getRequestDispatcher("../pages/shoppingView.jsp");
+<%	RequestDispatcher disp = request.getRequestDispatcher("../pages/shoppingSelect2.jsp");
 disp.forward(request, response); %>
-
-
-
 

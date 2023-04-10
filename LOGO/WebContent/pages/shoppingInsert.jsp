@@ -7,11 +7,12 @@
 <title>상품리뷰작성</title>
 <link rel="stylesheet" href="../CSS/shoppingInsert.css" />
 </head>
-
+<!--  -->
 <body style="overflow-x: hidden">
 	<jsp:include page="siteHead.jsp" />
 	<%
 		request.setCharacterEncoding("utf-8");
+
 	%>
 	<h1>상품 리뷰</h1>
 	<form method="post" action="../pages/shoppingInsert2.jsp"
@@ -37,7 +38,7 @@
 								</tr>
 								<tr>
 									<td>파일첨부</td>
-									<td><input type=file name="pd_image" size=40
+									<td><input type=file name="pd_image"
 										required="required"></td>
 								</tr>
 								</td>
