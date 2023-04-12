@@ -11,13 +11,18 @@
 <title>LOGO</title>
 </head>
 <body>
+<% ArrayList<Music> musicList = (ArrayList<Music>)request.getAttribute("musics"); %>
 <jsp:include page="musicHead.jsp"/>
 <section style="margin-top: 200px;">
 	<div>
-	여기는 이미지야
+	<img alt="" src="../albums/<%= musicList.get(0).getALBUM_PHOTO()%>" style="width: 300px; height: 300px;">
 	
 	</div>
 	<div>
+		<% for(Music m : musicList){
+			%>
+			<p><%= m.getMUSIC_TRACK_NUM() %> | <%= m.getMUSIC_NAME() %> | <%= m.getMUSIC_PLAYTIME() %></p>
+		<% } %>
 	</div>
 </section>
 

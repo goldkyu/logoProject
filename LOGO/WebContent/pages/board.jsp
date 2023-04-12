@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html;charset =utf-8"
 pageEncoding="utf-8" %>
 <%@page import="java.sql.*" %>
-
+<%@ page import="BoardSystem.*" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,8 +32,8 @@ pageEncoding="utf-8" %>
             <div id="board-title"> <h1 style="font-size: 70px; text-align: center; padding-bottom: 30px;">EVENT</h1>  </div>
             
             <!-- BoardSystem 패키지의 모든 클래스 import-->
-            <%@ page import="BoardSystem.*" %>
-            <%@ page import="java.util.ArrayList" %>
+            
+            
             <table id="board-table">
                 <th>NO.</th>
                 <th>제목</th>

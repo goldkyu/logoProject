@@ -9,6 +9,7 @@ public class Music {
 	String MUSIC_LYRICS;
 	int ARTIST_ID;
 	int ALBUM_ID;
+	String ALBUM_PHOTO;
 	
 	public int getMUSIC_ID() {
 		return MUSIC_ID;
@@ -57,6 +58,12 @@ public class Music {
 	}
 	public void setALBUM_ID(int aLBUM_ID) {
 		ALBUM_ID = aLBUM_ID;
+	}
+	public String getALBUM_PHOTO() {
+		return ALBUM_PHOTO;
+	}
+	public void setALBUM_PHOTO(String aLBUM_PHOTO) {
+		ALBUM_PHOTO = aLBUM_PHOTO;
 	}
 	
 	

@@ -43,5 +43,5 @@ pageEncoding="utf-8" %>
     </article>
     </section>
     <jsp:include page="siteFooter.jsp"/>
-  </body>sdsds
+  </body>
 </html>

@@ -63,23 +63,22 @@ public class MusicDAO {
 		ArrayList<Music> musicListFromAlbum = new ArrayList<Music>();
 		PreparedStatement prst = null;
 		ResultSet rs = null;
-		String selectQuery = "select * from m_information where album_id = ? order by m_track_num asc;";
+		String selectQuery = "select distinct m_id,m_track_num,m_name,m_playtime,m_lyrics,album_date,album_prof_photo from m_information,album_information where m_information.album_id = album_information.album_id and m_information.album_id= ? order by m_track_num asc;";
 		try {
 			prst = conn.prepareStatement(selectQuery);
 			prst.setInt(1, album_idx);
 			rs = prst.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Music m = new Music();
 				m.setMUSIC_ID(rs.getInt(1));
-				m.setMUSIC_NAME(rs.getString(2));
-				m.setMUSIC_DATE(rs.getString(3));
+				m.setMUSIC_TRACK_NUM(rs.getInt(2));
+				m.setMUSIC_NAME(rs.getString(3));
 				m.setMUSIC_PLAYTIME(rs.getString(4));
-				m.setMUSIC_TRACK_NUM(rs.getInt(5));
-				m.setMUSIC_LYRICS(rs.getString(6));
-				m.setARTIST_ID(rs.getInt(7));
-				m.setALBUM_ID(rs.getInt(8));
+				m.setMUSIC_LYRICS(rs.getString(5));
+				m.setMUSIC_DATE(rs.getString(6));
+				m.setALBUM_PHOTO(rs.getString(7));
 				musicListFromAlbum.add(m);
-				
+
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -88,7 +87,7 @@ public class MusicDAO {
 			close(prst);
 			close(rs);
 		}
-		
+
 		return musicListFromAlbum;
 	}
 }
