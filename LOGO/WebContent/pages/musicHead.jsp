@@ -113,7 +113,7 @@ pageEncoding="utf-8" %>
             <li><a href="" class="my-text"> 그 외</a></li>
           </ul>
           <ul>
-            <li><a href="" class="my-text"> 나만의 차트</a></li>
+            <li><a href="musicOnlyMyChart.mu" class="my-text"> 나만의 차트</a></li>
             <li style="width: 120px">
               <a href="" class="my-text"> 플레이리스트</a>
             </li>

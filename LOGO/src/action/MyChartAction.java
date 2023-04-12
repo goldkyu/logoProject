@@ -4,15 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vo.ActionForward;
-import vo.Album;
-import vo.Music;
 
-public class MusicInfoAction implements Action {
+public class MyChartAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		ActionForward actionForward = new ActionForward();
+		
+		actionForward.setPath("musicOnlyMyChart.jsp");
+		
+		return actionForward;
 	}
-	
+
 }

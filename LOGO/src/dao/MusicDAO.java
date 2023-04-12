@@ -34,9 +34,10 @@ public class MusicDAO {
 	public ArrayList<Album> albumListSelect() {
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		PreparedStatement prst = null;
+		ResultSet rs = null;
 		try {
 			prst = conn.prepareStatement("select * from album_information order by album_date desc;");
-			ResultSet rs = prst.executeQuery();
+			rs = prst.executeQuery();
 			while (rs.next()) {
 				Album a = new Album();
 				a.setALBUM_ID(rs.getInt(1));
@@ -52,7 +53,7 @@ public class MusicDAO {
 			// TODO: handle exception
 		} finally {
 			close(prst);
-			close(conn);
+			close(rs);
 		}
 
 		return albumList;
@@ -61,9 +62,12 @@ public class MusicDAO {
 	public ArrayList<Music> albumInfoSelect(int album_idx) {
 		ArrayList<Music> musicListFromAlbum = new ArrayList<Music>();
 		PreparedStatement prst = null;
+		ResultSet rs = null;
+		String selectQuery = "select * from m_information where album_id = ? order by m_track_num asc;";
 		try {
-			prst = conn.prepareStatement("select * form m_information where album_id = "+album_idx+" order by m_track_num asc;");
-			ResultSet rs = prst.executeQuery();
+			prst = conn.prepareStatement(selectQuery);
+			prst.setInt(1, album_idx);
+			rs = prst.executeQuery();
 			while(rs.next()) {
 				Music m = new Music();
 				m.setMUSIC_ID(rs.getInt(1));
@@ -82,7 +86,7 @@ public class MusicDAO {
 		} finally {
 			// TODO: handle finally clause
 			close(prst);
-			close(conn);
+			close(rs);
 		}
 		
 		return musicListFromAlbum;
