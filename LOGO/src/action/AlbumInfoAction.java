@@ -25,7 +25,6 @@ public class AlbumInfoAction implements Action {
 	    // JSP 페이지에 전달할 데이터 request 객체에 설정
 	    request.setAttribute("musics", musicList);
 	    
-	    System.out.println("sdsdas");
 
 	    // JSP 페이지 경로 설정
 	    forward.setPath("musicAlbumInfo.jsp");

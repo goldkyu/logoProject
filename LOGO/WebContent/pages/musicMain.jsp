@@ -6,7 +6,8 @@
 
 <!DOCTYPE html>
 <html>
-
+<% int a= 1; String al = "으응";%>
+<% String id = (String)session.getAttribute("userID"); %>
 <head>
 <meta charset="UTF-8">
 <title>LOGO MUSIC</title>
@@ -28,133 +29,7 @@
 
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-	google.charts.load('current', {
-		'packages' : [ 'corechart' ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
 
-	var data, chart, options;
-
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([
-				[ 'Date', 'Hype Boy', 'Unholy', 'That Band', 'Butter', '귀로' ],
-				[ '02-15', 1, 4, 5, 12, 8 ], [ '02-16', 6, 1, 8, 4, 9 ],
-				[ '02-17', 10, 3, 2, 5, 2 ], [ '02-18', 16, 5, 11, 2, 8 ],
-				[ '02-19', 13, 12, 4, 2, 7 ], [ '02-20', 10, 13, 12, 14, 5 ],
-				[ '02-21', 14, 15, 13, 8, 6 ] ]);
-
-		var options = {
-			title : '나만의 차트',
-			curveType : 'function',
-			legend : {
-				position : 'bottom'
-			},
-			series : {
-				0 : {
-					color : '#D9AD29'
-				},
-				1 : {
-					color : '#A67926'
-				},
-				2 : {
-					color : '#734B1A'
-				},
-				3 : {
-					color : '#FACF1E'
-				},
-				4 : {
-					color : '#262001'
-				}
-			},
-			animation : {
-				startup : true,
-				duration : 1000, // 애니메이션 지속 시간(밀리초)
-				easing : 'out', // 이징(Easing) 함수
-			}
-		};
-
-		var chart = new google.visualization.LineChart(document
-				.getElementById('curve_chart'));
-
-		chart.draw(data, options);
-
-		// Add our selection handler.
-
-		google.visualization.events.addListener(chart, 'select', selectHandler);
-
-		// The selection handler.
-		// Loop through all items in the selection and concatenate
-		// a single message from all of them.
-		function selectHandler() {
-			$('.selAlbum').hide();
-			$('.selRank').hide();
-
-			// 선택된 요소 가져오기
-			var selectedItem = chart.getSelection()[0];
-
-			// 선택된 요소가 있을 경우에만 처리
-			if (selectedItem) {
-
-				// 선택된 요소의 행과 열 정보 가져오기
-				var row = selectedItem.row;
-				var column = selectedItem.column;
-
-				// 선택된 요소의 레이블 정보 가져오기
-				var rowLabel = data.getFormattedValue(row, 0);
-				var columnLabel = data.getColumnLabel(column);
-
-				// 선택된 요소의 값을 가져오기
-				var value = data.getValue(row, column);
-
-				// 출력할 문자열 생성
-				var message = '선택된 요소: ' + rowLabel + ', ' + columnLabel + ', '
-						+ value;
-
-				var date = rowLabel;
-				var name = columnLabel;
-				var mCount = value;
-				var albumImg;
-				var aName;
-
-				if (column == 1) {
-					albumImg = '<img src="../image/a1.jpg" alt="">';
-				} else if (column == 2) {
-					albumImg = '<img src="../image/r3.png" alt="">';
-				} else if (column == 3) {
-					albumImg = '<img src="../image/a6.jpg" alt="">';
-				} else if (column == 4) {
-					albumImg = '<img src="../image/a8.jpg" alt="">';
-				} else {
-					albumImg = '<img src="../image/a9.png" alt="">';
-				}
-
-				if (column == 1) {
-					aName = 'NewJeans';
-				} else if (column == 2) {
-					aName = 'Sam Smith';
-				} else if (column == 3) {
-					aName = 'Kessoku Band';
-				} else if (column == 4) {
-					aName = 'BTS';
-				} else {
-					aName = '나얼';
-				}
-
-				$('.selAlbum').fadeIn('4000');
-				$('.selRank').fadeIn('4000');
-				document.getElementById('alDate').innerHTML = date;
-				document.getElementById('mName').innerHTML = name;
-				document.getElementById('alCount').innerHTML = mCount;
-				document.getElementById('selAlbumDiv').innerHTML = albumImg;
-				document.getElementById('aName').innerHTML = aName;
-
-			}
-			;
-		}
-		;
-	};
-</script>
 
 <script>
 	
@@ -244,7 +119,8 @@
 						</div>
 					</div>
 				</article>
-				<article id="onlyMyChart">
+				<article id="onlyMyChart" style="position: relative;">
+				<% if(session.getAttribute("userID") != null) {%>
 					<div id="curve_chart" style="width: 590px; height: 525px"></div>
 					<div id="sels">
 						<div id="selStroke">
@@ -261,6 +137,11 @@
 							</div>
 						</div>
 					</div>
+					<%} else {%>
+					<div id=selContainer style="position: absolute;left: -137px;">
+						<img alt="" src="../image/logoutChart.png">
+					</div>
+					<%} %>
 				</article>
 			</div>
 			<div id="bottomBox">
@@ -503,5 +384,131 @@
 
 	<jsp:include page="siteFooter.jsp" />
 </body>
+<script type="text/javascript">
+	google.charts.load('current', {
+		'packages' : [ 'corechart' ]
+	});
+	google.charts.setOnLoadCallback(drawChart);
 
+	var data, chart, options;
+
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ 'Date', '<%= al %>', 'Unholy', 'That Band', 'Butter', '귀로' ],
+				[ '02-15', <%= a %>, 4, 5, 12, 8 ], [ '02-16', 6, 1, 8, 4, 9 ],
+				[ '02-17', 10, 3, 2, 5, 2 ], [ '02-18', 16, 5, 11, 2, 8 ],
+				[ '02-19', 13, 12, 4, 2, 7 ], [ '02-20', 10, 13, 12, 14, 5 ],
+				[ '02-21', <%= a %>, 15, 13, 8, 6 ] ]);
+
+		var options = {
+			title : '나만의 차트',
+			curveType : 'function',
+			legend : {
+				position : 'bottom'
+			},
+			series : {
+				0 : {
+					color : '#D9AD29'
+				},
+				1 : {
+					color : '#A67926'
+				},
+				2 : {
+					color : '#734B1A'
+				},
+				3 : {
+					color : '#FACF1E'
+				},
+				4 : {
+					color : '#262001'
+				}
+			},
+			animation : {
+				startup : true,
+				duration : 1000, // 애니메이션 지속 시간(밀리초)
+				easing : 'out', // 이징(Easing) 함수
+			}
+		};
+
+		var chart = new google.visualization.LineChart(document
+				.getElementById('curve_chart'));
+
+		chart.draw(data, options);
+
+		// Add our selection handler.
+
+		google.visualization.events.addListener(chart, 'select', selectHandler);
+
+		// The selection handler.
+		// Loop through all items in the selection and concatenate
+		// a single message from all of them.
+		function selectHandler() {
+			$('.selAlbum').hide();
+			$('.selRank').hide();
+
+			// 선택된 요소 가져오기
+			var selectedItem = chart.getSelection()[0];
+
+			// 선택된 요소가 있을 경우에만 처리
+			if (selectedItem) {
+
+				// 선택된 요소의 행과 열 정보 가져오기
+				var row = selectedItem.row;
+				var column = selectedItem.column;
+
+				// 선택된 요소의 레이블 정보 가져오기
+				var rowLabel = data.getFormattedValue(row, 0);
+				var columnLabel = data.getColumnLabel(column);
+
+				// 선택된 요소의 값을 가져오기
+				var value = data.getValue(row, column);
+
+				// 출력할 문자열 생성
+				var message = '선택된 요소: ' + rowLabel + ', ' + columnLabel + ', '
+						+ value;
+
+				var date = rowLabel;
+				var name = columnLabel;
+				var mCount = value;
+				var albumImg;
+				var aName;
+
+				if (column == 1) {
+					albumImg = '<img src="../image/a1.jpg" alt="">';
+				} else if (column == 2) {
+					albumImg = '<img src="../image/r3.png" alt="">';
+				} else if (column == 3) {
+					albumImg = '<img src="../image/a6.jpg" alt="">';
+				} else if (column == 4) {
+					albumImg = '<img src="../image/a8.jpg" alt="">';
+				} else {
+					albumImg = '<img src="../image/a9.png" alt="">';
+				}
+
+				if (column == 1) {
+					aName = 'NewJeans';
+				} else if (column == 2) {
+					aName = 'Sam Smith';
+				} else if (column == 3) {
+					aName = 'Kessoku Band';
+				} else if (column == 4) {
+					aName = 'BTS';
+				} else {
+					aName = '나얼';
+				}
+
+				$('.selAlbum').fadeIn('4000');
+				$('.selRank').fadeIn('4000');
+				document.getElementById('alDate').innerHTML = date;
+				document.getElementById('mName').innerHTML = name;
+				document.getElementById('alCount').innerHTML = mCount;
+				document.getElementById('selAlbumDiv').innerHTML = albumImg;
+				document.getElementById('aName').innerHTML = aName;
+
+			}
+			;
+		}
+		;
+	};
+</script>
 </html>
