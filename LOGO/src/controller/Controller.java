@@ -32,7 +32,7 @@ public class Controller extends javax.servlet.http.HttpServlet implements javax.
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
-				
+
 			}
 
 		} else if (command.equals("/pages/musicAlbumInfo.mu")) {

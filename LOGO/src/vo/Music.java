@@ -10,7 +10,15 @@ public class Music {
 	int ARTIST_ID;
 	int ALBUM_ID;
 	String ALBUM_PHOTO;
+	String ARTIST_NAME;
 	
+	
+	public String getARTIST_NAME() {
+		return ARTIST_NAME;
+	}
+	public void setARTIST_NAME(String aRTIST_NAME) {
+		ARTIST_NAME = aRTIST_NAME;
+	}
 	public int getMUSIC_ID() {
 		return MUSIC_ID;
 	}
