@@ -42,18 +42,30 @@
 	});
 	google.charts.setOnLoadCallback(drawChart);
 
+	let today = new Date();
+	let month = today.getMonth() + 1;
+	let date = today.getDate();
+	
+	var day7 = month+'-'+(date-6);
+	var day6 = month+'-'+(date-5);
+	var day5 = month+'-'+(date-4);
+	var day4 = month+'-'+(date-3);
+	var day3 = month+'-'+(date-2);
+	var day2 = month+'-'+(date-1);
+	var day1 = month+'-'+(date);
+	
 	var data, chart, options;
 
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'Date', '<%= ml.get(0).getMUSIC_NAME() %>', '<%= ml.get(1).getMUSIC_NAME() %>', '<%= ml.get(2).getMUSIC_NAME() %>', '<%= ml.get(3).getMUSIC_NAME() %>', '<%= ml.get(4).getMUSIC_NAME() %>' ],
-				[ '02-15', <%= ul.get(0).getLISTEN_COUNT_DAY1()%>, <%= ul.get(1).getLISTEN_COUNT_DAY1()%>, <%= ul.get(2).getLISTEN_COUNT_DAY1()%>, <%= ul.get(3).getLISTEN_COUNT_DAY1()%>, <%= ul.get(4).getLISTEN_COUNT_DAY1()%> ],
-				[ '02-16', <%= ul.get(0).getLISTEN_COUNT_DAY2()%>, <%= ul.get(1).getLISTEN_COUNT_DAY2()%>, <%= ul.get(2).getLISTEN_COUNT_DAY2()%>, <%= ul.get(3).getLISTEN_COUNT_DAY2()%>, <%= ul.get(4).getLISTEN_COUNT_DAY2()%> ],
-				[ '02-17', <%= ul.get(0).getLISTEN_COUNT_DAY3()%>, <%= ul.get(1).getLISTEN_COUNT_DAY3()%>, <%= ul.get(2).getLISTEN_COUNT_DAY3()%>, <%= ul.get(3).getLISTEN_COUNT_DAY3()%>, <%= ul.get(4).getLISTEN_COUNT_DAY3()%> ],
-				[ '02-18', <%= ul.get(0).getLISTEN_COUNT_DAY4()%>, <%= ul.get(1).getLISTEN_COUNT_DAY4()%>, <%= ul.get(2).getLISTEN_COUNT_DAY4()%>, <%= ul.get(3).getLISTEN_COUNT_DAY4()%>, <%= ul.get(4).getLISTEN_COUNT_DAY4()%> ],
-				[ '02-19', <%= ul.get(0).getLISTEN_COUNT_DAY5()%>, <%= ul.get(1).getLISTEN_COUNT_DAY5()%>, <%= ul.get(2).getLISTEN_COUNT_DAY5()%>, <%= ul.get(3).getLISTEN_COUNT_DAY5()%>, <%= ul.get(4).getLISTEN_COUNT_DAY5()%> ],
-				[ '02-20', <%= ul.get(0).getLISTEN_COUNT_DAY6()%>, <%= ul.get(1).getLISTEN_COUNT_DAY6()%>, <%= ul.get(2).getLISTEN_COUNT_DAY6()%>, <%= ul.get(3).getLISTEN_COUNT_DAY6()%>, <%= ul.get(4).getLISTEN_COUNT_DAY6()%> ],
-				[ '02-21', <%= ul.get(0).getLISTEN_COUNT_DAY7()%>, <%= ul.get(1).getLISTEN_COUNT_DAY7()%>, <%= ul.get(2).getLISTEN_COUNT_DAY7()%>, <%= ul.get(3).getLISTEN_COUNT_DAY7()%>, <%= ul.get(4).getLISTEN_COUNT_DAY7()%> ] ]);
+				[ 'Date', "<%= ml.get(0).getMUSIC_NAME() %>", "<%= ml.get(1).getMUSIC_NAME() %>", "<%= ml.get(2).getMUSIC_NAME() %>", "<%= ml.get(3).getMUSIC_NAME() %>", "<%= ml.get(4).getMUSIC_NAME() %>" ],
+				[ day7, <%= ul.get(0).getLISTEN_COUNT_DAY7()%>, <%= ul.get(1).getLISTEN_COUNT_DAY7()%>, <%= ul.get(2).getLISTEN_COUNT_DAY7()%>, <%= ul.get(3).getLISTEN_COUNT_DAY7()%>, <%= ul.get(4).getLISTEN_COUNT_DAY7()%> ],
+				[ day6, <%= ul.get(0).getLISTEN_COUNT_DAY6()%>, <%= ul.get(1).getLISTEN_COUNT_DAY6()%>, <%= ul.get(2).getLISTEN_COUNT_DAY6()%>, <%= ul.get(3).getLISTEN_COUNT_DAY6()%>, <%= ul.get(4).getLISTEN_COUNT_DAY6()%> ],
+				[ day5, <%= ul.get(0).getLISTEN_COUNT_DAY5()%>, <%= ul.get(1).getLISTEN_COUNT_DAY5()%>, <%= ul.get(2).getLISTEN_COUNT_DAY5()%>, <%= ul.get(3).getLISTEN_COUNT_DAY5()%>, <%= ul.get(4).getLISTEN_COUNT_DAY5()%> ],
+				[ day4, <%= ul.get(0).getLISTEN_COUNT_DAY4()%>, <%= ul.get(1).getLISTEN_COUNT_DAY4()%>, <%= ul.get(2).getLISTEN_COUNT_DAY4()%>, <%= ul.get(3).getLISTEN_COUNT_DAY4()%>, <%= ul.get(4).getLISTEN_COUNT_DAY4()%> ],
+				[ day3, <%= ul.get(0).getLISTEN_COUNT_DAY3()%>, <%= ul.get(1).getLISTEN_COUNT_DAY3()%>, <%= ul.get(2).getLISTEN_COUNT_DAY3()%>, <%= ul.get(3).getLISTEN_COUNT_DAY3()%>, <%= ul.get(4).getLISTEN_COUNT_DAY3()%> ],
+				[ day2, <%= ul.get(0).getLISTEN_COUNT_DAY2()%>, <%= ul.get(1).getLISTEN_COUNT_DAY2()%>, <%= ul.get(2).getLISTEN_COUNT_DAY2()%>, <%= ul.get(3).getLISTEN_COUNT_DAY2()%>, <%= ul.get(4).getLISTEN_COUNT_DAY2()%> ],
+				[ day1, <%= ul.get(0).getLISTEN_COUNT_DAY1()%>, <%= ul.get(1).getLISTEN_COUNT_DAY1()%>, <%= ul.get(2).getLISTEN_COUNT_DAY1()%>, <%= ul.get(3).getLISTEN_COUNT_DAY1()%>, <%= ul.get(4).getLISTEN_COUNT_DAY1()%> ] ]);
 
 		var options = {
 			title : '나만의 차트',
