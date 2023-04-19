@@ -22,7 +22,7 @@ public class BoardDAO {
     public void conn() throws Exception {
         conn = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/melon_music?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
-                "root", "1234");
+                "root", "okek8277");
         if (conn == null) {
             throw new Exception("DataBase can't found.");
         }
