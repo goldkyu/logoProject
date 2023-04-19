@@ -63,7 +63,7 @@
 	</table>
 	<div class="btn">
 	<input type="button" value="수정" class="write" onclick="location.href='tkViewdb.jsp?Pfm_id=${PFMID}'">
-	<input type="button" value="삭제" class="write" onclick="location.href='tkBoardDelete.jsp?Pfm_id=${PFMID}'">
+	<input type="button" value="목록" class="write" onclick="location.href='tkhits.jsp?Pfm_id=${PFMID}'">
 	</div>
 </section>	
 

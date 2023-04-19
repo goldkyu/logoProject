@@ -21,7 +21,7 @@ public class TkBoardDAO {
 	}
 
 	public void dbCon() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "okek8277");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "1234");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 
@@ -65,11 +65,8 @@ public class TkBoardDAO {
 				bod.setPfm_title(rs.getString("pfm_title"));
 				bod.setPfm_comment(rs.getString("pfm_comment"));
 				bod.setDate(rs.getString("date"));
-				/* bod.setHits(rs.getInt("hits")); */
-				int bbsCount = rs.getInt("hits");
-				bod.setHits(bbsCount);
-				bbsCount++;
-				hitsUpdate(bbsCount);
+				bod.setHits(rs.getInt("hits"));
+				
 				arr.add(bod);
 			}
 		} finally {
@@ -93,14 +90,14 @@ public class TkBoardDAO {
 	}
 	
 	//조회수 
-		public void hitsUpdate(int pfm_id) throws Exception {
+		public void hitsUpdate(String pfm_id) throws Exception {
 
 			try {
 				dbCon();
 				
 				st = conn.createStatement();
 			
-			  String s =("update pfm_review set hits = hits +1 where pfm_id = '+ pfm_id +' ;");
+			  String s ="update pfm_review set hits = hits +1 where pfm_id = "+ pfm_id +";";
 							
 				
 				System.out.println(s);

@@ -103,7 +103,7 @@ $(document).ready(function() {
                 </li>
 
                 <li>
-                <a href="#">My티켓</a>
+                 <a href="../pages/TicketWriteForm.to">My티켓</a>
                 </li>
               </ul>
        

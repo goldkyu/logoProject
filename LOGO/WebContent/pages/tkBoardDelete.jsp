@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html;charset =utf-8"
 pageEncoding="utf-8" %>
-<%@ page import="BoardSystem.*" %>
+<%@ page import="ticketSystem.*" %>
+
 
 <jsp:useBean id="dao" class="ticketSystem.TkBoardDAO" />
   
     <%
     String pfm_id = request.getParameter("pfm_id");
+    System.out.print(pfm_id);
     dao.tkdelete(pfm_id);
         
 
