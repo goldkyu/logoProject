@@ -58,7 +58,7 @@
 								</tr>
 								<tr>
 									<td>파일</td>
-									<td colspan="6"><br><br><img src = "../file/<%=imgName%>" width="300px" height="300px"><br><br>
+									<td colspan="6"><br><br><img src = "../file/<%=imgName%>" width="250px" height="200px"><br><br>
 								</tr>
 								</td>
 								</tr>

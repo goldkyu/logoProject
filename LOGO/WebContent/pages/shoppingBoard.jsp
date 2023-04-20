@@ -31,8 +31,8 @@
 					<table>
 						<thead>
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
+								<th width="200px">번호</th>
+								<th width="800px">제목</th>
 								<th>아이디</th>
 								<th>작성일</th>
 								<th>조회수</th>
@@ -51,7 +51,7 @@
 								<td><%=d.getU_id()%></td>
 								<td><%=d.getDate()%></td>
 								<td><%=d.getHits()%></td>
-								<td>${ d.getHits }</td>
+
 							</tr>
 							<%
 								}

@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 수정</title>
-<link rel="stylesheet" href="../CSS/shoppingSelect.css" />
+<link rel="stylesheet" href="../CSS/shoppingView.css"/>
 </head>
 
 <body>
@@ -35,11 +35,11 @@
 
 	<form method="get">
 		<section>
-			<center>
-				<table style="padding-top: 50px" align=center width=700 border=0
-					cellpadding=2>
+			
+				<table>
 					<tr>
 						<td bgcolor=white>
+						<center>
 							<table class="table2">
 								<tr>
 
@@ -51,14 +51,15 @@
 									<td name="title" size=60>${PD_TITLE}</td>
 								</tr>
 								<tr>
-									<td>내용</td>
-									<td name="comment" cols=85 rows=15>${PD_COMMENT}</td>
-								</tr>
-								<tr>
-									<td colspan="6"><br> <br> <img
-										src="../file/<%=imgName%>" width="300px" height="300px"><br>
+									<td colspan="6">${PD_COMMENT}<br><br> <img
+										src="../file/<%=imgName%>" width="250px" height="200px"><br>
 										<br>
 								</tr>
+								<%-- <tr>
+									<td>내용</td>
+									<td name="comment" cols=85 rows=15>${PD_COMMENT}</td>
+								</tr> --%>
+								
 								</td>
 								</tr>
 
@@ -68,7 +69,7 @@
 							<center>
 								<input class="write" type="button" value="수정"
 									onclick="location.href='../pages/shoppingView2.jsp?Pd_id=${PD_ID}'">
-								<input class="write" type="button" name="delete" id=""
+								<input class="write" type="button" name="" id=""
 									value="돌아가기"
 									onclick="location.href='../pages/shoppinghits.jsp?Pd_id=${PD_ID}'">
 

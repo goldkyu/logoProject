@@ -49,6 +49,8 @@
 							<center>
 								<input class="write" type="submit" value="작성">
 							</center>
-							</form> <br> <br> <jsp:include page="siteFooter.jsp" />
+							</form> <br> <br> <footer>
+								<jsp:include page="siteFooter.jsp" />
+							</footer>
 </body>
 </html>
