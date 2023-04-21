@@ -33,7 +33,7 @@ public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 		System.out.println(RequestURI);
 		System.out.println(contextPath);
 		System.out.println(command);
-		
+
 		if (command.equals("/pages/TicketWriteForm.to")) {
 			forward = new ActionForward();
 			forward.setPath("../pages/ticketRegister.jsp");
@@ -45,65 +45,64 @@ public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		else if(command.equals("/pages/TicketList.to")) {
+
+		else if (command.equals("/pages/TicketList.to")) {
 			action = new TicketListAction();
 			try {
 				forward = action.execute(request, response);
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		else if(command.equals("/pages/TicketDetail.to")) {
+
+		else if (command.equals("/pages/TicketDetail.to")) {
 			action = new TicketDetailAction();
 			try {
 				forward = action.execute(request, response);
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		//수정
-		else if(command.equals("/pages/TicketModify.to")) {
+		// 수정
+		else if (command.equals("/pages/TicketModify.to")) {
 			action = new TicketModifyAction();
 			try {
 				forward = action.execute(request, response);
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		else if(command.equals("/pages/TicketModifypro.to")) {
+
+		else if (command.equals("/pages/TicketModifypro.to")) {
 			action = new TicketModifyproAction();
 			try {
 				forward = action.execute(request, response);
-			}catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		//ticketRegistModity.jsp(삭제)
-		else if(command.equals("/pages/TicketDelete.to")) {
+
+		// ticketRegistModity.jsp(삭제)
+		else if (command.equals("/pages/TicketDelete.to")) {
 			String nowPage = request.getParameter("nowPage");
 			request.setAttribute("page", nowPage);
-			String p_code = request.getParameter("P_code");		
-			request.setAttribute("P_code",p_code);
+			String p_code = request.getParameter("P_code");
+			request.setAttribute("P_code", p_code);
 			System.out.println(nowPage + "11111");
 			System.out.println(p_code + "2222222");
-			
-			 forward=new ActionForward();
-			 forward.setPath("/pages/boardDeletePro.to");
+
+			forward = new ActionForward();
+			forward.setPath("/pages/boardDeletePro.to");
 		}
-		
-		else if(command.equals("/pages/boardDeletePro.to")){
+
+		else if (command.equals("/pages/boardDeletePro.to")) {
 			action = new TicketDeleteAction();
-			try{
-				forward=action.execute(request, response);
-			}catch(Exception e){
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
 
 		if (forward != null) {
 

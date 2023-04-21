@@ -31,7 +31,7 @@
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 
-<% if(session.getAttribute("userID") != null){
+<% if(request.getAttribute("viewChart").equals("1")){
 	ArrayList<UserListen> ul = (ArrayList<UserListen>)request.getAttribute("chartInfo");
 	ArrayList<Music> ml =(ArrayList<Music>)request.getAttribute("chartMusic");
 
@@ -153,15 +153,15 @@
 				}
 
 				if (column == 1) {
-					aName = '<%= ml.get(0).getARTIST_NAME()%>';
+					aName = '<%=ml.get(0).getARTIST_NAME()%>';
 				} else if (column == 2) {
-					aName = '<%= ml.get(1).getARTIST_NAME()%>';
+					aName = '<%=ml.get(1).getARTIST_NAME()%>';
 				} else if (column == 3) {
-					aName = '<%= ml.get(2).getARTIST_NAME()%>';
+					aName = '<%=ml.get(2).getARTIST_NAME()%>';
 				} else if (column == 4) {
-					aName = '<%= ml.get(3).getARTIST_NAME()%>';
+					aName = '<%=ml.get(3).getARTIST_NAME()%>';
 				} else {
-					aName = '<%= ml.get(4).getARTIST_NAME()%>';
+					aName = '<%=ml.get(4).getARTIST_NAME()%>';
 				}
 
 				$('.selAlbum').fadeIn('4000');
@@ -178,8 +178,8 @@
 		;
 	};
 </script>
-<% 
-}
+<%
+	}
 %>
 
 <body style="overflow-x: hidden">
@@ -201,73 +201,89 @@
 						System.out.println("메인페이지");
 						%>
 						<div>
-							<img id="a1" src="../albums/<%=albums.get(0).getALBUM_PHOTO() %>" alt="">
+							<img id="a1" src="../albums/<%=albums.get(0).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t1">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(0).getALBUM_ID() %>"><%= albums.get(0).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(0).getALBUM_ID() %>"><%= albums.get(0).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a2" src="../albums/<%=albums.get(1).getALBUM_PHOTO() %>" alt="">
+							<img id="a2" src="../albums/<%=albums.get(1).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t2">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(1).getALBUM_ID() %>"><%= albums.get(1).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(1).getALBUM_ID() %>"><%= albums.get(1).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a3" src="../albums/<%=albums.get(2).getALBUM_PHOTO() %>" alt="">
+							<img id="a3" src="../albums/<%=albums.get(2).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t3">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(2).getALBUM_ID() %>"><%= albums.get(2).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(2).getALBUM_ID() %>"><%= albums.get(2).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a4" src="../albums/<%=albums.get(3).getALBUM_PHOTO() %>" alt="">
+							<img id="a4" src="../albums/<%=albums.get(3).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t4">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(3).getALBUM_ID() %>"><%= albums.get(3).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(3).getALBUM_ID() %>"><%= albums.get(3).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a5" src="../albums/<%=albums.get(4).getALBUM_PHOTO() %>" alt="">
+							<img id="a5" src="../albums/<%=albums.get(4).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t5">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(4).getALBUM_ID() %>"><%= albums.get(4).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(4).getALBUM_ID() %>"><%= albums.get(4).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a6" src="../albums/<%=albums.get(5).getALBUM_PHOTO() %>" alt="">
+							<img id="a6" src="../albums/<%=albums.get(5).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t6">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(5).getALBUM_ID() %>"><%= albums.get(5).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(5).getALBUM_ID() %>"><%= albums.get(5).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a7" src="../albums/<%=albums.get(6).getALBUM_PHOTO() %>" alt="">
+							<img id="a7" src="../albums/<%=albums.get(6).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t7">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(6).getALBUM_ID() %>"><%= albums.get(6).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(6).getALBUM_ID() %>"><%= albums.get(6).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 						<div>
-							<img id="a8" src="../albums/<%=albums.get(7).getALBUM_PHOTO() %>" alt="">
+							<img id="a8" src="../albums/<%=albums.get(7).getALBUM_PHOTO() %>"
+								alt="">
 							<div class="album-name" id="t8">
 								<p>
-									<a href="musicAlbumInfo.mu?album_id=<%= albums.get(7).getALBUM_ID() %>"><%= albums.get(7).getALBUM_NAME() %></a>
+									<a
+										href="musicAlbumInfo.mu?album_id=<%= albums.get(7).getALBUM_ID() %>"><%= albums.get(7).getALBUM_NAME() %></a>
 								</p>
 							</div>
 						</div>
 					</div>
 				</article>
 				<article id="onlyMyChart" style="position: relative;">
-				<% if(session.getAttribute("userID") != null) {%>
+					<%if(request.getAttribute("viewChart").equals("1")) {%>
 					<div id="curve_chart" style="width: 590px; height: 525px"></div>
 					<div id="sels">
 						<div id="selStroke">
@@ -285,13 +301,15 @@
 						</div>
 					</div>
 					<%} else {%>
-					<div id=selContainer style="position: absolute;left: -137px;">
+					<div id=selContainer style="position: absolute; left: -137px;">
 						<img alt="" src="../image/logoutChart.png">
 					</div>
 					<%} %>
 				</article>
 			</div>
 			<div id="bottomBox">
+			
+			<%ArrayList<Music> topChart = (ArrayList<Music>)request.getAttribute("topChart"); %>
 				<article id="curChart">
 					<p>실시간 차트 Top 10</p>
 					<br>
@@ -307,12 +325,12 @@
 								</th>
 								<th>
 									<div class="rankAl">
-										<img src="../image/r1.png" alt="">
+										<img src="../albums/<%= topChart.get(0).getALBUM_PHOTO() %>" alt="">
 									</div>
-									<p class="rankmName">Into The Night</p>
+									<p class="rankmName"><%= topChart.get(0).getMUSIC_NAME() %></p>
 								</th>
 								<th>
-									<p class="aName">YOASOBI</p>
+									<p class="aName"><%= topChart.get(0).getARTIST_NAME() %></p>
 								</th>
 								<th><img class="download" src="../image/download.png"
 									alt=""></th>
@@ -326,12 +344,12 @@
 								</th>
 								<th>
 									<div class="rankAl">
-										<img src="../image/r2.jpg" alt="">
+										<img src="../albums/<%= topChart.get(1).getALBUM_PHOTO() %>" alt="">
 									</div>
-									<p class="rankmName">Stamp On It</p>
+									<p class="rankmName"><%= topChart.get(1).getMUSIC_NAME() %></p>
 								</th>
 								<th>
-									<p class="aName">GOT the beat</p>
+									<p class="aName"><%= topChart.get(1).getARTIST_NAME() %></p>
 								</th>
 								<th><img class="download" src="../image/download.png"
 									alt=""></th>
@@ -345,12 +363,12 @@
 								</th>
 								<th>
 									<div class="rankAl">
-										<img src="../image/r3.png" alt="">
+										<img src="../albums/<%= topChart.get(2).getALBUM_PHOTO() %>" alt="">
 									</div>
-									<p class="rankmName">Unholy</p>
+									<p class="rankmName"><%= topChart.get(2).getMUSIC_NAME() %></p>
 								</th>
 								<th>
-									<p class="aName">Sam Smith</p>
+									<p class="aName"><%= topChart.get(2).getARTIST_NAME() %></p>
 								</th>
 								<th><img class="download" src="../image/download.png"
 									alt=""></th>

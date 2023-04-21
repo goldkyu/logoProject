@@ -450,7 +450,7 @@
 
 				<div id="linkbtn">
 					<form>
-						<a href="musicMain.jsp"> <input type="button"
+						<a href="musicMain.mu"> <input type="button"
 							value="Music바로가기" class="btn">
 						</a>
 					</form>

@@ -5,6 +5,7 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 
@@ -93,6 +94,7 @@ public class TicketDAO {
 			insertCount = pstmt.executeUpdate();
 
 		} catch (Exception ex) {
+			ex.printStackTrace();
 		} finally {
 			close(rs);
 			close(pstmt);
@@ -198,7 +200,7 @@ public class TicketDAO {
 	}
 	
 	//수정
-	public int updateModify(TicketInfo info) {
+	public int updateModify(TicketInfo info) throws SQLException {
 		
 		int updateCount = 0;
 		PreparedStatement pstmt = null;
@@ -220,8 +222,6 @@ public class TicketDAO {
 			
 			updateCount = pstmt.executeUpdate();
 		
-			
-		}catch(Exception ex) {			
 			
 			System.out.println(updateCount +"aaaaaaaaa");
 		}finally {

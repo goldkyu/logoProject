@@ -15,7 +15,7 @@ public class ShoppingBoardDAO {
 	}
 
 	public void dbConnect() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "okek8277");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 
