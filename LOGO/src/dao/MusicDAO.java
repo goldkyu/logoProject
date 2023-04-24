@@ -205,33 +205,41 @@ public class MusicDAO {
 				"    rt.m_name,\r\n" + 
 				"    rt.a_name,\r\n" + 
 				"    rt.playcount,\r\n" + 
-				"    rt.rank_today,\r\n" + 
-				"    COALESCE(rt.rank_today - ry.rank_yesterday, 0) AS rank_change\r\n" + 
+				"    rt.album_id,\r\n" + 
+				"    rt.a_id,\r\n" + 
+				"    @rank_today := @rank_today + 1 AS rank_today,\r\n" + 
+				"    COALESCE(@rank_today - ry.rank_yesterday, 0) AS rank_change\r\n" + 
 				"FROM (\r\n" + 
 				"    SELECT \r\n" + 
 				"        album_information.album_prof_photo,\r\n" + 
 				"        m_information.m_name,\r\n" + 
 				"        a_information.a_name,\r\n" + 
-				"        SUM(u_listen.m_playcount) AS playcount,\r\n" + 
-				"        @rank_today := @rank_today + 1 AS rank_today\r\n" + 
+				"        m_information.album_id,\r\n" + 
+				"        a_information.a_id,\r\n" + 
+				"        SUM(u_listen.m_playcount) AS playcount\r\n" + 
 				"    FROM \r\n" + 
 				"        u_listen\r\n" + 
 				"        INNER JOIN m_information ON u_listen.m_id = m_information.m_id\r\n" + 
 				"        INNER JOIN a_information ON m_information.a_id = a_information.a_id\r\n" + 
 				"        INNER JOIN album_information ON m_information.album_id = album_information.album_id\r\n" + 
-				"        CROSS JOIN (SELECT @rank_today := 0) AS rt\r\n" + 
 				"    WHERE \r\n" + 
 				"        m_playdate = CURRENT_DATE()\r\n" + 
 				"    GROUP BY \r\n" + 
 				"        album_information.album_prof_photo,\r\n" + 
 				"        m_information.m_name,\r\n" + 
-				"        a_information.a_name\r\n" + 
+				"        a_information.a_name,\r\n" + 
+				"        m_information.album_id,\r\n" + 
+				"        a_information.a_id\r\n" + 
+				"    ORDER BY\r\n" + 
+				"        playcount DESC\r\n" + 
 				") rt\r\n" + 
 				"LEFT JOIN (\r\n" + 
 				"    SELECT \r\n" + 
 				"        album_information.album_prof_photo,\r\n" + 
 				"        m_information.m_name,\r\n" + 
 				"        a_information.a_name,\r\n" + 
+				"        m_information.album_id,\r\n" + 
+				"        a_information.a_id,\r\n" + 
 				"        SUM(u_listen.m_playcount) AS playcount,\r\n" + 
 				"        @rank_yesterday := @rank_yesterday + 1 AS rank_yesterday\r\n" + 
 				"    FROM \r\n" + 
@@ -245,10 +253,13 @@ public class MusicDAO {
 				"    GROUP BY \r\n" + 
 				"        album_information.album_prof_photo,\r\n" + 
 				"        m_information.m_name,\r\n" + 
-				"        a_information.a_name\r\n" + 
+				"        a_information.a_name,\r\n" + 
+				"        m_information.album_id,\r\n" + 
+				"        a_information.a_id\r\n" + 
 				") ry ON rt.m_name = ry.m_name\r\n" + 
+				"CROSS JOIN (SELECT @rank_today := 0) AS rank_today\r\n" + 
 				"ORDER BY \r\n" + 
-				"    rt.rank_today;";
+				"    rank_today;";
 
 		try {
 			prst = conn.prepareStatement(selectQuery);
@@ -258,6 +269,9 @@ public class MusicDAO {
 				m.setALBUM_PHOTO(rs.getString(1));
 				m.setMUSIC_NAME(rs.getString(2));
 				m.setARTIST_NAME(rs.getString(3));
+				m.setALBUM_ID(rs.getInt(5));
+				m.setARTIST_ID(rs.getInt(6));
+				m.setMUSIC_CHART_CHANGED(rs.getInt(8));
 				topMusics.add(m);
 			}
 		} catch (Exception e) {

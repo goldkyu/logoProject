@@ -52,6 +52,8 @@ $(function () {
     document.getElementById('slidetext2').innerHTML = slideText[1];
     document.getElementById('slidetext3').innerHTML = slideText[2];
     document.getElementById('slidetext4').innerHTML = slideText[3];
+    
+    
 
     function changeSlide() {
 

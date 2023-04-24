@@ -4,6 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="vo.Album"%>
 <%@ page import="vo.Music"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -198,92 +199,27 @@
 						<%
 							ArrayList<Album> albums = (ArrayList<Album>) request.getAttribute("albums");
 
-						System.out.println("메인페이지");
+							System.out.println("메인페이지");
 						%>
+						<c:forEach items="${albums}" var="a" varStatus="as">
 						<div>
-							<img id="a1" src="../albums/<%=albums.get(0).getALBUM_PHOTO() %>"
+							<img id="a${as.index +1 }" src="../albums/${a.ALBUM_PHOTO }"
 								alt="">
-							<div class="album-name" id="t1">
+							<div class="album-name" id="t${as.index +1 }">
 								<p>
 									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(0).getALBUM_ID() %>"><%= albums.get(0).getALBUM_NAME() %></a>
+										href="musicAlbumInfo.mu?album_id=${a.ALBUM_ID }">${a.ALBUM_NAME }</a>
 								</p>
 							</div>
 						</div>
-						<div>
-							<img id="a2" src="../albums/<%=albums.get(1).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t2">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(1).getALBUM_ID() %>"><%= albums.get(1).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a3" src="../albums/<%=albums.get(2).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t3">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(2).getALBUM_ID() %>"><%= albums.get(2).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a4" src="../albums/<%=albums.get(3).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t4">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(3).getALBUM_ID() %>"><%= albums.get(3).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a5" src="../albums/<%=albums.get(4).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t5">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(4).getALBUM_ID() %>"><%= albums.get(4).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a6" src="../albums/<%=albums.get(5).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t6">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(5).getALBUM_ID() %>"><%= albums.get(5).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a7" src="../albums/<%=albums.get(6).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t7">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(6).getALBUM_ID() %>"><%= albums.get(6).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-						<div>
-							<img id="a8" src="../albums/<%=albums.get(7).getALBUM_PHOTO() %>"
-								alt="">
-							<div class="album-name" id="t8">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=<%= albums.get(7).getALBUM_ID() %>"><%= albums.get(7).getALBUM_NAME() %></a>
-								</p>
-							</div>
-						</div>
-					</div>
+						</c:forEach>
+						
+					</div> 
 				</article>
 				<article id="onlyMyChart" style="position: relative;">
-					<%if(request.getAttribute("viewChart").equals("1")) {%>
+					<%
+						if (request.getAttribute("viewChart").equals("1")) {
+					%>
 					<div id="curve_chart" style="width: 590px; height: 525px"></div>
 					<div id="sels">
 						<div id="selStroke">
@@ -300,212 +236,51 @@
 							</div>
 						</div>
 					</div>
-					<%} else {%>
+					<%
+						} else {
+					%>
 					<div id=selContainer style="position: absolute; left: -137px;">
 						<img alt="" src="../image/logoutChart.png">
 					</div>
-					<%} %>
+					<%
+						}
+					%>
 				</article>
 			</div>
 			<div id="bottomBox">
-			
-			<%ArrayList<Music> topChart = (ArrayList<Music>)request.getAttribute("topChart"); %>
+
+				<%
+					ArrayList<Music> topChart = (ArrayList<Music>) request.getAttribute("topChart");
+				%>
 				<article id="curChart">
 					<p>실시간 차트 Top 10</p>
 					<br>
 					<div id="charts">
 
 						<table>
-							<tr>
+						<c:forEach items="${topChart}" var="t" end="9" varStatus="st">
+						<tr>
 								<th>
-									<p class="ranked" style="font-size: 19px; color: #b99400">1</p>
+									<p class="ranked">${st.index +1}</p>
 								</th>
 								<th>
-									<p class="rankup">+10</p>
+									<p class="rankup">${t.MUSIC_CHART_CHANGED}</p>
 								</th>
 								<th>
-									<div class="rankAl">
-										<img src="../albums/<%= topChart.get(0).getALBUM_PHOTO() %>" alt="">
+									<div class="rankAl"><a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}">
+										<img src="../albums/${t.ALBUM_PHOTO}"
+											alt=""></a>
 									</div>
-									<p class="rankmName"><%= topChart.get(0).getMUSIC_NAME() %></p>
+									<p class="rankmName"><a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}">${t.MUSIC_NAME}</a></p>
 								</th>
 								<th>
-									<p class="aName"><%= topChart.get(0).getARTIST_NAME() %></p>
+									<p class="aName"><a href="musicArtistInfo.mu?a_id=${t.ARTIST_ID }">${t.ARTIST_NAME }</a></p>
 								</th>
 								<th><img class="download" src="../image/download.png"
 									alt=""></th>
 							</tr>
-							<tr>
-								<th>
-									<p class="ranked" style="font-size: 18px; color: #745c00">2</p>
-								</th>
-								<th>
-									<p class="rankup">-1</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../albums/<%= topChart.get(1).getALBUM_PHOTO() %>" alt="">
-									</div>
-									<p class="rankmName"><%= topChart.get(1).getMUSIC_NAME() %></p>
-								</th>
-								<th>
-									<p class="aName"><%= topChart.get(1).getARTIST_NAME() %></p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p class="ranked" style="font-size: 17px; color: #352a00">3</p>
-								</th>
-								<th>
-									<p class="rankup">-</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../albums/<%= topChart.get(2).getALBUM_PHOTO() %>" alt="">
-									</div>
-									<p class="rankmName"><%= topChart.get(2).getMUSIC_NAME() %></p>
-								</th>
-								<th>
-									<p class="aName"><%= topChart.get(2).getARTIST_NAME() %></p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>4</p>
-								</th>
-								<th>
-									<p class="rankup">-2</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r4.jpg" alt="">
-									</div>
-									<p class="rankmName">Yeah!(feat. Lil Jon, Ludacris)</p>
-								</th>
-								<th>
-									<p class="aName">Usher</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>5</p>
-								</th>
-								<th>
-									<p class="rankup">+5</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r5.jpg" alt="">
-									</div>
-									<p class="rankmName">OMG</p>
-								</th>
-								<th>
-									<p class="aName">NewJeans</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>6</p>
-								</th>
-								<th>
-									<p class="rankup">-3</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r6.jpg" alt="">
-									</div>
-									<p class="rankmName">맞네</p>
-								</th>
-								<th>
-									<p class="aName">LUCY</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>7</p>
-								</th>
-								<th>
-									<p class="rankup">+16</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r7.jpg" alt="">
-									</div>
-									<p class="rankmName">Insomnia</p>
-								</th>
-								<th>
-									<p class="aName">휘성</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>8</p>
-								</th>
-								<th>
-									<p class="rankup">-2</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r8.jpg" alt="">
-									</div>
-									<p class="rankmName">With Me</p>
-								</th>
-								<th>
-									<p class="aName">휘성</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>9</p>
-								</th>
-								<th>
-									<p class="rankup">+2</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r9.jpg" alt="">
-									</div>
-									<p class="rankmName">KICK BACK</p>
-								</th>
-								<th>
-									<p class="aName">Kenshi Yonezu</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-							<tr>
-								<th>
-									<p>10</p>
-								</th>
-								<th>
-									<p class="rankup">+8</p>
-								</th>
-								<th>
-									<div class="rankAl">
-										<img src="../image/r10.jpg" alt="">
-									</div>
-									<p class="rankmName">seisyun complex</p>
-								</th>
-								<th>
-									<p class="aName">kessoku band</p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
+						</c:forEach>
+			
 						</table>
 
 					</div>
