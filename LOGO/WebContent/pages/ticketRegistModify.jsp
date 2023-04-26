@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../CSS/ticketRegister.css" />
-<title>공연정보수정</title>
+<title>공연정보수정.</title>
 
 <script type="text/javascript">
 	function modifyboard(){

@@ -14,7 +14,94 @@ section {
 }
 #mainBox {
     width: 1400px;
-    height: 1800px;
+    height: 5500px;
     margin: 0 auto;
     background-color: transparent;
+  /*   transparent */
+}
+.text01 {
+	width : 1300px;
+    line-height:80px;
+    text-align: left;
+    margin: 0px auto;
+    font-size: 25px;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+.text02{
+	width : 1300px;
+	text-align : left;
+	margin: 0px auto;
+}
+hr{
+	width : 1300px;
+	background : black;
+	margin: 0px auto;
+	height : 2px;
+	
+}
+  
+#infobox{
+    width: 1250px;
+    height: 450px;
+    margin: 30px auto;
+    /* border: 1px solid #bcbcbc; */
+    background-color: transparent;
+}
+
+#leftimege {
+    width: 300px;
+    height:400px;
+    float: left;
+    /* border: 1px solid red; */
+	background-color: transparent;
+}
+
+
+#rightinfo {
+    width: 900px;
+    height: 400px;
+    margin: 0 2px;
+    float: right;
+    /* border: 1px solid red; */
+    background-color: transparent;
+}
+
+.item_condition {
+    display: flex;
+/*  align-items: center;*/
+    gap:40px;
+}
+
+.condition_state01 {
+    width: 15%;
+    text-align: left;
+    margin: 10px;
+}
+.condition_state02 {
+    width:100%;
+    text-align: left;
+    margin: 10px;
+}
+
+.write{
+  height: 60px;
+  width: 200px;   
+  background: #ff0000;
+  border-color : #ff0000;
+  color: #ffffff;
+  cursor: pointer;
+  margin : 0px auto;
+  text-align: center;
+  font-size : 14px;  
+  display: block;
+  
+}
+
+#infodetailbox{
+    width: 960px;
+    height: 2000px;
+    margin: 30px auto;
+   /* border: 1px solid red; */ 
+    background-color: transparent; 
 }

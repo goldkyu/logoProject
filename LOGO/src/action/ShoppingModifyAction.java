@@ -26,7 +26,7 @@ public class ShoppingModifyAction implements Action {
 		sp.setPd_amount(Integer.parseInt(request.getParameter("pd_amount")));
 		sp.setPd_image(request.getParameter("pd_image"));
 		sp.setPd_detail(request.getParameter("pd_detail"));
-		sp.setDiscount(Integer.parseInt(request.getParameter("discount")));
+		sp.setCount(Integer.parseInt(request.getParameter("count")));
 		sp.setCharge(request.getParameter("charge"));
 		Success = SPV.getModify(sp);
 

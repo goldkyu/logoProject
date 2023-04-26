@@ -8,14 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../CSS/ticketRegistDetail.css" />
+<link rel="stylesheet" href="../CSS/ticketRegistList.css" />
 <title>공연등록리스트</title>
 </head>
+
 <%
 	ArrayList<TicketInfo> articleList = (ArrayList<TicketInfo>) request.getAttribute("ArticleList");
 	TicketPageInfo pageInfo = (TicketPageInfo) request.getAttribute("PageInfo");
 	int listCount = pageInfo.getListCount();
-	int nowPage = pageInfo.getPage();
+	int nowPage = pageInfo.getNowPage();
 	int maxPage = pageInfo.getMaxPage();
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
@@ -29,45 +30,42 @@
 
 	<section>
 		<div id="mainBox">
+			<div class="text01">TICKET</div>
+			<table class="container">
 			
-			<table>
-
+ 			
 				<%
 					if (articleList != null && listCount > 0) {
 				%>
 
+
 				<%
 					for (int i = 0; i < articleList.size(); i++) {
+						
 				%>
 				
-				<tr>
-					<td>공연이미지</td>
-					<td><a href = "../pages/TicketDetail.to?P_code=<%=articleList.get(i).getP_code()%>">
-					<img src="../file/<%=articleList.get(i).getP_image() %>"></td>
-				</tr>
 				
-				<tr>
-					<td>공연명</td>
-					<td><%=articleList.get(i).getP_title()%></td>
-				</tr>
-				
-				<tr>
-					<td>공연날짜</td>
-					<td><%=articleList.get(i).getP_date()%></td>
-				</tr>
-				
-				<tr>
-					<td>공연장명</td>
-					<td><%=articleList.get(i).getAr_name()%></td>
-				</tr>
+				<td>
+				<th>
+				<a href="../pages/TicketDetail.to?P_code=<%=articleList.get(i).getP_code()%>">
+						<img src="../file/<%=articleList.get(i).getP_image() %>"></a><br><br>
+						<%=articleList.get(i).getP_title()%><br>
+						<%=articleList.get(i).getP_date()%><br>
+						<%=articleList.get(i).getAr_name()%><br><br><br>
+ 				</th>
+				</td>
 
+
+				<%if(i % 4 == 3) {out.println("</tr><tr>");} %>
+				
 				<%
 					}
 				%>
-
+				
 			</table>
 
-		<div>
+			<div>
+			<center>
 				<%
 					if (nowPage <= 1) {
 				%>
@@ -75,7 +73,7 @@
 				<%
 					} else {
 				%>
-				<a href="TicketList.to?page=<%=nowPage - 1%>">[이전]</a>&nbsp;
+				<a href="../pages/TicketList.to?page=<%=nowPage - 1%>">[이전]</a>&nbsp;
 				<%
 					}
 				%>
@@ -88,8 +86,7 @@
 				<%
 					} else {
 				%>
-				<a href="TicketList.to?page=<%=a%>">[<%=a%>]
-				</a>&nbsp;
+				<a href="../pages/TicketList.to?page=<%=a%>">[<%=a%>]</a>&nbsp;
 				<%
 					}
 				%>
@@ -104,16 +101,18 @@
 				<%
 					} else {
 				%>
-				<a href="TicketList.to?page=<%=nowPage + 1%>">[다음]</a>
+				<a href="../pages/TicketList.to?page=<%=nowPage + 1%>">[다음]</a>
 				<%
 					}
 				%>
+			</center>	
 			</div>
 			<%
 				} else {
 			%>
-			<dvi>등록된 글이 없습니다.</div>
-			<%
+			<dvi>등록된 글이 없습니다
+		</div>
+		<%
 				}
 			%>
 

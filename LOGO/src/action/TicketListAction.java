@@ -15,19 +15,19 @@ public class TicketListAction implements Action{
 	public ActionForward execute(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		
 		ArrayList<TicketInfo> articleList = new ArrayList<TicketInfo>();
-		int page=1;
+		int nowPage=1;
 		int limit=10;
 		
 		if(request.getParameter("page")!=null){
-			page=Integer.parseInt(request.getParameter("page"));
+			nowPage=Integer.parseInt(request.getParameter("page"));
 		}
 
 		TicketListService ticketListService = new TicketListService();
 		int listCount =ticketListService.getListCount();
-		articleList = ticketListService.getArticleList(page);
+		articleList = ticketListService.getArticleList(nowPage);
    	
 		int maxPage=(int)((double)listCount/limit+0.95); 
-   		int startPage = (((int) ((double)page / 10 + 0.9)) - 1) * 10 + 1;
+   		int startPage = (((int) ((double)nowPage / 10 + 0.9)) - 1) * 10 + 1;
    	    int endPage = startPage+10-1;
    	    
    	   
@@ -45,7 +45,7 @@ public class TicketListAction implements Action{
    		pageInfo.setEndPage(endPage);
    		pageInfo.setListCount(listCount);
    		pageInfo.setMaxPage(maxPage);
-   		pageInfo.setPage(endPage);
+   		pageInfo.setNowPage(nowPage);
    		pageInfo.setStartPage(startPage);
    		
    		

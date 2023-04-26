@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
 import dao.TicketDAO;
+import vo.TicketArena;
 import vo.TicketInfo;
 
 import static db.JdbcUtil.*;
@@ -46,6 +47,7 @@ public class TicketListService {
 		return detailList;
 		
 	}
+
 	
 	//수정
 	public boolean modifyArtcle(TicketInfo info) throws Exception{
@@ -89,8 +91,32 @@ public class TicketListService {
 		close(con);
 		return isRemoveSuccess;
 	}
-
-
+	
+	//인덱스DB
+	public ArrayList<TicketInfo> tkindex() {
+		Connection con = getConnection();
+		TicketDAO tk = TicketDAO.getInstance();
+		tk.setConnection(con);
+		ArrayList<TicketInfo> arr = tk.tkindex();
+		
+		return arr;
+	}
+	
+	//공연장정보
+	public TicketArena arenainfo (String ar_name) throws Exception{
+		
+		TicketArena arena =null;
+		Connection con = getConnection();
+		TicketDAO tk = TicketDAO.getInstance();
+		tk.setConnection(con);
+		arena = tk.arenainfo(ar_name);
+		close(con);
+				
+		return arena;
+				
+	} 
+	//
+	
 }
 
 

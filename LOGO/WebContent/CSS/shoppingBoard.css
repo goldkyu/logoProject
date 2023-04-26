@@ -6,6 +6,7 @@
 }
 body {
   background: #f5f5f5
+   overflow-x: hidden;
 }
 
 section {
@@ -13,10 +14,11 @@ section {
     height: 700px;
 }
 #mainBox {
-	width: 100%;
-	/*   height: 2400px; */
-	margin: 0 auto;
-	/*    background-color: gray;*/
+	
+	width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: transparent;
 	
 }
    

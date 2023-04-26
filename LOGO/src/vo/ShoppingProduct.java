@@ -8,7 +8,7 @@ public class ShoppingProduct {
 	private int pd_amount=0;
 	private String pd_image="";
 	private String pd_detail="";
-	private int discount=0;
+	private int count=0;
 	private String charge="";
 	
 	
@@ -48,11 +48,11 @@ public class ShoppingProduct {
 	public void setPd_detail(String pd_detail) {
 		this.pd_detail = pd_detail;
 	}
-	public int getDiscount() {
-		return discount;
+	public int getCount() {
+		return count;
 	}
-	public void setDiscount(int discount) {
-		this.discount = discount;
+	public void setCount(int discount) {
+		this.count = discount;
 	}
 	public String getCharge() {
 		return charge;

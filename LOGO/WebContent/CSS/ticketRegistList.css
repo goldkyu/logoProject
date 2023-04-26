@@ -14,7 +14,37 @@ section {
 }
 #mainBox {
     width: 1400px;
-    height: 1800px;
+    height: 1900px;
     margin: 0 auto;
     background-color: transparent;
+  /*   transparent */
 }
+
+.text01 {
+    line-height: 120px;
+    text-align: center;
+    margin: 0px auto;
+    font-size: 40px;
+    font-family: 'Noto Sans KR', sans-serif;
+
+}
+
+
+th.{
+    padding: 22px;
+	border: 1px solid red;
+  }
+
+ table{
+	width : 1300px;
+  
+ }
+ 
+ .container {
+	flex-wrap: nowrap;
+	width : 1400px;
+/* /* 	flex-wrap: wrap; */ */
+	align-content: stretch;
+
+}
+

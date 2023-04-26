@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.ShoppingCartFormAction;
 import action.ShoppingDeleteAction;
 import action.ShoppingDetailAction;
 import action.ShoppingListAction;
+import action.ShoppingMainAction;
 import action.ShoppingModifyAction;
 import action.ShoppingModifyFormAction;
 import action.ShoppingWriteAction;
@@ -30,8 +32,17 @@ public class ShoppingController extends javax.servlet.http.HttpServlet {
 		ActionForward forward = null;
 		Action action = null;
 
+//쇼핑메인인덱스		
+		if (command.equals("/pages/shoppingMain.sh")) {
+			action = new ShoppingMainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 //상품등록
-		if (command.equals("/pages/shoppingProductWriteForm.sh")) {
+		} else if (command.equals("/pages/shoppingProductWriteForm.sh")) {
 			forward = new ActionForward();
 			forward.setPath("../pages/shoppingProduct.jsp");
 
@@ -92,8 +103,18 @@ public class ShoppingController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+//장바구니			
+		} else if (command.equals("/pages/shoppingCartForm.sh")) {
+
+			action = new ShoppingCartFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 		}
-		
+
 		if (forward != null) {
 
 			if (forward.isRedirect()) {

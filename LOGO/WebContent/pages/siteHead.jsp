@@ -22,8 +22,8 @@
 
 			<div id="leftNav">
 				<ul>
-					<li><a href="ticketmain.jsp">ticket</a></li>
-					<li><a href="shoppingMain.jsp">shopping</a></li>
+					<li><a href="../pages/ticketindex.to">ticket</a></li>
+					<li><a href="../pages/shoppingMain.sh">shopping</a></li>
 					<li><a href="musicMain.mu">Music</a></li>
 				</ul>
 

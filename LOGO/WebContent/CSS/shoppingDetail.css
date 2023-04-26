@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Tilt+Warp&display=swap')
+	;
+
+* {
+	margin: 0;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+section {
+	margin-top: 130px;
+}
+
+#mainBox {
+	width: 1400px;
+	height: 600px;
+	margin: 0 auto;
+	background-color: transparent;
+	/*   transparent */
+}
+
+.text01 {
+	width: 1200px;
+	line-height: 80px;
+	text-align: left;
+	margin: 0px auto;
+	font-size: 25px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.text02 {
+	width: 1300px;
+	text-align: left;
+	margin: 0px auto;
+}
+
+hr {
+	width: 1200px;
+	background: black;
+	margin: 0px auto;
+	height: 1px;
+}
+
+
+#infobox{
+	width:1200px;
+	height : 550px;
+	margin: 0 auto;
+/* 	 border: 1px solid red; */
+}
+#leftimege {
+	width: 400px;
+	height: 500px;
+	float: left;
+	/*  border: 1px solid red; */
+	background-color: transparent;
+}
+
+#rightinfo {
+	width: 680px;
+	height: 400px;
+	margin: 0 2px;
+	float: right;
+	/* border: 1px solid red; */
+	background-color: transparent;
+	font-size: 18px;
+}
+
+.item_condition {
+	display: flex;
+	/*  align-items: center;*/
+	gap: 40px;
+}
+
+.condition_state01 {
+	width: 15%;
+	text-align: left;
+	margin: 10px;
+}
+
+.condition_state02 {
+	width: 100%;
+	text-align: left;
+	margin: 12px;
+}
+
+.item_condition1 {
+	display: flex;
+	/*  align-items: center;*/
+	gap: 40px;
+	background-color: #f7f7f7;
+}
+.condition_state03 {
+	width: 50%;
+	text-align: left;
+	margin: 10px;
+}
+
+.condition_state04 {
+	width: 30%;
+	text-align: left;
+	margin: 10px;
+}
+
+.plus-btn{
+ width : 30px;
+ height : 30px;
+ background: #ffffff;
+ border-color: #ffffff;
+ color: #000000;
+ 	
+}
+
+.find-btn{
+	text-align: center;
+	padding-top: 35px;
+	
+}
+
+ .write {
+	height: 60px;
+	width: 400px;
+	background: #000000;
+	border-color: #ffffff;
+	color: #ffffff;
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	display: inline-block;
+	float : right;
+	margin-right : 50px;
+}
+
+.write1{
+	height: 50px;
+	width: 195px;
+	background: #ffffff;
+	border-color: #000000;
+	color: #000000;
+	cursor: pointer;
+	text-align: center;
+	font-size: 14px;
+	display: inline-block;
+	float : right;
+	margin-right : 50px;
+	margin-top : 15px;
+}
+
+
+
+#infodetailbox {
+	width: 960px;
+	height: 2000px;
+	margin: 30px auto;
+	/*    border: 1px solid red;  */
+	/* background-color: transparent; */
+}
+
+.won{
+	float : right;
+}

@@ -19,6 +19,7 @@
 	int startPage = pageInfo.getStartPage();
 	int endPage = pageInfo.getEndPage();
 	int nowPage = pageInfo.getNowPage();
+	int count = 0;
 %>
 <body>
 	<%
@@ -32,40 +33,34 @@
 
 			<table>
 				<%
-					if (pageList != null) {
+					if (pageList != null && listCount > 0) {
 				%>
 				<%
 					for (int i = 0; i < pageList.size(); i++) {
 				%>
-				<thead>
-					<input type="hidden" name="Pd_number"
-						value="<%=pageList.get(i).getPd_number()%>" />
-					<tr>
-						<td><a
-							href="../pages/shoppingDetail.sh?Pd_number=<%=pageList.get(i).getPd_number()%>">
-								<img src="../file/<%=pageList.get(i).getPd_image()%>"
-								width="150" height="250"></td>
-					</tr>
-					<tr>
-						<td>상품이름</td>
-						<td><%=pageList.get(i).getPd_name()%></td>
-					</tr>
-					<tr>
-						<td>상품가격</td>
-						<td><%=pageList.get(i).getPd_price()%></td>
-					</tr>
-					<tr>
-						<td>할인률</td>
-						<td><%=pageList.get(i).getDiscount()%></td>
-					</tr>
-				<thead>
-					<%
-						}
-					%>
-				
+				<input type="hidden" name="Pd_number"
+					value="<%=pageList.get(i).getPd_number()%>" />
+				<td>
+				<th><br> <a
+					href="../pages/shoppingDetail.sh?Pd_number=<%=pageList.get(i).getPd_number()%>">
+						<img src="../file/<%=pageList.get(i).getPd_image()%>">
+				</a><br> <%=pageList.get(i).getPd_name()%><br> <%=pageList.get(i).getPd_price()%>원<br>
+				</th>
+				</td>
+				<%
+					if (i % 5 == 4) {
+								out.print("</tr><tr>");
+							}
+				%>
+
+				<%
+					}
+				%>
 			</table>
 
+
 			<section>
+			<center>
 				<%
 					if (nowPage <= 1) {
 				%>
@@ -74,7 +69,6 @@
 					} else {
 				%>
 				<a href="../pages/shoppingProductList.sh?page=<%=nowPage - 1%>">[이전]</a>&nbsp;
-
 				<%
 					}
 				%>
@@ -107,6 +101,7 @@
 				<%
 					}
 				%>
+
 			</section>
 			<%
 				} else {
@@ -115,13 +110,13 @@
 			<%
 				}
 			%>
+			</center>
+</section>
 		</div>
-	</section>
-	
+		<br>
+
 	<footer>
 		<jsp:include page="siteFooter.jsp" />
 	</footer>
-
 </body>
-
 </html>

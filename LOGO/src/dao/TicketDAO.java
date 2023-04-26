@@ -5,13 +5,13 @@ import static db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 
 import com.mysql.jdbc.Statement;
 import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
+import vo.TicketArena;
 import vo.TicketInfo;
 
 public class TicketDAO {
@@ -34,29 +34,7 @@ public class TicketDAO {
 		this.con = con;
 	}
 
-	/*
-	 * public ArrayList<TicketInfo> TicketInfo() throws Exception {
-	 * 
-	 * ArrayList<TicketInfo> arr = new ArrayList<TicketInfo>();
-	 * 
-	 * try {
-	 * 
-	 * ResultSet rs = st.executeQuery("select * from performance;"); while
-	 * (rs.next()) { TicketInfo info = new TicketInfo();
-	 * info.setP_code(rs.getString("p_code"));
-	 * info.setAr_name(rs.getString("ar_name"));
-	 * info.setP_title(rs.getString("p_title"));
-	 * info.setP_genre(rs.getString("p_genre"));
-	 * info.setRating(rs.getString("rating"));
-	 * info.setRunningtime(rs.getString("runningtime"));
-	 * info.setP_date(rs.getString("p_date"));
-	 * info.setP_price(rs.getString("p_price"));
-	 * info.setP_cast(rs.getString("p_cast"));
-	 * info.setP_image(rs.getString("p_image"));
-	 * info.setP_info(rs.getString("p_info"));
-	 * 
-	 * arr.add(info); } } finally { close(con); st.close(); } return arr; }
-	 */
+
 
 	// 인서트
 	public int insertInfo(TicketInfo info) {
@@ -75,7 +53,7 @@ public class TicketDAO {
 
 			else
 				num = 1;
-
+//
 			sql = "insert into performance(p_code,ar_name,p_title,p_genre,rating,runningtime,p_date,p_image,p_info,p_price,p_cast)values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 
@@ -94,7 +72,6 @@ public class TicketDAO {
 			insertCount = pstmt.executeUpdate();
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 		} finally {
 			close(rs);
 			close(pstmt);
@@ -125,10 +102,11 @@ public class TicketDAO {
 		return listCount;
 	}
 
+	
 	public ArrayList<TicketInfo> selectArticleList(int page) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String listsql = "select * from performance limit ?,10";
+		String listsql = "select * from performance order by p_code desc limit ?,12";
 		ArrayList<TicketInfo> articleList = new ArrayList<TicketInfo>();
 		TicketInfo info = null;
 		int startrow = (page - 1) * 10;
@@ -199,8 +177,9 @@ public class TicketDAO {
 		return info;
 	}
 	
+
 	//수정
-	public int updateModify(TicketInfo info) throws SQLException {
+	public int updateModify(TicketInfo info) {
 		
 		int updateCount = 0;
 		PreparedStatement pstmt = null;
@@ -222,6 +201,8 @@ public class TicketDAO {
 			
 			updateCount = pstmt.executeUpdate();
 		
+			
+		}catch(Exception ex) {			
 			
 			System.out.println(updateCount +"aaaaaaaaa");
 		}finally {
@@ -248,5 +229,70 @@ public class TicketDAO {
 
 		return deleteCount;
 
+	}
+	
+	//티켓인덱스
+	public ArrayList<TicketInfo> tkindex() {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from performance order by p_code asc limit 17";
+		ArrayList<TicketInfo> arr = new ArrayList<TicketInfo>();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+			TicketInfo info = new TicketInfo();
+			info.setP_code(rs.getString("p_code"));
+			info.setAr_name(rs.getString("ar_name"));
+			info.setP_title(rs.getString("p_title"));
+			info.setP_genre(rs.getString("p_genre"));
+			info.setRating(rs.getString("rating"));
+			info.setRunningtime(rs.getString("runningtime"));
+			info.setP_date(rs.getString("p_date"));
+			info.setP_price(rs.getString("p_price"));
+			info.setP_cast(rs.getString("p_cast"));
+			info.setP_image(rs.getString("p_image"));
+			info.setP_info(rs.getString("p_info"));
+			
+			arr.add(info);
+			
+			}
+		}catch (Exception e) {
+			
+		}
+		return arr;
+	}
+	
+	
+	//공연장정보
+	public TicketArena arenainfo(String ar_name) {
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		TicketArena arena = null;
+		
+		try {
+			
+			pstmt = con.prepareStatement("SELECT *from arena where ar_name = ?");
+			pstmt.setString(1, ar_name);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				arena = new TicketArena();
+				
+				arena.setAr_name(rs.getString("ar_name"));
+				arena.setAr_address(rs.getString("ar_address"));
+				arena.setAr_phone(rs.getString("ar_phone"));
+				arena.setAr_image(rs.getString("ar_image"));
+				}
+			
+			}catch(Exception ex) {
+			}finally {
+				close(rs);
+				close(pstmt);
+			}
+		return arena;
 	}
 }

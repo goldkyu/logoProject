@@ -1,3 +1,5 @@
+<%@page import="vo.TicketInfo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -69,6 +71,9 @@ $(document).ready(function() {
  
 </script>
 
+<%
+ArrayList<TicketInfo> arr = (ArrayList<TicketInfo>)request.getAttribute("Arr");
+%>
 <body>
     <% request.setCharacterEncoding("utf-8"); %>
     <jsp:include page="siteHead.jsp"/>
@@ -79,7 +84,7 @@ $(document).ready(function() {
           <div id="category">   
               <ul class="menu">
                 <li>
-                 <a href="#">콘서트</a>
+                 <a href="../pages/TicketList.to">콘서트</a>
                 <ul class="depth_1">
                 <li><a href="#">국내뮤지션</a></li>
                 <li><a href="#">해외뮤지션</a></li>
@@ -127,42 +132,43 @@ $(document).ready(function() {
                   <div class="container">
                     <ul class="tab_title">
                         <li class="on">서울재즈페스티벌</li>
-                        <li>ONEW 1st CONCERT</li>
-                        <li>2023 aespa 1st Concert </li>
+                        <li>2023 iKON WORLD TOUR</li>
+                        <li>장기하 단독공연 ＂해!＂ </li>
                         <li>LOVESOME 불편한 편의점</li>
-                        <li>선셋 롤러코스터 내한공연</li>
-                        <li>서경수 첫 번째 팬미팅</li>
+                        <li>노을 콘서트 〈Cafe 유월〉</li>
+                        <li>PEAK FESTIVAL 2023</li>
                     </ul>
                     <div class="tab_cont">
                      <div class="on"> 
                                              
-                          <a href="#">
+                         <%-- <a href="../pages/TicketDetail.to?P_code=<%=arr.get(12).getP_code()%>"> --%>
                           <img src="../image/T_banner02.jpg" class="bannerimg">
                           </a>
                    
                     
                         <div> 
-                          <a href="#">
-                          <img src="../image/T_banner03.jpg" class="bannerimg">
+                      <%--     <a href="../pages/TicketDetail.to?P_code=<%=arr.get(15).getP_code()%>"> --%>
+                          <img src="../image/T_banner03.png" class="bannerimg">
                           </a> 
                         </div>
+                        
                         <div> 
-                          <a href="#">
+                         <%--  <a href="../pages/TicketDetail.to?P_code=<%=arr.get(14).getP_code()%>"> --%>
                           <img src="../image/T_banner04.jpg" class="bannerimg">
                           </a>     
                         </div>
                         <div> 
-                          <a href="#">
+                          <%-- <a href="../pages/TicketDetail.to?P_code=<%=arr.get(13).getP_code()%>"> --%>
                           <img src="../image/T_banner05.jpg" class="bannerimg">
                           </a>   
                         </div>
                         <div>
-                          <a href="#">
-                          <img src="../image/T_banner06.jpg" class="bannerimg">
+                         <%--  <a href="../pages/TicketDetail.to?P_code=<%=arr.get(2).getP_code()%>"> --%>
+                          <img src="../image/T_banner06.png" class="bannerimg">
                           </a> 
                         </div>
                         <div>
-                         <a href="#">
+                      <%--    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(0).getP_code()%>"> --%>
                           <img src="../image/T_banner07.jpg" class="bannerimg">
                           </a> 
                         </div>
@@ -172,31 +178,32 @@ $(document).ready(function() {
                 </div>
                </article>
                 <article id="rightranking"> 
-                    <div class="ranking_image">
-                     <img src="../image/ranking_tt.png">
+                
+                  <div class="ranking_image">
+                   <img src="../image/ranking_tt.png">
                     </div>
                     
 
                     <div class="ranking_box01">
-                        <a href="#">
+                     <%--    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(5).getP_code()%>"> --%>
                         <img src="../image/rk_img01.jpg">
                         </a>
                     </div> 
 
                     <div class="ranking_box02">
-                        <a href="#">
+                     <%--    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(16).getP_code()%>"> --%>
                         <img src="../image/rk_img02.jpg">
                         </a>
                     </div>   
 
                     <div class="ranking_box03">
-                        <a href="#">
+                      <%--   <a href="../pages/TicketDetail.to?P_code=<%=arr.get(14).getP_code()%>"> --%>
                         <img src="../image/rk_img03.jpg">
                         </a>
                     </div>   
 
                     <div class="ranking_box04">
-                        <a href="#">
+                   <%-- <a href="../pages/TicketDetail.to?P_code=<%=arr.get(10).getP_code()%>"> --%>
                         <img src="../image/rk_img04.gif">
                         </a>
                     </div>     
@@ -207,18 +214,18 @@ $(document).ready(function() {
                     </div> 
 
                     <div class="ranking_text02">
-                        알로 파크스 <br>내한 공연 LIVE<br>
-                        2023.07.08 ~ 2023.07.08
+                   	     NEW HOPE CLUB LIVE IN SEOUL<br>
+                        2023.04.23 ~ 2023.04.23
                     </div>  
 
                     <div class="ranking_text03">
-                        2023 aespa 1st Concert <br>
-                        2023.02.25 ~ 2023.02.26
+                                                 장기하단독공연＂해!＂ <br>
+                        2023.04.21 ~ 2023.04.30
                     </div>     
                     
                     <div class="ranking_text04">
-                        2023 SVT 7TH FAN MEETING <br>
-                        2023.03.10 ~ 2023.03.12
+                                                나탈리 카르푸셴코 사진전 <br>
+                        2022.12.23 ~ 2023.05.07
                     </div>     
 
                 </article>
@@ -228,23 +235,24 @@ $(document).ready(function() {
 
             <div id="imagesection">
                 <article class="imagebox01">
-                    <a href="#">
-                    <image src="../image/tiketopen01.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(0).getP_code()%>">
+                    <image src="../file/<%= arr.get(0).getP_image() %>">
                     </a>    
                 </article>
                 <article class="imagebox02">
-                    <a href="#">
-                    <image src="../image/tiketopen02.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(1).getP_code()%>">
+                    <image src="../file/<%= arr.get(1).getP_image() %>">
+                    </a>    
                     </a> 
                 </article>   
                 <article class="imagebox03">
-                     <a href="#">
-                    <image src="../image/tiketopen03.jpg">
+                     <a href="../pages/TicketDetail.to?P_code=<%=arr.get(2).getP_code()%>">
+                    <image src="../file/<%= arr.get(2).getP_image() %>">
                     </a> 
                 </article>
                 <article class="imagebox04">
-                    <a href="#">
-                    <image src="../image/tiketopen04.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(3).getP_code()%>">
+                    <image src="../file/<%= arr.get(3).getP_image() %>">
                     </a>
                 </article>
 
@@ -253,30 +261,30 @@ $(document).ready(function() {
             <div id="textsection">
                 <article class="textbox01">
                     <a href="#">
-                    <h4>NEW HOPE CLUB LIVE IN SEOUL</h4>
-                     2023.02.23(목) PM12:00<br>
-                    YES24 LIVE HALL
+                    <h4><%= arr.get(0).getP_title() %></h4>
+                     <%= arr.get(0).getP_date() %><br>
+                    <%= arr.get(0).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox02">
-                    <a href="#">
-                    <h4>YOUME IS SPRING</h4>
-                     2023.02.22(수) PM19:00<br>
-                     웨스트브릿지
+                   <a href="#">
+                    <h4><%= arr.get(1).getP_title() %></h4>
+                     <%= arr.get(1).getP_date() %><br>
+                    <%= arr.get(1).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox03">
                    <a href="#">
-                    <h4>2023 구원찬 단독공연 Object</h4>
-                     2023.02.22(수) PM20:00<br>
-                     노들섬 라이브하우스
-                    </a>
+                    <h4><%= arr.get(2).getP_title() %></h4>
+                     <%= arr.get(2).getP_date() %><br>
+                    <%= arr.get(2).getAr_name() %>
+                    </a>  
                 </article>
                 <article class="textbox04">
                     <a href="#">
-                    <h4>선셋 롤러코스터 내한공연</h4>
-                     2023.02.22(수) AM10:00<br>
-                      YES24 LIVE HALL
+                    <h4><%= arr.get(3).getP_title() %></h4>
+                     <%= arr.get(3).getP_date() %><br>
+                    <%= arr.get(3).getAr_name() %>
                     </a>  
                 </article>
             </div>
@@ -285,23 +293,23 @@ $(document).ready(function() {
 
             <div id="imagesection">
                 <article class="imagebox01">
-                    <a href="#">
-                    <image src="../image/concert01.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(4).getP_code()%>">
+                    <image src="../file/<%= arr.get(4).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox02">
-                    <a href="#">
-                    <image src="../image/concert02.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(5).getP_code()%>">
+                    <image src="../file/<%= arr.get(5).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox03">
-                    <a href="#">
-                    <image src="../image/concert03.jpg">
+                   <a href="../pages/TicketDetail.to?P_code=<%=arr.get(6).getP_code()%>">
+                   <image src="../file/<%= arr.get(6).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox04">
-                    <a href="#">
-                    <image src="../image/concert04.gif">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(7).getP_code()%>">
+                    <image src="../file/<%= arr.get(7).getP_image() %>">
                     </a>
                 </article>
 
@@ -309,31 +317,31 @@ $(document).ready(function() {
 
             <div id="textsection">
                 <article class="textbox01">
-                    <a href="#">
-                    <h4>2023 원픽 페스티벌</h4>
-                     2023.04.29 ~ 2023.04.30<br>
-                      연세대학교 노천극장
+                     <a href="#">
+                    <h4><%= arr.get(4).getP_title() %></h4>
+                     <%= arr.get(4).getP_date() %><br>
+                    <%= arr.get(4).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox02">
-                    <a href="#">
-                    <h4>BoA 20th Anniversary Live</h4>
-                     2023.03.11 ~ 2023.03.12<br>
-                      올림픽공원 內 올림픽홀
+                      <a href="#">
+                    <h4><%= arr.get(5).getP_title() %></h4>
+                     <%= arr.get(5).getP_date() %><br>
+                    <%= arr.get(5).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox03">
                    <a href="#">
-                    <h4>비비 앵콜콘서트[와주시면 안 될까요？]</h4>
-                     2023.03.25 ~ 2023.03.26<br>
-                      YES24 LIVE HALL
+                    <h4><%= arr.get(6).getP_title() %></h4>
+                     <%= arr.get(6).getP_date() %><br>
+                    <%= arr.get(6).getAr_name() %>
                     </a>  
                 </article>
                  <article class="textbox04">
                    <a href="#">
-                    <h4>2데이브레이크 단독 콘서트</h4>
-                     2023.03.04 ~ 2023.03.05<br>
-                     이화여자대학교 삼성홀
+                    <h4><%= arr.get(7).getP_title() %></h4>
+                     <%= arr.get(7).getP_date() %><br>
+                    <%= arr.get(7).getAr_name() %>
                     </a>  
                 </article>
             </div>
@@ -342,23 +350,23 @@ $(document).ready(function() {
 
             <div id="imagesection">
                 <article class="imagebox01">
-                    <a href="#">
-                    <image src="../image/exhibi01.jpg">
+                    <a href="../pages/TicketDetail.to?P_code=<%=arr.get(8).getP_code()%>">
+                     <image src="../file/<%= arr.get(8).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox02">
-                    <a href="#">
-                    <image src="../image/exhibi02.gif">
+                   <a href="../pages/TicketDetail.to?P_code=<%=arr.get(9).getP_code()%>">
+                   <image src="../file/<%= arr.get(9).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox03">
-                    <a href="#">
-                    <image src="../image/exhibi03.gif">
+                   <a href="../pages/TicketDetail.to?P_code=<%=arr.get(10).getP_code()%>">
+                   <image src="../file/<%= arr.get(10).getP_image() %>">
                     </a>
                 </article>
                 <article class="imagebox04">
-                    <a href="#">
-                    <image src="../image/exhibi04.gif">
+                  <a href="../pages/TicketDetail.to?P_code=<%=arr.get(11).getP_code()%>">
+                  <image src="../file/<%= arr.get(11).getP_image() %>">
                     </a>
                 </article>
 
@@ -367,30 +375,30 @@ $(document).ready(function() {
             <div id="textsection">
                 <article class="textbox01">
                     <a href="#">
-                    <h4>데이비드 호크니&브리티시 팝아트</h4>
-                     2023.03.23 ~ 2023.07.02<br>
-                     동대문디자인플라자 뮤지엄 전시1관
+                     <h4><%= arr.get(8).getP_title() %></h4>
+                     <%= arr.get(8).getP_date() %><br>
+                    <%= arr.get(8).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox02">
                     <a href="#">
-                    <h4>프랑코 폰타나：컬러 인 라이프</h4>
-                     2022.09.30 ~2023.03.01<br>
-                     마이아트뮤지엄
+                    <h4><%= arr.get(9).getP_title() %></h4>
+                     <%= arr.get(9).getP_date() %><br>
+                    <%= arr.get(9).getAr_name() %>
                     </a>  
                 </article>
                 <article class="textbox03">
                    <a href="#">
-                    <h4>나탈리 카르푸셴코 사진전</h4>
-                     2022.12.23 ~ 2023.05.07<br>
-                     나탈리 카르푸셴코 사진전
+                     <h4><%= arr.get(10).getP_title() %></h4>
+                     <%= arr.get(10).getP_date() %><br>
+                    <%= arr.get(10).getAr_name() %>
                     </a>  
                 </article>
                  <article class="textbox04">
                    <a href="#">
-                    <h4>London X Seoul, 마크슬로퍼 개인전</h4>
-                     2023.02.24 ~ 2023.03.12<br>
-                     스타트플러스 (StART PLUS)
+                       <h4><%= arr.get(11).getP_title() %></h4>
+                     <%= arr.get(11).getP_date() %><br>
+                    <%= arr.get(11).getAr_name() %>
                     </a>  
                 </article>
             </div>

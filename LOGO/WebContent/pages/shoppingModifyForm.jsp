@@ -58,9 +58,9 @@
 								required="required"><%=spVO.getPd_detail()%></textarea></td>
 					</tr>
 					<tr>
-						<td><label for="">할인률</label></td>
+						<td><label for="">조회수</label></td>
 						<td><input type="text" name="discount" id=""
-							value="<%=spVO.getDiscount()%>" /></td>
+							value="<%=spVO.getCount()%>" /></td>
 					</tr>
 					<tr>
 						<td><label for="">배송비</label></td>

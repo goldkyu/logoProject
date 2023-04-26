@@ -11,62 +11,59 @@
 <link rel="stylesheet" href="../CSS/shoppingBoard.css" />
 </head>
 <body style="overflow-x: hidden">
+	<%request.setCharacterEncoding("utf-8");%>
 	<jsp:include page="siteHead.jsp" />
-	<jsp:useBean id="dto" class="shopping.ShoppingBoardDAO" />
 
-	<%
-		request.setCharacterEncoding("utf-8");
-	%>
-	<%
-		ArrayList<ShoppingBoardDTO> result = dto.reviewSelect();
-	%>
-
-	<div id="wrapper">
+	<section>
 		<div id="mainBox">
-			<section>
-				<form method="get" action="../pages/shoppingInsert.jsp">
-					<br>
-					<h1 style="margin-left: 150px;">REVIEW</h1>
-					<br>
-					<table>
-						<thead>
-							<tr>
-								<th width="200px">번호</th>
-								<th width="800px">제목</th>
-								<th>아이디</th>
-								<th>작성일</th>
-								<th>조회수</th>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								for (ShoppingBoardDTO d : result) {
-							%>
-							<tr>
-								<td><%=d.getPd_id()%></td>
-								<td><a
-									href="../pages/shoppingSelect.jsp?Pd_id=<%=d.getPd_id()%>">
-										<%=d.getPd_title()%></td>
-								</a>
-								<td><%=d.getU_id()%></td>
-								<td><%=d.getDate()%></td>
-								<td><%=d.getHits()%></td>
 
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
-					</table>
-					<br> <input style="margin-left: 1250px;" type="submit"
-						value="글쓰기" class="write">
-			</section>
-			</form>
+			<jsp:useBean id="dto" class="shopping.ShoppingBoardDAO" />
+
+			<%ArrayList<ShoppingBoardDTO> result = dto.reviewSelect();%>
+
+			<div id="wrapper">
+				<section>
+					<form method="get" action="../pages/shoppingInsert.jsp">
+						<br>
+						<h1 style="margin-left: 150px;">REVIEW</h1>
+						<br>
+						<table>
+							<thead>
+								<tr>
+									<th width="200px">번호</th>
+									<th width="800px">제목</th>
+									<th>아이디</th>
+									<th>작성일</th>
+									<th>조회수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%
+									for (ShoppingBoardDTO d : result) {
+								%>
+								<tr>
+									<td><%=d.getPd_id()%></td>
+									<td><a
+										href="../pages/shoppingSelect.jsp?Pd_id=<%=d.getPd_id()%>">
+											<%=d.getPd_title()%></td>
+									</a>
+									<td><%=d.getU_id()%></td>
+									<td><%=d.getDate()%></td>
+									<td><%=d.getHits()%></td>
+
+								</tr>
+								<%
+									}
+								%>
+							</tbody>
+						</table>
+						<br> <input style="margin-left: 1250px;" type="submit"
+							value="글쓰기" class="write">
+				</section>
+				</form>
+			</div>
 		</div>
-	</div>
-	<br>
-	<jsp:include page="siteFooter.jsp" />
-</body>
-</html>
+		<br>
+		<jsp:include page="siteFooter.jsp" />
 </body>
 </html>

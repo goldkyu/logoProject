@@ -1,17 +1,16 @@
 package vo;
 
 public class TicketPageInfo {
-	private int page;
+	private int nowPage;
 	private int maxPage;
 	private int startPage;
 	private int endPage;
 	private int listCount;
-	
-	public int getPage() {
-		return page;
+	public int getNowPage() {
+		return nowPage;
 	}
-	public void setPage(int page) {
-		this.page = page;
+	public void setNowPage(int nowPage) {
+		this.nowPage = nowPage;
 	}
 	public int getMaxPage() {
 		return maxPage;
@@ -38,6 +37,6 @@ public class TicketPageInfo {
 		this.listCount = listCount;
 	}
 	
-	
+	//	
 
 }

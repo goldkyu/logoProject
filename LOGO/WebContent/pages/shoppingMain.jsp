@@ -1,3 +1,4 @@
+<%@page import="vo.ShoppingProduct"%>
 <%@page import="shopping.ShoppingBoardDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shopping.ShoppingBoardDAO"%>
@@ -33,8 +34,15 @@
 	});
 </script>
 
+<% ArrayList<ShoppingProduct> list = (ArrayList<ShoppingProduct>) request.getAttribute("LIST"); %>
+
+
 <body>
+	<%
+		request.setCharacterEncoding("utf-8");
+	%>
 	<jsp:include page="siteHead.jsp" />
+
 	<section>
 		<div id="mainBox">
 			<div id="box">
@@ -42,43 +50,43 @@
 
 					<ul>
 						<br>
-						<li style="margin-left: 430px;"><a href="#">ALBUM</a>
+						<li style="margin-left: 430px;"><a href="../pages/shoppingProductList.sh">ALBUM</a>
 							<ul>
-								<li><a href="../pages/shoppingProductList.sh"> CD </a></li>
-								<li><a href="../pages/shoppingProductList.sh"> DVD </a></li>
-								<li><a href="../pages/shoppingProductList.sh"> etc. </a></li>
+								<li><a href="#"> CD </a></li>
+								<li><a href="#"> DVD </a></li>
+								<li><a href="#"> etc. </a></li>
 							</ul></li>
 
 						<li style="margin-left: 100px;"><a href="#">PHOTO</a>
 							<ul>
-								<li><a href="../pages/shoppingProductList.sh"> Printed
+								<li><a href="#"> Printed
 								</a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Photo
+								<li><a href="#"> Photo
 										Book </a></li>
 							</ul></li>
 
 						<li style="margin-left: 100px;"><a href="#">CONCERT</a>
 							<ul>
-								<li><a href="../pages/shoppingProductList.sh"> Official
+								<li><a href="#"> Official
 										Fanlight </a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Concert
+								<li><a href="#"> Concert
 										Goods</a></li>
 							</ul></li>
 
 						<li style="margin-left: 100px;"><a href="#">FASHION</a>
 							<ul>
-								<li><a href="../pages/shoppingProductList.sh"> Clothing
+								<li><a href="#"> Clothing
 								</a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Acc</a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Jewelry</a></li>
+								<li><a href="#"> Acc</a></li>
+								<li><a href="#">Jewelry</a></li>
 							</ul></li>
 
 						<li style="margin-left: 100px;"><a href="#">CUSTOMIZING</a>
 							<ul>
-								<li><a href="../pages/shoppingProductList.sh"> Phone
+								<li><a href="#"> Phone
 										Case </a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Fashion</a></li>
-								<li><a href="../pages/shoppingProductList.sh"> Acc</a></li>
+								<li><a href="#">Fashion</a></li>
+								<li><a href="#"> Acc</a></li>
 							</ul></li>
 						<li style="margin-left: 100px;"><a
 							href="../pages/shoppingBoard.jsp">REVIEW</a></li>
@@ -93,34 +101,36 @@
 					<img src="../image/sh-00.jpg">
 				</div>
 			</div>
+			
 
 			<div id="weekly">Weekly Best</div>
 
 			<div class="box1">
 				<br>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh21.png"> K-will 2023
-						SEASONS GREETINGS : 1230 WILL ST. <br>38,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(0).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(0).getPd_number()%>"> <img src="../image/<%=list.get(0).getPd_image()%>"> <%=list.get(0).getPd_name()%> <br> <%=list.get(0).getPd_price()%>원
+					
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh22.png">(ver.2) IVE The
-						1st Single Album ELEVEN<br>14,900원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(1).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(1).getPd_number()%>"> <img src="../image/<%=list.get(1).getPd_image()%>"> <%=list.get(1).getPd_name()%> <br> <%=list.get(1).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh23.png">CRAVITY 1ST
-						ALBUM PART2 LIBERTY IN OUR COSMOS (SET)<br>53,400원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(2).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(2).getPd_number()%>"> <img src="../image/<%=list.get(2).getPd_image()%>"> <%=list.get(2).getPd_name()%> <br> <%=list.get(2).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh24.png">KIHYUN The 1st
-						Single Album 'VOYAGER<br>11,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(3).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(3).getPd_number()%>"> <img src="../image/<%=list.get(3).getPd_image()%>"> <%=list.get(3).getPd_name()%> <br> <%=list.get(3).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh25.png">(VER SET) IVE
-						THE 2ND SINGLE ALBUM LOVE DIVE <br>44,700원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(4).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(4).getPd_number()%>"> <img src="../image/<%=list.get(4).getPd_image()%>"> <%=list.get(4).getPd_name()%> <br> <%=list.get(4).getPd_price()%>원
 				</article>
 				</a>
 			</div>
@@ -128,60 +138,63 @@
 			<div id="All">All Product</div>
 			<div class="box1">
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh-15.jpg">[OREO]
-						BLACKPINK OREO CHOCO <br>80*2개<br>2,900원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(0).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(0).getPd_number()%>"> <img src="../image/<%=list.get(0).getPd_image()%>"> <%=list.get(0).getPd_name()%> <br> <%=list.get(0).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh07.png"> 기현 캐릭터 MD -
-						햄상이 미니 인형<br>※ 1인당 5EA구매 한정<br>18,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(1).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(1).getPd_number()%>"> <img src="../image/<%=list.get(1).getPd_image()%>"> <%=list.get(1).getPd_name()%> <br> <%=list.get(1).getPd_price()%>원
+
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh16.png"> IVE(아이브) 아크릴
-						응원봉<br>※ 1인당 3EA 구매 한정<br>18,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(2).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(2).getPd_number()%>"> <img src="../image/<%=list.get(2).getPd_image()%>"> <%=list.get(2).getPd_name()%> <br> <%=list.get(2).getPd_price()%>원
+
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh14.png"> 아이브(IVE) 싱글 1집
-						ELEVEN 포토 슬로건<br>※ 최대구매수량:ID당 5개<br>15,000 원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(3).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(3).getPd_number()%>"> <img src="../image/<%=list.get(3).getPd_image()%>"> <%=list.get(3).getPd_name()%> <br> <%=list.get(3).getPd_price()%>원 
+
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh10.png"> LEE DONGWOOK
-						2023 SEASONS GREETINGS : PRISM<br>45,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(4).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(4).getPd_number()%>"> <img src="../image/<%=list.get(4).getPd_image()%>"> <%=list.get(4).getPd_name()%> <br> <%=list.get(4).getPd_price()%>원
+
 				</article>
 				</a>
 			</div>
 
 			<div class="box2">
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh11.png"> [유연석] T-Shirt<br>32,000원
+					<input type="hidden" name="Pd_number" value="<%=list.get(5).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(5).getPd_number()%>"> <img src="../image/<%=list.get(5).getPd_image()%>"> <%=list.get(5).getPd_name()%> <br> <%=list.get(5).getPd_price()%>원
 
 					
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh12.png"> CRAVITY 2023
-						SEASONS GREETINGS : CRVTs SWEETS<br>🔥뜨거운 반응으로 추가 오픈🔥<br>42,000원
+					<input type="hidden" name="Pd_number" value="<%=list.get(6).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(6).getPd_number()%>"> <img src="../image/<%=list.get(6).getPd_image()%>"> <%=list.get(6).getPd_name()%> <br> <%=list.get(6).getPd_price()%>원
 
-					
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh13.png">(VER SET)
-						CRAVITY 5TH MINI ALBUM MASTER:PIECE<br>53,400원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(7).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(7).getPd_number()%>"> <img src="../image/<%=list.get(7).getPd_image()%>"> <%=list.get(7).getPd_name()%> <br> <%=list.get(7).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh09.png"> MONSTA X NO
-						LIMIT TOUR in SEOUL DVD<br>46,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(8).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(8).getPd_number()%>"> <img src="../image/<%=list.get(8).getPd_image()%>"> <%=list.get(8).getPd_name()%> <br> <%=list.get(8).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh15.png"> WJSN 2023
-						SEASONS GREETINGS : THE MOOD<br>🔥뜨거운 반응으로 추가 오픈🔥<br>42,000원
-
+					<input type="hidden" name="Pd_number" value="<%=list.get(9).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(9).getPd_number()%>"> <img src="../image/<%=list.get(9).getPd_image()%>"> <%=list.get(9).getPd_name()%> <br> <%=list.get(9).getPd_price()%>원
 					
 				</article>
 				</a>
@@ -189,33 +202,28 @@
 
 			<div class="box2">
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh17.png"> IVE 2023
-						SEASONS GREETINGS : READY GET SET IVE<br>🔥뜨거운 반응으로 추가 오픈🔥<br>42,000
-						원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(10).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(10).getPd_number()%>"> <img src="../image/<%=list.get(10).getPd_image()%>"> <%=list.get(10).getPd_name()%> <br> <%=list.get(10).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh18.png"> IVE 공식 응원봉
-						ver.1<br>42,000 원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(11).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(11).getPd_number()%>"> <img src="../image/<%=list.get(11).getPd_image()%>"> <%=list.get(11).getPd_name()%> <br> <%=list.get(11).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh19.png"> JEONG SEWOON
-						2023 SEASONS GREETINGS : S-531 - THE LUCKY PRINCE<br>42,000원
-
-					
+					<input type="hidden" name="Pd_number" value="<%=list.get(12).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(12).getPd_number()%>"> <img src="../image/<%=list.get(12).getPd_image()%>"> <%=list.get(12).getPd_name()%> <br> <%=list.get(12).getPd_price()%>원
+					</article>
+				</a>
+				<article class="img2-2">
+					<input type="hidden" name="Pd_number" value="<%=list.get(13).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(13).getPd_number()%>"> <img src="../image/<%=list.get(13).getPd_image()%>"> <%=list.get(13).getPd_name()%> <br> <%=list.get(13).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<a href="#"> <img src="../image/sh08.png"> MONSTA X 2023
-						SEASONS GREETINGS : MON COUVERT (WALL CALENDAR ver.)<br>38,000원
-
-					
-				</article>
-				</a>
-				<article class="img2-2">
-					<a href="#"> <img src="../image/sh20.png"> 손우현 팬미팅 - 2023
-						캘린더 세트 <br>※ 1인당 5EA 구매 한정<br>22,000원 
+					<input type="hidden" name="Pd_number" value="<%=list.get(14).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(14).getPd_number()%>"> <img src="../image/<%=list.get(14).getPd_image()%>"> <%=list.get(14).getPd_name()%> <br> <%=list.get(14).getPd_price()%>원
 				</article>
 				</a>
 			</div>
@@ -223,76 +231,36 @@
 			<div class="box3">
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh21.png"> K-will 2023
-							SEASONS GREETINGS : 1230 WILL ST. <br>38,000원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(15).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(15).getPd_number()%>"> <img src="../image/<%=list.get(15).getPd_image()%>"> <%=list.get(15).getPd_name()%> <br> <%=list.get(15).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh22.png"> (ver.2) IVE
-							The 1st Single Album ELEVEN<br>14,900원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(16).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(16).getPd_number()%>"> <img src="../image/<%=list.get(16).getPd_image()%>"> <%=list.get(16).getPd_name()%> <br> <%=list.get(16).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh23.png"> CRAVITY 1ST
-							ALBUM PART2 LIBERTY IN OUR COSMOS (SET)<br>49,000원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(17).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(17).getPd_number()%>"> <img src="../image/<%=list.get(17).getPd_image()%>"> <%=list.get(17).getPd_name()%> <br> <%=list.get(17).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh24.png"> KIHYUN The
-							1st Single Album 'VOYAGER<br>11,000원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(18).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(18).getPd_number()%>"> <img src="../image/<%=list.get(18).getPd_image()%>"> <%=list.get(18).getPd_name()%> <br> <%=list.get(18).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh25.png"> (VER SET) IVE
-							THE 2ND SINGLE ALBUM LOVE DIVE <br>44,700원 
-					</article>
-					</a>
-				</div>
-			</div>
-
-			<div class="box3">
-				<div class="image">
-					<article class="img2-2">
-						<a href="#"> <img src="../image/sh26.png"> MONSTA X Mini
-							Album SHAPE of LOVE - VER SET<br>65,200원 
-					</article>
-					</a>
-				</div>
-				<div class="image">
-					<article class="img2-2">
-						<a href="#"> <img src="../image/sh27.png"> (SET) JEONG
-							SEWOON THE 5TH MINI ALBUM WHERE IS MY GARDEN<br>51,300원 
-					</article>
-					</a>
-				</div>
-				<div class="image">
-					<article class="img2-2">
-						<a href="#"> <img src="../image/sh28.png"> (VER
-							SET/JEWEL SET)우주소녀 WJSN SPECIAL SINGLE ALBUM SEQUENCE<br>158,900원
-
-						
-					</article>
-					</a>
-				</div>
-				<div class="image">
-					<article class="img2-2">
-						<a href="#"> <img src="../image/sh29.png"> (VER SET) IVE
-							3RD SINGLE ALBUM AFTER LIKE<br>44,700원 
-					</article>
-					</a>
-				</div>
-				<div class="image">
-					<article class="img2-2">
-						<a href="#"> <img src="../image/sh30.png"> (VER SET /
-							JEWEL SET) CRAVITY 4TH MINI ALBUM NEW WAVE<br>152,400 원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(19).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(19).getPd_number()%>"> <img src="../image/<%=list.get(19).getPd_image()%>"> <%=list.get(19).getPd_name()%> <br> <%=list.get(19).getPd_price()%>원
 					</article>
 					</a>
 				</div>
@@ -301,36 +269,74 @@
 			<div class="box3">
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh31.png"> (VER SET)
-							KIHYUN 1ST MINI ALBUM YOUTH<br>53,400원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(20).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(20).getPd_number()%>"> <img src="../image/<%=list.get(20).getPd_image()%>"> <%=list.get(20).getPd_name()%><br> <%=list.get(20).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh22.png"> (ver.2) IVE
-							The 1st Single Album ELEVEN<br>14,900원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(21).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(21).getPd_number()%>"> <img src="../image/<%=list.get(21).getPd_image()%>"> <%=list.get(21).getPd_name()%> <br> <%=list.get(21).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh23.png"> CRAVITY 1ST
-							ALBUM PART2 LIBERTY IN OUR COSMOS(SET)<br> 49,000원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(22).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(22).getPd_number()%>"> <img src="../image/<%=list.get(22).getPd_image()%>"> <%=list.get(22).getPd_name()%> <br> <%=list.get(22).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh24.png"> KIHYUN The
-							1st Single Album 'VOYAGER<br>11,000원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(23).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(23).getPd_number()%>"> <img src="../image/<%=list.get(23).getPd_image()%>"> <%=list.get(23).getPd_name()%> <br> <%=list.get(23).getPd_price()%>원
 					</article>
 					</a>
 				</div>
 				<div class="image">
 					<article class="img2-2">
-						<a href="#"> <img src="../image/sh25.png"> (VER SET) IVE
-							THE 2ND SINGLE ALBUM LOVE DIVE <br>44,700원 
+						<input type="hidden" name="Pd_number" value="<%=list.get(24).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(24).getPd_number()%>"> <img src="../image/<%=list.get(24).getPd_image()%>"> <%=list.get(24).getPd_name()%> <br> <%=list.get(24).getPd_price()%>원
+					</article>
+					</a>
+				</div>
+			</div>
+
+			<div class="box3">
+				<div class="image">
+					<article class="img2-2">
+						<input type="hidden" name="Pd_number" value="<%=list.get(25).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(25).getPd_number()%>"> <img src="../image/<%=list.get(25).getPd_image()%>"> <%=list.get(25).getPd_name()%> <br> <%=list.get(25).getPd_price()%>원
+					</article>
+					</a>
+				</div>
+				<div class="image">
+					<article class="img2-2">
+						<input type="hidden" name="Pd_number" value="<%=list.get(26).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(26).getPd_number()%>"> <img src="../image/<%=list.get(26).getPd_image()%>"> <%=list.get(26).getPd_name()%> <br> <%=list.get(26).getPd_price()%>원
+					</article>
+					</a>
+				</div>
+				<div class="image">
+					<article class="img2-2">
+						<input type="hidden" name="Pd_number" value="<%=list.get(27).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(27).getPd_number()%>"> <img src="../image/<%=list.get(27).getPd_image()%>"> <%=list.get(27).getPd_name()%> <br> <%=list.get(27).getPd_price()%>원
+					</article>
+					</a>
+				</div>
+				<div class="image">
+					<article class="img2-2">
+						<input type="hidden" name="Pd_number" value="<%=list.get(28).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(28).getPd_number()%>"> <img src="../image/<%=list.get(28).getPd_image()%>"> <%=list.get(28).getPd_name()%> <br> <%=list.get(28).getPd_price()%>원
+					</article>
+					</a>
+				</div>
+				<div class="image">
+					<article class="img2-2">
+						<input type="hidden" name="Pd_number" value="<%=list.get(29).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(29).getPd_number()%>"> <img src="../image/<%=list.get(29).getPd_image()%>"> <%=list.get(29).getPd_name()%> <br> <%=list.get(29).getPd_price()%>원
 					</article>
 					</a>
 				</div>
@@ -340,6 +346,7 @@
 		<div>
 			<button class="load-more" id="moreBtn">+더보기</button>
 		</div>
+	</div>
 	</section>
 
 	<footer>

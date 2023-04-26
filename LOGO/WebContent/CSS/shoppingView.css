@@ -1,0 +1,50 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Tilt+Warp&display=swap');
+
+* {
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section {
+	  margin-top: 130px;
+}
+#mainBox {
+    width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+table.table2 {
+	order-collapse: separate;
+	border-spacing: 1px;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ccc;
+	margin: 20px 10px;
+}
+
+table.table2 tr {
+	font-size: 15px;
+	line-height: 27px
+}
+
+table.table2 td {
+	width: 300px;
+	padding: 20px;
+	vertical-align: top;
+	border-bottom: 1px solid #ccc;
+	margin: 0 auto;
+}
+
+.write {
+	height: 30px;
+	width: 130px;
+	background: #ccc;
+	color: #29302e;
+	cursor: pointer;
+	fontcolor: white;
+}

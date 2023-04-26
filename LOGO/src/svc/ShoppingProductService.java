@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import dao.ShoppingDAO;
 import dao.TicketDAO;
+import vo.ShoppingCart;
+import vo.ShoppingDetail;
 import vo.ShoppingProduct;
 import vo.TicketInfo;
 
@@ -74,9 +76,35 @@ public class ShoppingProductService {
 
 	}
 
+// 상세 이미지
+	public ShoppingDetail getImage(String pd_number) throws Exception {
+
+		ShoppingDetail sd = null;
+		Connection con = getConnection();
+		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
+		shoppingDAO.setConnection(con);
+
+		sd = shoppingDAO.detailImage(pd_number);
+		close(con);
+		return sd;
+
+	}
+// 장바구니
+	public ShoppingCart getCart(String pd_number) throws Exception{
+		
+		ShoppingCart sc = null;
+		Connection con = getConnection();
+		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
+		shoppingDAO.setConnection(con);
+		
+		sc = shoppingDAO.selectCart(pd_number);
+		close(con);
+		return sc;
+	}
+	
+	
 //상품 수정
 	public boolean getModify(ShoppingProduct sp) throws Exception {
-
 		boolean Success = false;
 		Connection con = getConnection();
 		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
@@ -113,5 +141,16 @@ public class ShoppingProductService {
 		close(con);
 		return Success;
 	}
-
+	
+	
+	
+	public ArrayList<ShoppingProduct> mainProduct() {
+		Connection con = getConnection();
+		ShoppingDAO dao = ShoppingDAO.getInstance();
+		dao.setConnection(con);		
+		ArrayList<ShoppingProduct> list = dao.mainList();
+	
+		return list;
+	}
+	
 }

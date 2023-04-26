@@ -14,7 +14,7 @@ section {
     /*    border: 1px solid #bcbcbc;*/
     background-color: transparent;
 }
-
+.tt{}
 table {
   border-top: 2px solid black;
   border-collapse: collapse;

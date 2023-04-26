@@ -50,8 +50,8 @@
 									required="required"></textarea></td>
 						</tr>
 						<tr>
-							<td><label for="">할인률</label></td>
-							<td><input type="text" name="discount" id=""
+							<td><label for="">조회수</label></td>
+							<td><input type="text" name="count" id=""
 								required="required" /></td>
 						</tr>
 						<tr>

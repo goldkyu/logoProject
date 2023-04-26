@@ -35,7 +35,7 @@ public class ShoppingWriteAction implements Action {
 		spVO.setPd_amount(Integer.parseInt(multi.getParameter("pd_amount")));
 		spVO.setPd_image(multi.getOriginalFileName((String) multi.getFileNames().nextElement()));
 		spVO.setPd_detail(multi.getParameter("pd_detail"));
-		spVO.setDiscount(Integer.parseInt(multi.getParameter("discount")));
+		spVO.setCount(Integer.parseInt(multi.getParameter("count")));
 		spVO.setCharge(multi.getParameter("charge"));
 
 		ShoppingProductService SPV = new ShoppingProductService();

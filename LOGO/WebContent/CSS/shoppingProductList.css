@@ -14,7 +14,12 @@ section {
 }
 #mainBox {
     width: 1400px;
-    height: 1400px;
+    /* height: 800px; */
     margin: 0 auto;
     background-color: transparent;
+}
+
+
+th{
+	padding : 20px;
 }
