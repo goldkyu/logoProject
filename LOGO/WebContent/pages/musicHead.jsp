@@ -24,8 +24,8 @@
 		<div id="mainHeader">
 			<div id="leftNav">
 				<ul>
-					<li><a href="ticketmain.jsp">ticket</a></li>
-					<li><a href="shoppingMain.jsp">shopping</a></li>
+					<li><a href="../pages/ticketindex.to">ticket</a></li>
+					<li><a href="../pages/shoppingMain.sh">shopping</a></li>
 					<li><a href="musicMain.mu">Music</a></li>
 				</ul>
 			</div>
@@ -59,7 +59,7 @@
 			</form>
 			<!-- 플레이어 -->
 			<div class="audio-player">
-				<audio src="../music/Ditto.mp3" class="audio" controls="controls"></audio>
+				<audio src="" class="audio" controls controlsList="nodownload "></audio>
 
 			</div>
 			<!-- 플레이어 -->
@@ -105,8 +105,33 @@
 		</div>
 	</header>
 </body>
-
+<%if(session.getAttribute("userID")!=null) {%>
 <script>
+	$(".audio").on("ended", function() {
+		var songName = $(this).attr("src");
+		songName = songName.replace(/^.*[\/]/, '');
+		songName = songName.replace(/.[^/.]+$/, "");
+
+		// Ajax 호출
+		$.ajax({
+			url : "musicListenUpdate.mu", // 요청을 보낼 서블릿 경로
+			type : "POST", // POST 방식으로 요청을 보냄
+			data : {
+				"songName" : songName
+			}, // 전달할 데이터
+			success : function(data) {
+				// 서블릿에서 전달한 응답을 처리
+				alert(songName);
+			},
+			error : function(xhr, status, error) {
+				// 에러 발생 시 처리
+				alert("ajax 실패");
+			}
+		});
+	});
+	
+	
 	
 </script>
+<% } %>
 </html>

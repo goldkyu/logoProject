@@ -66,7 +66,7 @@
 				<div id="infobox">
 					<article id="leftimege" style="margin-top: 50px;">
 						<div>
-							<img src="../file/<%=sdVO.getDe_image4()%>">
+							<img src="../file/<%=sdVO.getDe_image4()%>" alt="">
 						</div>
 					</article>
 

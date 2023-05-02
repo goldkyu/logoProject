@@ -8,8 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import action.*;
+import svc.ListenUpdateService;
 import vo.*;
 
 //music 관련 페이지 전용 서블릿
@@ -18,6 +20,7 @@ import vo.*;
 public class Controller extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
 	protected void doProcess(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
+		HttpSession session = req.getSession();
 		String reqURI = req.getRequestURI(); // 프로젝트 + 파일명까지 전체 URI ex)LOGO/pages/board.mu
 		String conPath = req.getContextPath(); // 프로젝트 이름 까지만 ex)LOGO
 		String command = reqURI.substring(conPath.length()); // reqURI에서 프로젝트 이름까지만 자름 ex) pages/board.mu
@@ -51,6 +54,12 @@ public class Controller extends javax.servlet.http.HttpServlet implements javax.
 				// TODO: handle exception
 				e.printStackTrace();
 			}
+		} 
+		else if (command.equals("/pages/musicListenUpdate.mu")) {
+			String m_name = req.getParameter("songName");
+			String userID = (String)session.getAttribute("userID");
+			ListenUpdateService lus = new ListenUpdateService();
+			lus.listenUpdate(m_name, userID);
 		}
 
 		if (actionFoward != null) { // 액션 포워드가 설정되었을 경우

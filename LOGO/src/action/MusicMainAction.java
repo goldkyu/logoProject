@@ -46,6 +46,7 @@ public class MusicMainAction implements Action {
 				request.setAttribute("chartMusic", userMusic);
 				request.setAttribute("viewChart", "1");
 				System.out.println("차트데이터 존재");
+				System.out.println(userMusic.size());
 			} else {
 				request.setAttribute("viewChart", "0");
 				System.out.println("차트데이터 미존재");
@@ -60,7 +61,7 @@ public class MusicMainAction implements Action {
 		request.setAttribute("albums", newAlbums);
 		request.setAttribute("topChart", topChart);
 
-		actionForward.setPath("musicMain.jsp");
+		actionForward.setPath("../pages/musicMain.jsp");
 		return actionForward;
 	}
 

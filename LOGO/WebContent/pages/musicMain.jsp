@@ -4,7 +4,7 @@
 <%@ page import="java.util.*"%>
 <%@ page import="vo.Album"%>
 <%@ page import="vo.Music"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -47,26 +47,33 @@
 	let month = today.getMonth() + 1;
 	let date = today.getDate();
 	
-	var day7 = month+'-'+(date-6);
-	var day6 = month+'-'+(date-5);
-	var day5 = month+'-'+(date-4);
-	var day4 = month+'-'+(date-3);
-	var day3 = month+'-'+(date-2);
-	var day2 = month+'-'+(date-1);
-	var day1 = month+'-'+(date);
+	
+
+	
+	
+	var day1 = month + '-' + date
+	var day2 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day3 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day4 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day5 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day6 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day7 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	
+	
 	
 	var data, chart, options;
 
+	
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'Date', "<%= ml.get(0).getMUSIC_NAME() %>", "<%= ml.get(1).getMUSIC_NAME() %>", "<%= ml.get(2).getMUSIC_NAME() %>", "<%= ml.get(3).getMUSIC_NAME() %>", "<%= ml.get(4).getMUSIC_NAME() %>" ],
-				[ day7, <%= ul.get(0).getLISTEN_COUNT_DAY7()%>, <%= ul.get(1).getLISTEN_COUNT_DAY7()%>, <%= ul.get(2).getLISTEN_COUNT_DAY7()%>, <%= ul.get(3).getLISTEN_COUNT_DAY7()%>, <%= ul.get(4).getLISTEN_COUNT_DAY7()%> ],
-				[ day6, <%= ul.get(0).getLISTEN_COUNT_DAY6()%>, <%= ul.get(1).getLISTEN_COUNT_DAY6()%>, <%= ul.get(2).getLISTEN_COUNT_DAY6()%>, <%= ul.get(3).getLISTEN_COUNT_DAY6()%>, <%= ul.get(4).getLISTEN_COUNT_DAY6()%> ],
-				[ day5, <%= ul.get(0).getLISTEN_COUNT_DAY5()%>, <%= ul.get(1).getLISTEN_COUNT_DAY5()%>, <%= ul.get(2).getLISTEN_COUNT_DAY5()%>, <%= ul.get(3).getLISTEN_COUNT_DAY5()%>, <%= ul.get(4).getLISTEN_COUNT_DAY5()%> ],
-				[ day4, <%= ul.get(0).getLISTEN_COUNT_DAY4()%>, <%= ul.get(1).getLISTEN_COUNT_DAY4()%>, <%= ul.get(2).getLISTEN_COUNT_DAY4()%>, <%= ul.get(3).getLISTEN_COUNT_DAY4()%>, <%= ul.get(4).getLISTEN_COUNT_DAY4()%> ],
-				[ day3, <%= ul.get(0).getLISTEN_COUNT_DAY3()%>, <%= ul.get(1).getLISTEN_COUNT_DAY3()%>, <%= ul.get(2).getLISTEN_COUNT_DAY3()%>, <%= ul.get(3).getLISTEN_COUNT_DAY3()%>, <%= ul.get(4).getLISTEN_COUNT_DAY3()%> ],
-				[ day2, <%= ul.get(0).getLISTEN_COUNT_DAY2()%>, <%= ul.get(1).getLISTEN_COUNT_DAY2()%>, <%= ul.get(2).getLISTEN_COUNT_DAY2()%>, <%= ul.get(3).getLISTEN_COUNT_DAY2()%>, <%= ul.get(4).getLISTEN_COUNT_DAY2()%> ],
-				[ day1, <%= ul.get(0).getLISTEN_COUNT_DAY1()%>, <%= ul.get(1).getLISTEN_COUNT_DAY1()%>, <%= ul.get(2).getLISTEN_COUNT_DAY1()%>, <%= ul.get(3).getLISTEN_COUNT_DAY1()%>, <%= ul.get(4).getLISTEN_COUNT_DAY1()%> ] ]);
+				[ 'Date',<%for(int i = 0; i < ml.size(); i++){%>"<%= ml.get(i).getMUSIC_NAME()%>",<%}%> ],
+				[ day7, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY7()%>,<%}%> ],
+				[ day6, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY6()%>,<%}%> ],
+				[ day5, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY5()%>,<%}%> ],
+				[ day4, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY4()%>,<%}%> ],
+				[ day3, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY3()%>,<%}%> ],
+				[ day2, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY2()%>,<%}%> ],
+				[ day1, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY1()%>,<%}%> ] ]);
 
 		var options = {
 			title : '나만의 차트',
@@ -202,19 +209,18 @@
 							System.out.println("메인페이지");
 						%>
 						<c:forEach items="${albums}" var="a" varStatus="as">
-						<div>
-							<img id="a${as.index +1 }" src="../albums/${a.ALBUM_PHOTO }"
-								alt="">
-							<div class="album-name" id="t${as.index +1 }">
-								<p>
-									<a
-										href="musicAlbumInfo.mu?album_id=${a.ALBUM_ID }">${a.ALBUM_NAME }</a>
-								</p>
+							<div>
+								<img id="a${as.index +1 }" src="../albums/${a.ALBUM_PHOTO }"
+									alt="">
+								<div class="album-name" id="t${as.index +1 }">
+									<p>
+										<a href="musicAlbumInfo.mu?album_id=${a.ALBUM_ID }">${a.ALBUM_NAME }</a>
+									</p>
+								</div>
 							</div>
-						</div>
 						</c:forEach>
-						
-					</div> 
+
+					</div>
 				</article>
 				<article id="onlyMyChart" style="position: relative;">
 					<%
@@ -258,29 +264,35 @@
 					<div id="charts">
 
 						<table>
-						<c:forEach items="${topChart}" var="t" end="9" varStatus="st">
-						<tr>
-								<th>
-									<p class="ranked">${st.index +1}</p>
-								</th>
-								<th>
-									<p class="rankup">${t.MUSIC_CHART_CHANGED}</p>
-								</th>
-								<th>
-									<div class="rankAl"><a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}">
-										<img src="../albums/${t.ALBUM_PHOTO}"
-											alt=""></a>
-									</div>
-									<p class="rankmName"><a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}">${t.MUSIC_NAME}</a></p>
-								</th>
-								<th>
-									<p class="aName"><a href="musicArtistInfo.mu?a_id=${t.ARTIST_ID }">${t.ARTIST_NAME }</a></p>
-								</th>
-								<th><img class="download" src="../image/download.png"
-									alt=""></th>
-							</tr>
-						</c:forEach>
-			
+							<c:forEach items="${topChart}" var="t" end="9" varStatus="st">
+								<tr>
+									<th>
+										<p class="ranked">${st.index +1}</p>
+									</th>
+									<th>
+										<p class="rankup">${t.MUSIC_CHART_CHANGED}</p>
+									</th>
+									<th>
+										<div class="rankAl">
+											<a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}"> <img
+												src="../albums/${t.ALBUM_PHOTO}" alt=""></a>
+										</div>
+										<p class="rankmName">
+											<a href="musicAlbumInfo.mu?album_id=${t.ALBUM_ID}">${t.MUSIC_NAME}</a>
+										</p>
+									</th>
+									<th>
+										<p class="aName">
+											<a href="musicArtistInfo.mu?a_id=${t.ARTIST_ID }">${t.ARTIST_NAME }</a>
+										</p>
+									</th>
+									<th><button style="border: none; color: white;"
+											class="music-select" data-src="../music/${t.MUSIC_NAME}.mp3">
+											<img class="download" src="../image/download.png" alt="">
+										</button></th>
+								</tr>
+							</c:forEach>
+
 						</table>
 
 					</div>

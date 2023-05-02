@@ -12,6 +12,15 @@ public class Music {
 	String ALBUM_PHOTO;
 	String ARTIST_NAME;
 	int MUSIC_CHART_CHANGED;
+	String ALBUM_NAME;
+
+	public String getALBUM_NAME() {
+		return ALBUM_NAME;
+	}
+
+	public void setALBUM_NAME(String aLBUM_NAME) {
+		ALBUM_NAME = aLBUM_NAME;
+	}
 
 	public String getARTIST_NAME() {
 		return ARTIST_NAME;
