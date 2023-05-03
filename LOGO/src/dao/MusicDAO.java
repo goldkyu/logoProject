@@ -295,4 +295,23 @@ public class MusicDAO {
 		}
 		return topMusics;
 	}
+	
+	public void listenUpdate(String m_name, String userID) {
+		PreparedStatement prst = null;
+		String updateQuery = "INSERT INTO u_listen (m_id, u_id, m_playcount, m_playdate)\r\n" + 
+				"VALUES ((SELECT m_id FROM m_information WHERE m_name = ?), ?, 1, CURDATE())\r\n" + 
+				"ON DUPLICATE KEY UPDATE m_playcount = m_playcount + 1;";
+		try {
+			prst = conn.prepareStatement(updateQuery);
+			prst.setString(1, m_name);
+			prst.setString(2, userID);
+			int i = prst.executeUpdate();
+			System.out.println(i + "." +m_name+"성공성공!"+userID);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			close(prst);
+		}
+	}
 }

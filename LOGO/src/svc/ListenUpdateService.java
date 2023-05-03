@@ -17,8 +17,8 @@ public class ListenUpdateService {
 		
 		m.setConnection(conn);
 		
-		System.out.println(m_name+"성공성공!"+userID);
 		
+		m.listenUpdate(m_name, userID);
 		
 		
 		close(conn);

@@ -121,7 +121,6 @@
 			}, // 전달할 데이터
 			success : function(data) {
 				// 서블릿에서 전달한 응답을 처리
-				alert(songName);
 			},
 			error : function(xhr, status, error) {
 				// 에러 발생 시 처리
