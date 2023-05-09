@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+ <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@page import="vo.TicketInfo"%>
-<%@page import="vo.TicketArena"%>
+
 
 
 <!DOCTYPE html>
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../CSS/ticketRegistDetail.css"/>
 <title>공연상세정보</title>
 </head>
+
 <%
 	TicketInfo detailList = (TicketInfo)request.getAttribute("DetailList");
 	String nowPage = (String)request.getAttribute("Page");
@@ -22,6 +23,8 @@
 <%
 request.setCharacterEncoding("utf-8");
 %>
+
+
 <jsp:include page="siteHead.jsp" />
 <section>
 <div id="mainBox">
@@ -110,9 +113,13 @@ request.setCharacterEncoding("utf-8");
  </article> 
  </div>
    
- <div>
-	<input type="button" value="예매하기" class="write" onclick="">
+<div>
+	<form action="../pages/TicketReserve.to?P_code=<%= detailList.getP_code() %>" method="post">
+	<input type="submit" value="예매하기" class="write">
+	</a>
+	</form>
 </div>
+
 
  <div class="text01">상세정보</div>
  <hr>

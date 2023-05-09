@@ -49,11 +49,11 @@ public class TicketListAction implements Action{
    		pageInfo.setStartPage(startPage);
    		
    		
-   		request.setAttribute("PageInfo", pageInfo);
-		request.setAttribute("ArticleList", articleList);
-		
-		ActionForward forward= new ActionForward();
-   		forward.setPath("../pages/ticketRegistList.jsp");
+		   		request.setAttribute("PageInfo", pageInfo);
+				request.setAttribute("ArticleList", articleList);
+				
+				ActionForward forward= new ActionForward();
+		   		forward.setPath("../pages/ticketRegistList.jsp");
    		return forward;
 	}
 }

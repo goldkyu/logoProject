@@ -100,8 +100,8 @@ hr{
 
 #infodetailbox{
     width: 960px;
-    height: 2000px;
+    height: 4300px;
     margin: 30px auto;
-   /* border: 1px solid red; */ 
-    background-color: transparent; 
+   border: 1px solid red;
+  /*   background-color: transparent;  */
 }

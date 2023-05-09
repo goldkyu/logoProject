@@ -402,7 +402,7 @@ ArrayList<TicketInfo> arr = (ArrayList<TicketInfo>)request.getAttribute("Arr");
                     </a>  
                 </article>
             </div>
-
+				
         </div>
     </section>
 

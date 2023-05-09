@@ -275,7 +275,7 @@ public class TicketDAO {
 		
 		try {
 			
-			pstmt = con.prepareStatement("SELECT *from arena where ar_name = ?");
+			pstmt = con.prepareStatement("SELECT * FROM arena INNER JOIN performance ON arena.ar_name = performance.ar_name where arena.ar_name = ?"); //쿼리문변경
 			pstmt.setString(1, ar_name);
 			rs = pstmt.executeQuery();
 			
@@ -286,8 +286,9 @@ public class TicketDAO {
 				arena.setAr_address(rs.getString("ar_address"));
 				arena.setAr_phone(rs.getString("ar_phone"));
 				arena.setAr_image(rs.getString("ar_image"));
+								
 				}
-			
+	
 			}catch(Exception ex) {
 			}finally {
 				close(rs);
@@ -295,4 +296,5 @@ public class TicketDAO {
 			}
 		return arena;
 	}
+	
 }

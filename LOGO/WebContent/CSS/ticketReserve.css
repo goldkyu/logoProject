@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+}
+
+body {
+
+}
+
+section {
+    margin-top: 130px;
+
+}
+#mainBox {
+    width: 1400px;
+    height: 800px;
+    margin: 0 auto;
+    background-color: transparent;
+  /*   transparent */
+}
+
+#center{
+	width : 1200px;
+	height : 800px;
+	margin: 30px auto;
+	/* border: 1px solid #dfdfdf;  */
+	background-color: transparent;
+	color: black;
+}
+
+.stage{
+	width : 900px;
+	height : 80px;
+	margin : center;
+	text-align : center;
+	float : left;
+/* 	border: 1px solid #c0c0c0;  */
+	
+}
+.tkseat{
+	width : 900px;
+	height : 600px;
+	margin : center;
+	margin-top : 5px;
+	float : left;
+	border: 1px solid #c0c0c0; 
+	background-color: transparent;
+}
+
+.tkleft{
+	width : 260px;
+	height : 686px;
+	margin: 0 auto;
+	float : right;
+	margin-top : -80px;
+	border: 1px solid #c0c0c0; 
+	background-color: #e8e8e8;
+}
+
+.price{
+ text-align: right;
+ margin-top : 30px;
+ font-size : 18px;
+}
+
+.write{
+  height: 40px;
+  width: 260px;   
+  background: #ff0000;
+  border-color : #ff0000;
+  color: #ffffff;
+  cursor: pointer;
+  margin : 0px auto;
+  margin-top : 27px;
+  text-align: center;
+  display: block;	
+}
+
+
+/* 좌석 */
+.theatre {
+  display: flex;
+  position: absolute;
+  top: -3%;
+  left: 20%;
+  transform: translate(0%, 100%);
+}
+
+.cinema-seats {
+  display: flex;
+}
+
+.cinema-seats .seat {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cinema-seats .seat:hover:before {
+  content: "";
+  position: absolute;
+  top: -6%;
+  width: 35px;
+  height: 50px;
+  background: #edffc7;
+  border-radius: 7px;
+}
+
+.cinema-seats .seat.active:before {
+  content: "";
+  position: absolute; 
+  top: -6%;
+  width: 35px;
+  height: 50px;
+  background: #7cb715;
+  border-radius: 7px;
+}
+
+.left .cinema-row {
+  margin: 0 10px;
+}
+
+.left .seat {
+   width: 35px;
+  height: 50px;
+  border-radius: 7px;
+    background : #c0c0c0;
+    margin-bottom: 10px;
+transform: skew(0deg); 
+}
+
+.right {
+  margin-left: 17px;
+     
+}
+
+.right .cinema-row {
+ margin: 0 10px;
+}
+
+.right .seat {
+   width: 35px;
+  height: 50px;
+  border-radius: 7px;
+    background : #c0c0c0;
+    margin-bottom: 10px;
+transform: skew(0deg); 
+}
+
+.booked,
+.seatsbooked {
+  color: black;
+}
+.rows {
+  color: black;
+  margin-top: -160%;
+  margin-left : 8px;
+}
+.columns {
+  color: black;
+  margin-bottom: 40px;
+}
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Montserrat";
+  scroll-behavior: smooth;
+}
+

@@ -15,6 +15,7 @@ import action.TicketIndexAction;
 import action.TicketListAction;
 import action.TicketModifyAction;
 import action.TicketModifyproAction;
+import action.TicketReserveAction;
 import action.TicketWriteProAction;
 import vo.ActionForward;
 
@@ -73,6 +74,17 @@ public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 				e.printStackTrace();
 			}
 		}
+
+		//예매		
+		else if(command.equals("/pages/TicketReserve.to")) {
+			action = new  TicketReserveAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+
 		//수정
 		else if(command.equals("/pages/TicketModify.to")) {
 			action = new TicketModifyAction();
@@ -114,7 +126,6 @@ public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 			}
 		}
 		
-
 		if (forward != null) {
 
 			if (forward.isRedirect()) {
