@@ -1,6 +1,7 @@
 package svc;
 
 import static db.JdbcUtil.close;
+import static db.JdbcUtil.commit;
 import static db.JdbcUtil.getConnection;
 
 import java.sql.Connection;
@@ -19,8 +20,9 @@ public class ListenUpdateService {
 		
 		
 		m.listenUpdate(m_name, userID);
+		System.out.println(m_name + " and " + userID);
 		
-		
+		commit(conn);
 		close(conn);
 	}
 }

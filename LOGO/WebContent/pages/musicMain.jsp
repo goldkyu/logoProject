@@ -36,6 +36,12 @@
 	ArrayList<UserListen> ul = (ArrayList<UserListen>)request.getAttribute("chartInfo");
 	ArrayList<Music> ml =(ArrayList<Music>)request.getAttribute("chartMusic");
 
+	for(UserListen u : ul){
+		System.out.println("m_id : " + u.getLISTEN_MUSIC_ID());
+	}
+	for(Music m : ml){
+		System.out.println("m_name : " + m.getMUSIC_NAME());
+	}
 %>
 <script type="text/javascript">
 	google.charts.load('current', {
@@ -66,7 +72,7 @@
 	
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'Date',<%for(int i = 0; i < ml.size(); i++){%>"<%= ml.get(i).getMUSIC_NAME()%>",<%}%> ],
+				[ 'Date',<%for(int i = 0; i < ul.size(); i++){%>"<%= ml.get(i).getMUSIC_NAME()%>",<%}%> ],
 				[ day7, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY7()%>,<%}%> ],
 				[ day6, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY6()%>,<%}%> ],
 				[ day5, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY5()%>,<%}%> ],
@@ -147,30 +153,18 @@
 				var mCount = value;
 				var albumImg;
 				var aName;
-
-				if (column == 1) {
-					albumImg = '<img src="../albums/<%= ml.get(0).getALBUM_PHOTO() %>" alt="">';
-				} else if (column == 2) {
-					albumImg = '<img src="../albums/<%= ml.get(1).getALBUM_PHOTO() %>" alt="">';
-				} else if (column == 3) {
-					albumImg = '<img src="../albums/<%= ml.get(2).getALBUM_PHOTO() %>" alt="">';
-				} else if (column == 4) {
-					albumImg = '<img src="../albums/<%= ml.get(3).getALBUM_PHOTO() %>" alt="">';
-				} else {
-					albumImg = '<img src="../albums/<%= ml.get(4).getALBUM_PHOTO() %>" alt="">';
+				
+				<%for(int j = 0; j < ml.size(); j++){%>
+				
+				if (column == <%=j+1%>) {
+					albumImg = '<img src="../albums/<%= ml.get(j).getALBUM_PHOTO() %>" alt="">';
 				}
-
-				if (column == 1) {
-					aName = '<%=ml.get(0).getARTIST_NAME()%>';
-				} else if (column == 2) {
-					aName = '<%=ml.get(1).getARTIST_NAME()%>';
-				} else if (column == 3) {
-					aName = '<%=ml.get(2).getARTIST_NAME()%>';
-				} else if (column == 4) {
-					aName = '<%=ml.get(3).getARTIST_NAME()%>';
-				} else {
-					aName = '<%=ml.get(4).getARTIST_NAME()%>';
-				}
+				
+				if (column == <%=j+1%>) {
+					aName = '<%= ml.get(j).getARTIST_NAME() %>';
+				} 
+				
+				<%}%>
 
 				$('.selAlbum').fadeIn('4000');
 				$('.selRank').fadeIn('4000');

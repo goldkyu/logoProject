@@ -59,7 +59,7 @@
 			</form>
 			<!-- 플레이어 -->
 			<div class="audio-player">
-				<audio src="" class="audio" controls controlsList="nodownload "></audio>
+				<audio src="" class="audio" controls controlsList="nodownload" ></audio>
 
 			</div>
 			<!-- 플레이어 -->
