@@ -4,15 +4,15 @@ import static db.JdbcUtil.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import dao.ShoppingDAO;
-import dao.TicketDAO;
+
 import vo.ShoppingCart;
 import vo.ShoppingDetail;
 import vo.ShoppingProduct;
-import vo.TicketInfo;
-
-import static db.JdbcUtil.*;
 
 public class ShoppingProductService {
 
@@ -89,20 +89,7 @@ public class ShoppingProductService {
 		return sd;
 
 	}
-// 장바구니
-	public ShoppingCart getCart(String pd_number) throws Exception{
-		
-		ShoppingCart sc = null;
-		Connection con = getConnection();
-		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
-		shoppingDAO.setConnection(con);
-		
-		sc = shoppingDAO.selectCart(pd_number);
-		close(con);
-		return sc;
-	}
-	
-	
+
 //상품 수정
 	public boolean getModify(ShoppingProduct sp) throws Exception {
 		boolean Success = false;
@@ -141,16 +128,26 @@ public class ShoppingProductService {
 		close(con);
 		return Success;
 	}
-	
-	
-	
+
 	public ArrayList<ShoppingProduct> mainProduct() {
 		Connection con = getConnection();
 		ShoppingDAO dao = ShoppingDAO.getInstance();
-		dao.setConnection(con);		
+		dao.setConnection(con);
 		ArrayList<ShoppingProduct> list = dao.mainList();
-	
+
 		return list;
 	}
-	
+
+	// 장바구니 목록
+	public ArrayList<ShoppingCart> listCart(String pd_number) throws Exception {
+
+		Connection con = getConnection();
+		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
+		shoppingDAO.setConnection(con);
+		ArrayList<ShoppingCart> cart = shoppingDAO.listCart(pd_number);
+		close(con);
+		System.out.println(pd_number + " 서비스3 ");
+
+		return cart;
+	}
 }

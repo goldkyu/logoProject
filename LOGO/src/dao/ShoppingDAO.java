@@ -5,6 +5,9 @@ import static db.JdbcUtil.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -18,7 +21,6 @@ import vo.TicketInfo;
 public class ShoppingDAO {
 	DataSource ds;
 	Connection con;
-	private int basket_amount;
 
 	private static ShoppingDAO shoppingDAO;
 
@@ -200,37 +202,6 @@ public class ShoppingDAO {
 		return sd;
 	}
 
-// 장바구니 
-
-	public ShoppingCart selectCart(String pd_number) {
-
-		ShoppingCart sc = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		try {
-			pstmt = con.prepareStatement("select * from shopping_basket where pd_number = ?");
-			pstmt.setString(1, pd_number);
-			rs = pstmt.executeQuery();
-			sc = new ShoppingCart();
-
-			if (rs.next()) {
-
-				sc.setBasket_number(rs.getString("basket_number"));
-				sc.setU_id(rs.getString("u_id"));
-				sc.setPd_number(rs.getString("pd_number"));
-				sc.setBasket_amount(rs.getInt("basket_amount"));
-				sc.setBasget_price(rs.getInt("basket_price"));
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		return sc;
-	}
-
 //상품수정
 	public int updateModify(ShoppingProduct sp) {
 
@@ -279,6 +250,7 @@ public class ShoppingDAO {
 
 	}
 
+//쇼핑 메인 
 	public ArrayList<ShoppingProduct> mainList() {
 		PreparedStatement pstmt = null;
 		ShoppingProduct sp = null;
@@ -287,6 +259,7 @@ public class ShoppingDAO {
 		String sql = "SELECT * FROM product ORDER BY count ASC LIMIT 35";
 
 		ArrayList<ShoppingProduct> list = new ArrayList<ShoppingProduct>();
+
 		try {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery(sql);
@@ -310,6 +283,87 @@ public class ShoppingDAO {
 
 		System.out.println(list.size() + "size");
 		return list;
+	}
+
+//쇼핑 메인 위클리 베스트	
+
+	public int countUpdate() throws Exception {
+
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		String sql = "update product set count = count +1 where pd_number = ?";
+		System.out.println(sql);
+
+		try {
+			pstmt = con.prepareStatement(sql);
+			updateCount = pstmt.executeUpdate();
+		} catch (Exception ex) {
+		} finally {
+			close(pstmt);
+		}
+
+		return updateCount;
+
+	}
+
+// 장바구니 추가
+	/*
+	 * public ArrayList<ShoppingCart> insertCart(ShoppingCart scVO) { ShoppingCart
+	 * dto = null; PreparedStatement pstmt = null; ResultSet rs = null; String sql =
+	 * ""; ArrayList<ShoppingCart> cart = null;
+	 * 
+	 * try {
+	 * 
+	 * sql =
+	 * "insert into shoppingcart(cart_id,u_id,pd_number,amount) values('?','?','?',?)"
+	 * ; pstmt = con.prepareStatement(sql); rs = pstmt.executeQuery(sql);
+	 * pstmt.setString(1, scVO.getCart_id()); pstmt.setString(2, scVO.getU_id());
+	 * pstmt.setString(3, scVO.getPd_number()); pstmt.setInt(4, scVO.getAmount());
+	 * rs = pstmt.executeUpdate(); cart.add(scVO);
+	 * 
+	 * 
+	 * } catch (Exception e) { System.out.println(e); System.out.println(sql
+	 * +"sql     3번"); System.out.println(scVO.getPd_number() +"sql2번");
+	 * System.out.println(scVO.getAmount() +"sql2번"); } finally { close(rs);
+	 * close(pstmt); } return cart; }
+	 */
+
+// 장바구니 목록
+	ArrayList<ShoppingCart> scList = new ArrayList<ShoppingCart>();
+
+	public ArrayList<ShoppingCart> listCart(String pd_number) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ShoppingCart sc = new ShoppingCart();
+
+		try {
+
+			pstmt = con.prepareStatement("select * from shoppingcart where pd_number = ?");
+			pstmt.setString(1, pd_number);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				sc.setCart_id(rs.getString("cart_id"));
+				sc.setU_id(rs.getString("u_id"));
+				sc.setPd_name(rs.getString("pd_name"));
+				sc.setPd_number(rs.getString("pd_number"));
+				sc.setPrice(rs.getInt("price"));
+				sc.setAmount(rs.getInt("amount"));
+				sc.setImage(rs.getString("image"));
+				scList.add(sc);
+
+				System.out.println(pd_number + " DAO2 ");
+			}
+
+		} catch (Exception ex) {
+
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return scList;
 	}
 
 }

@@ -26,10 +26,8 @@
 		request.setCharacterEncoding("utf-8");
 	%>
 	<jsp:include page="siteHead.jsp" />
-
 	<section>
 		<div id="mainBox">
-			<h2>상품리스트</h2>
 
 			<table>
 				<%

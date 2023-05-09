@@ -8,6 +8,21 @@ body {
 	box-sizing: border-box;
 }
 
+section {
+    margin-top: 130px;
+
+}
+#mainBox {
+    width: 1400px;
+    /* height: 800px; */
+    margin: 0 auto;
+    background-color: transparent;
+}
+
+
+
+
+
 p, span {
 	margin: 0;
 }

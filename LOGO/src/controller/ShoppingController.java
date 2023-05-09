@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
-import action.ShoppingCartFormAction;
+import action.ShoppingCartAction;
 import action.ShoppingDeleteAction;
 import action.ShoppingDetailAction;
 import action.ShoppingListAction;
@@ -103,16 +103,16 @@ public class ShoppingController extends javax.servlet.http.HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-//장바구니			
-		} else if (command.equals("/pages/shoppingCartForm.sh")) {
 
-			action = new ShoppingCartFormAction();
+//장바구니	
+
+		} else if (command.equals("/pages/shoppingCartForm.sh")) {
+			action = new ShoppingCartAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 
 		if (forward != null) {
