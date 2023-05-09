@@ -19,7 +19,7 @@ import action.TicketReserveAction;
 import action.TicketWriteProAction;
 import vo.ActionForward;
 
-//티켓 서블릿
+// 티켓 서블릿
 @WebServlet("*.to")
 public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 

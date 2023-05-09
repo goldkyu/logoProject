@@ -1,6 +1,7 @@
 package vo;
 
 public class TicketArena {
+	
 	String ar_name ; 
 	String ar_address ; 
 	String ar_phone ; 

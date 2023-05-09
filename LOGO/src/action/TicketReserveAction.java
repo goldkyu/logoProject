@@ -19,7 +19,7 @@ public class TicketReserveAction implements Action {
 		TicketListService ticketListService = new TicketListService();
 		TicketInfo reserv = ticketListService.getdetailList(p_code);
 		
-		/* System.out.println(reserv +"d"); */
+		
 		 
 		ActionForward forward = new ActionForward();
 		

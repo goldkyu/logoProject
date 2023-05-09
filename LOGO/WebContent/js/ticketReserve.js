@@ -1,4 +1,5 @@
-      let seatnametemp = "";
+
+let seatnametemp = "";
       $(".cinema-seats .seat").on("click", function () {
         seatnametemp = "";
         $(this).toggleClass("active");

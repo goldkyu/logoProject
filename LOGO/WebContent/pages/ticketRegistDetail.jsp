@@ -10,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../CSS/ticketRegistDetail.css"/>
-<title>공연상세정보</title>
+<title>공연상세정보.</title>
 </head>
 
 <%

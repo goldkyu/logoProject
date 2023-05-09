@@ -22,7 +22,7 @@ TicketInfo reserv = (TicketInfo)request.getAttribute("Reserv");
 <section>
   <div id="mainBox">
 	<article id="center">
-	 	<article class="stage"><image src="../image/stage.png"> </article>	
+	 	<article class="stage"><image src="../image/stage01.png"> </article>	
 		<article class="tkseat">
 		
  <div class="theatre">
@@ -194,13 +194,7 @@ TicketInfo reserv = (TicketInfo)request.getAttribute("Reserv");
         </div>
       </div>
     </div>
- <!--     <div>
-      <h1 class="booked"></h1>
-      <h1 class="seatsbooked"></h1>
-    </div> 
-   
-   <script src="../js/ticketReserve.js"></script>
-    -->
+
    </article>
    
    <article class="tkleft">

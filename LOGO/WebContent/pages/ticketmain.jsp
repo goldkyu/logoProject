@@ -56,7 +56,7 @@
 });    
 
 
-// ÅÇ¹Ú½º
+// ÅÇ¹Ú½º.
 
 $(document).ready(function() {
   $(".tab_title li").click(function() {

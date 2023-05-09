@@ -102,7 +102,7 @@ public class TicketListService {
 		return arr;
 	}
 	
-	//공연장정보
+	// 공연장정보
 	public TicketArena arenainfo (String ar_name) throws Exception{
 		
 		TicketArena arena =null;
