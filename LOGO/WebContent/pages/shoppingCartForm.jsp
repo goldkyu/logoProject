@@ -1,3 +1,4 @@
+<%@page import="dao.ShoppingDAO"%>
 <%@page import="java.util.ArrayList"%>
 
 <%@page import="vo.ShoppingCart"%>
@@ -5,6 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -13,6 +15,8 @@
 </head>
 
 <% ArrayList<ShoppingCart> cart = (ArrayList<ShoppingCart>) request.getAttribute("cart");
+
+
 
 %>
 
@@ -39,6 +43,8 @@
     })
  </script>
 
+
+        
 	<!-- <script language="JavaScript">
 		var sell_price;
 		var amount;
@@ -114,26 +120,34 @@
 							<form name="form" method="get">
 							<tbody>
 								<%
-									for (ShoppingCart c : cart) {
-								%>
+								int sum = 0;
+								if(cart == null)
+									cart = new ArrayList<ShoppingCart>();
+								for(int i =0; i<cart.size(); i++){
+									ShoppingCart sc = cart.get(i);
+									int total = sc.getPrice()*sc.getAmount();
+									sum = sum + total;
+									%>
+						
 								<tr class="cart__list__detail">
-									     <td><input type="checkbox"></td>
-									<td><a href="../pages/shoppingDetail.sh?Pd_number=<%=c.getPd_number()%>">
-									<img src="../file/<%=c.getImage()%>"> </a> </td>
-									<td><a href="../pages/shoppingDetail.sh?Pd_number=<%=c.getPd_number()%>">
-									<span class="cart__list__smartstore"></span><p><%=c.getPd_name()%></a>
-									</p> <span class="price"><%=c.getPrice()%></sapn> 
+									      <td><input type="checkbox"></td>
+ 
+									<td><a href="../pages/shoppingDetail.sh?Pd_number=<%=sc.getPd_number()%>">
+									<img src="../file/<%=sc.getImage()%>"> </a> </td>
+									<td><a href="../pages/shoppingDetail.sh?Pd_number=<%=sc.getPd_number()%>">
+									<span class="cart__list__smartstore"></span><p><%=sc.getPd_name()%></a>
+									</p> <span class="price"><%=sc.getPrice()%></sapn> 
 									</td>
 
 									<td class="cart__list__option">
-									<input type=hidden name="sell_price" value="<%=c.getPrice()%>"> 
+									<input type=hidden name="sell_price" value="<%=sc.getPrice()%>"> 
 									<input class="cart__list__optionbtn" type="button" value=" + " onclick="add();"> 
 									<input class="cart__list__optionbtn" type="text" name="amount" value="1" size="1" onchange="change();">
 									<input class="cart__list__optionbtn" type="button" value=" - " onclick="del();"> 
 									<input type="hidden" name="sum" size="11" readonly> 
 									<input class="cart__list__optionbtn" type="button" value=" 적용"	onclick="ok();"></td>
 
-									<td></type><span class="price"><%=c.getPrice()%></span></td>
+									<td></type><span class="price"><%=sc.getPrice()%></span></td>
 <!-- <type id="my_sum"> -->
 
 									<td>[기본배송]조건</td>
@@ -143,6 +157,7 @@
 								<%
 									}
 								%>
+						
 							</tbody>
 							 <tfoot>
                     <tr>
@@ -155,8 +170,17 @@
                         <td></td>
                     </tr>
                 </tfoot>
-						</form>
+                	</form>
 					</table>
+					<tr>
+					<br>
+				
+					<div style = "float:right; margin-left: 450px; ">
+					<th><b>총액</b></th>
+					<th><b><%=sum%>원</b></th>
+					</div>
+					
+				</tr>
 					<div class="cart__mainbtns">
 						<button class="cart__bigorderbtn left"> <a href="../pages/shoppingProductList.sh" style = "text-decoration:none;">
 						쇼핑 계속하기</a></button>

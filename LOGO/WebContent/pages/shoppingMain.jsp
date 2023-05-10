@@ -34,9 +34,11 @@
 	});
 </script>
 
-<% ArrayList<ShoppingProduct> list = (ArrayList<ShoppingProduct>) request.getAttribute("LIST"); %>
-
-
+<% 
+ArrayList<ShoppingProduct> weekly = (ArrayList<ShoppingProduct>) request.getAttribute("WEEKLY");
+ArrayList<ShoppingProduct> list = (ArrayList<ShoppingProduct>) request.getAttribute("LIST"); 
+	int updateCount = (Integer)request.getAttribute("updateCount");
+%>
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
@@ -108,29 +110,29 @@
 			<div class="box1">
 				<br>
 				<article class="img2-2">
-					<input type="hidden" name="Pd_number" value="<%=list.get(0).getPd_number()%>" />
-					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(0).getPd_number()%>"> <img src="../image/<%=list.get(0).getPd_image()%>"> <%=list.get(0).getPd_name()%> <br> <%=list.get(0).getPd_price()%>원
+					<input type="hidden" name="Pd_number" value="<%=weekly.get(0).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=weekly.get(0).getPd_number()%>"> <img src="../image/<%=weekly.get(0).getPd_image()%>"> <%=weekly.get(0).getPd_name()%> <br> <%=weekly.get(0).getPd_price()%>원
 					
 				</article>
 				</a>
 				<article class="img2-2">
-					<input type="hidden" name="Pd_number" value="<%=list.get(1).getPd_number()%>" />
-					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(1).getPd_number()%>"> <img src="../image/<%=list.get(1).getPd_image()%>"> <%=list.get(1).getPd_name()%> <br> <%=list.get(1).getPd_price()%>원
+					<input type="hidden" name="Pd_number" value="<%=weekly.get(1).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=weekly.get(1).getPd_number()%>"> <img src="../image/<%=weekly.get(1).getPd_image()%>"> <%=weekly.get(1).getPd_name()%> <br> <%=weekly.get(1).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<input type="hidden" name="Pd_number" value="<%=list.get(2).getPd_number()%>" />
-					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(2).getPd_number()%>"> <img src="../image/<%=list.get(2).getPd_image()%>"> <%=list.get(2).getPd_name()%> <br> <%=list.get(2).getPd_price()%>원
+					<input type="hidden" name="Pd_number" value="<%=weekly.get(2).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=weekly.get(2).getPd_number()%>"> <img src="../image/<%=weekly.get(2).getPd_image()%>"> <%=weekly.get(2).getPd_name()%> <br> <%=weekly.get(2).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<input type="hidden" name="Pd_number" value="<%=list.get(3).getPd_number()%>" />
-					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(3).getPd_number()%>"> <img src="../image/<%=list.get(3).getPd_image()%>"> <%=list.get(3).getPd_name()%> <br> <%=list.get(3).getPd_price()%>원
+					<input type="hidden" name="Pd_number" value="<%=weekly.get(3).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=weekly.get(3).getPd_number()%>"> <img src="../image/<%=weekly.get(3).getPd_image()%>"> <%=weekly.get(3).getPd_name()%> <br> <%=weekly.get(3).getPd_price()%>원
 				</article>
 				</a>
 				<article class="img2-2">
-					<input type="hidden" name="Pd_number" value="<%=list.get(4).getPd_number()%>" />
-					<a href="../pages/shoppingDetail.sh?Pd_number=<%=list.get(4).getPd_number()%>"> <img src="../image/<%=list.get(4).getPd_image()%>"> <%=list.get(4).getPd_name()%> <br> <%=list.get(4).getPd_price()%>원
+					<input type="hidden" name="Pd_number" value="<%=weekly.get(4).getPd_number()%>" />
+					<a href="../pages/shoppingDetail.sh?Pd_number=<%=weekly.get(4).getPd_number()%>"> <img src="../image/<%=weekly.get(4).getPd_image()%>"> <%=weekly.get(4).getPd_name()%> <br> <%=weekly.get(4).getPd_price()%>원
 				</article>
 				</a>
 			</div>

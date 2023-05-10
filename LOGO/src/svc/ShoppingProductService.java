@@ -129,6 +129,7 @@ public class ShoppingProductService {
 		return Success;
 	}
 
+//쇼핑 메인 
 	public ArrayList<ShoppingProduct> mainProduct() {
 		Connection con = getConnection();
 		ShoppingDAO dao = ShoppingDAO.getInstance();
@@ -136,6 +137,29 @@ public class ShoppingProductService {
 		ArrayList<ShoppingProduct> list = dao.mainList();
 
 		return list;
+	}
+	
+
+	
+//쇼핑 메인 위클리 베스트
+	public ArrayList<ShoppingProduct> weeklyUpdate() throws Exception {
+		Connection con = getConnection();
+		ShoppingDAO dao = ShoppingDAO.getInstance();
+		dao.setConnection(con);
+		ArrayList<ShoppingProduct> weekly = dao.weeklyUpdate();
+		
+		return weekly;
+	}
+	
+//조회수
+	
+	public int updateCount(String pd_number)throws Exception {
+		Connection con = getConnection();
+		ShoppingDAO dao = ShoppingDAO.getInstance();
+		dao.setConnection(con);
+		int updateCount = dao.updateCount(pd_number);
+		
+		return updateCount;
 	}
 
 	// 장바구니 목록
@@ -150,4 +174,26 @@ public class ShoppingProductService {
 
 		return cart;
 	}
+	
+//장바구니 담기
+	
+	public boolean cartInsert(ShoppingCart cart) throws Exception {
+		boolean Success = false;
+		Connection con = getConnection();
+		ShoppingDAO shoppingDAO = ShoppingDAO.getInstance();
+		shoppingDAO.setConnection(con);
+		int insertCount = shoppingDAO.cartInsert(cart);
+	
+		if (insertCount > 0) {
+			commit(con);
+			Success = true;
+		} else {
+			rollback(con);
+		}
+		close(con);
+		return Success;
+
+	}
+		
+
 }

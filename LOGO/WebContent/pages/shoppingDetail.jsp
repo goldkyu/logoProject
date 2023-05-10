@@ -1,3 +1,4 @@
+<%@page import="dao.ShoppingDAO"%>
 <%@page import="vo.ShoppingDetail"%>
 <%@page import="vo.ShoppingProduct"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -11,9 +12,11 @@
 </head>
 
 <%
+	String pd_number = request.getParameter("Pd_number");
 	String nowPage = (String) request.getAttribute("PAGE");
 	ShoppingProduct shVO = (ShoppingProduct) request.getAttribute("SPVO");
 	ShoppingDetail sdVO = (ShoppingDetail) request.getAttribute("SDVO");
+
 %>
 
 <body onload="init();">
@@ -59,7 +62,8 @@
 		request.setCharacterEncoding("utf-8");
 	%>
 	<jsp:include page="siteHead.jsp" />
-	<form name="form" method="get">
+	<form name="form" method="get" id="frm" >
+	<input type="hidden" name = "Pd_number" value="<%=pd_number%>">
 		<section>
 			<div id="mainBox">
 
@@ -130,8 +134,8 @@
 		<button type="button" value="BUYNOW" class="write" onclick="">BUY
 			NOW</button>
 		<br>
-		<button type="button" value="CART" class="write1"
-			onclick="location.href='../pages/shoppingCartForm.sh?Pd_number=<%=shVO.getPd_number()%>'">CART</button>
+		<button type="button" value="CART" class="write1" id = "btncart" onclick="location.href='../pages/shoppingCartForm.sh?Pd_number=<%=shVO.getPd_number()%>'">CART</button>
+	<%-- 	 --%>
 		<a
 			href="../pages/shoppingCartForm.sh?Pd_number=<%=shVO.getPd_number()%>"></a>
 		<button type="button" value="WISHLIST" class="write1" onclick=""
