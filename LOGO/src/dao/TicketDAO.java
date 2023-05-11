@@ -13,6 +13,7 @@ import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 import vo.TicketArena;
 import vo.TicketInfo;
+import vo.TicketReserve;
 
 public class TicketDAO {
 	Statement st = null;
@@ -53,7 +54,7 @@ public class TicketDAO {
 
 			else
 				num = 1;
-//
+
 			sql = "insert into performance(p_code,ar_name,p_title,p_genre,rating,runningtime,p_date,p_image,p_info,p_price,p_cast)values(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
 
@@ -296,5 +297,80 @@ public class TicketDAO {
 			}
 		return arena;
 	}
+	
+	//예매확인 인서트
+//	public int insertReserv(TicketReserve check) {
+//
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		int num = 0;
+//		String sql = "";
+//		int insertCount = 0;
+//
+//		try {
+//			pstmt = con.prepareStatement("select max(r_number) from reserve_ticket;");
+//			rs = pstmt.executeQuery();
+//			if (rs.next())
+//				num = rs.getInt(1) + 1;
+//
+//			else
+//				num = 1;
+//
+//			sql = "insert into reserve_ticket(r_number,u_id,p_code,reservedate,tickets,seats,p_price)values(?,?,?,?,?,?,?)";
+//			pstmt = con.prepareStatement(sql);
+//
+//			pstmt.setInt(1, check.getR_number());
+//			pstmt.setString(2, check.getU_id());
+//			pstmt.setString(3, check.getP_code());
+//			pstmt.setString(4, check.getReservedate());
+//			pstmt.setString(5, check.getTickets());
+//			pstmt.setString(6, check.getSeats());
+//			pstmt.setString(7, check.getP_price());
+//
+//			insertCount = pstmt.executeUpdate();
+//
+//		} catch (Exception ex) {
+//		} finally {
+//			close(rs);
+//			close(pstmt);
+//		}
+//		return insertCount;
+//
+//	}
+	
+	//예매확인 셀렉트
+//	public TicketReserve checkList(String p_code) {
+//		
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		TicketReserve check = null;
+//		
+//		try {
+//			
+//			pstmt = con.prepareStatement("select * from reserve_ticket where p_code = ?"); 
+//			pstmt.setString(3, p_code);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				check = new TicketReserve();
+//				check.setR_number(rs.getInt("r_number"));
+//				check.setU_id(rs.getString("u_id"));
+//				check.setP_code(rs.getString("p_code"));
+//				check.setReservedate(rs.getString("reservedate"));
+//				check.setTickets(rs.getString("tickets"));
+//				check.setSeats(rs.getString("seats"));
+//				check.setP_price(rs.getString("p_price"));
+//				
+//				}
+//			
+//			}catch(Exception ex) {
+//			}finally {
+//				close(rs);
+//				close(pstmt);
+//			}
+//		return check;
+//	}
+	
+	
 	
 }

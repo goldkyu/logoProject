@@ -16,6 +16,7 @@ import action.TicketListAction;
 import action.TicketModifyAction;
 import action.TicketModifyproAction;
 import action.TicketReserveAction;
+import action.TicketCheckAction;
 import action.TicketWriteProAction;
 import vo.ActionForward;
 
@@ -78,6 +79,16 @@ public class TicketRegisterController extends javax.servlet.http.HttpServlet {
 		//예매		
 		else if(command.equals("/pages/TicketReserve.to")) {
 			action = new  TicketReserveAction();
+			try {
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		//예매체크
+		else if(command.equals("/pages/TicketReserveCheck.to")) {
+			action = new TicketCheckAction();
 			try {
 				forward = action.execute(request, response);
 			}catch(Exception e) {

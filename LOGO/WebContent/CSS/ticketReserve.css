@@ -5,7 +5,7 @@
 }
 
 body {
-
+	 overflow-x: hidden;
 }
 
 section {
@@ -24,7 +24,7 @@ section {
 	width : 1200px;
 	height : 800px;
 	margin: 30px auto;
-	/* border: 1px solid #dfdfdf;  */
+/* 	 border: 1px solid #dfdfdf; */
 	background-color: transparent;
 	color: black;
 }
@@ -71,12 +71,19 @@ section {
   border-color : #ff0000;
   color: #ffffff;
   cursor: pointer;
-  margin : 0px auto;
-  margin-top : 27px;
+  margin : 0px;
+  margin-left : 100%;
+  margin-top : 10px;
   text-align: center;
-  display: block;	
+  float : right;
+/*   display: block; */	
 }
 
+.btn{
+	width : 1200px;
+	height : 50px;
+	border: 1px solid red;
+}
 
 /* 좌석 */
 .theatre {

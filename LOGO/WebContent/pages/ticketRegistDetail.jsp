@@ -106,7 +106,7 @@ request.setCharacterEncoding("utf-8");
        <span><b>가격</b></span>
        </div>
        <div class="condition_state02">
-       <span><%=detailList.getP_price() %></span>
+       <span><%=detailList.getP_price() %>원</span>
        </div>
       </div>
               
