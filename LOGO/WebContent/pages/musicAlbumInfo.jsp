@@ -120,10 +120,10 @@ td {
 							<td>${m.MUSIC_NAME }</td>
 							<td>${m.MUSIC_PLAYTIME }</td>
 							<td>${m.ARTIST_NAME }</td>
-							<td><button class="play-button music-select"
+							<td><button class="play-button music-select" style="background-color: white;"
 									data-src="../music/${m.MUSIC_NAME}.mp3">
 									<img style="width: 30px; height: 30px;" class="download"
-										src="../image/download.png" alt="">
+										src="../image/btn_right.png" alt="">
 								</button></td>
 						</tr>
 					</c:forEach>

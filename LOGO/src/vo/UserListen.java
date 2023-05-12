@@ -11,6 +11,14 @@ public class UserListen {
 	int LISTEN_COUNT_DAY5 = 0;
 	int LISTEN_COUNT_DAY6 = 0;
 	int LISTEN_COUNT_DAY7 = 0;
+	int LISTEN_COUNT_DAY8 = 0;
+	int LISTEN_COUNT_DAY9 = 0;
+	int LISTEN_COUNT_DAY10 = 0;
+	int LISTEN_COUNT_DAY11 = 0;
+	int LISTEN_COUNT_DAY12 = 0;
+	int LISTEN_COUNT_DAY13 = 0;
+	int LISTEN_COUNT_DAY14 = 0;
+	
 	public String getLISTEN_USER_ID() {
 		return LISTEN_USER_ID;
 	}
@@ -64,6 +72,48 @@ public class UserListen {
 	}
 	public void setLISTEN_COUNT_DAY7(int lISTEN_COUNT_DAY7) {
 		LISTEN_COUNT_DAY7 = lISTEN_COUNT_DAY7;
+	}
+	public int getLISTEN_COUNT_DAY8() {
+		return LISTEN_COUNT_DAY8;
+	}
+	public void setLISTEN_COUNT_DAY8(int lISTEN_COUNT_DAY8) {
+		LISTEN_COUNT_DAY8 = lISTEN_COUNT_DAY8;
+	}
+	public int getLISTEN_COUNT_DAY9() {
+		return LISTEN_COUNT_DAY9;
+	}
+	public void setLISTEN_COUNT_DAY9(int lISTEN_COUNT_DAY9) {
+		LISTEN_COUNT_DAY9 = lISTEN_COUNT_DAY9;
+	}
+	public int getLISTEN_COUNT_DAY10() {
+		return LISTEN_COUNT_DAY10;
+	}
+	public void setLISTEN_COUNT_DAY10(int lISTEN_COUNT_DAY10) {
+		LISTEN_COUNT_DAY10 = lISTEN_COUNT_DAY10;
+	}
+	public int getLISTEN_COUNT_DAY11() {
+		return LISTEN_COUNT_DAY11;
+	}
+	public void setLISTEN_COUNT_DAY11(int lISTEN_COUNT_DAY11) {
+		LISTEN_COUNT_DAY11 = lISTEN_COUNT_DAY11;
+	}
+	public int getLISTEN_COUNT_DAY12() {
+		return LISTEN_COUNT_DAY12;
+	}
+	public void setLISTEN_COUNT_DAY12(int lISTEN_COUNT_DAY12) {
+		LISTEN_COUNT_DAY12 = lISTEN_COUNT_DAY12;
+	}
+	public int getLISTEN_COUNT_DAY13() {
+		return LISTEN_COUNT_DAY13;
+	}
+	public void setLISTEN_COUNT_DAY13(int lISTEN_COUNT_DAY13) {
+		LISTEN_COUNT_DAY13 = lISTEN_COUNT_DAY13;
+	}
+	public int getLISTEN_COUNT_DAY14() {
+		return LISTEN_COUNT_DAY14;
+	}
+	public void setLISTEN_COUNT_DAY14(int lISTEN_COUNT_DAY14) {
+		LISTEN_COUNT_DAY14 = lISTEN_COUNT_DAY14;
 	}
 	
 	

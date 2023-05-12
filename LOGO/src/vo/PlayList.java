@@ -1,0 +1,51 @@
+package vo;
+
+public class PlayList {
+
+	String pl_name;
+	String pl_prof_photo;
+	String pl_prof_message;
+	String pl_hash;
+	String u_id;
+
+	public String getPl_name() {
+		return pl_name;
+	}
+
+	public void setPl_name(String pl_name) {
+		this.pl_name = pl_name;
+	}
+
+	public String getPl_prof_photo() {
+		return pl_prof_photo;
+	}
+
+	public void setPl_prof_photo(String pl_prof_photo) {
+		this.pl_prof_photo = pl_prof_photo;
+	}
+
+	public String getPl_prof_message() {
+		return pl_prof_message;
+	}
+
+	public void setPl_prof_message(String pl_prof_message) {
+		this.pl_prof_message = pl_prof_message;
+	}
+
+	public String getPl_hash() {
+		return pl_hash;
+	}
+
+	public void setPl_hash(String pl_hash) {
+		this.pl_hash = pl_hash;
+	}
+
+	public String getU_id() {
+		return u_id;
+	}
+
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
+	}
+
+}

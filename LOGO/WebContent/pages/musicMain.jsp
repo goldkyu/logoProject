@@ -64,6 +64,13 @@
 	var day5 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
 	var day6 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
 	var day7 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day8 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day9 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day10 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day11 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day12 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day13 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
+	var day14 = new Date(today.setDate(today.getDate()-1)).getMonth()+1 + "-" + new Date(today.setDate(today.getDate())).getDate();
 	
 	
 	
@@ -72,20 +79,28 @@
 	
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'Date',<%for(int i = 0; i < ul.size(); i++){%>"<%= ml.get(i).getMUSIC_NAME()%>",<%}%> ],
-				[ day7, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY7()%>,<%}%> ],
-				[ day6, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY6()%>,<%}%> ],
-				[ day5, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY5()%>,<%}%> ],
-				[ day4, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY4()%>,<%}%> ],
-				[ day3, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY3()%>,<%}%> ],
-				[ day2, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY2()%>,<%}%> ],
-				[ day1, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY1()%>,<%}%> ] ]);
+			[ 'Date',<%for(int i = 0; i < ul.size(); i++){%>"<%= ml.get(i).getMUSIC_NAME()%>",<%}%> ],
+			[ day14, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY14()%>,<%}%> ],
+			[ day13, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY13()%>,<%}%> ],
+			[ day12, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY12()%>,<%}%> ],
+			[ day11, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY11()%>,<%}%> ],
+			[ day10, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY10()%>,<%}%> ],
+			[ day9, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY9()%>,<%}%> ],
+			[ day8, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY8()%>,<%}%> ],
+			[ day7, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY7()%>,<%}%> ],
+			[ day6, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY6()%>,<%}%> ],
+			[ day5, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY5()%>,<%}%> ],
+			[ day4, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY4()%>,<%}%> ],
+			[ day3, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY3()%>,<%}%> ],
+			[ day2, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY2()%>,<%}%> ],
+			[ day1, <%for(int i = 0; i < ul.size(); i++){%><%= ul.get(i).getLISTEN_COUNT_DAY1()%>,<%}%> ] ]);
 
 		var options = {
 			title : '나만의 차트',
 			curveType : 'function',
 			legend : {
-				position : 'bottom'
+				position : 'bottom',
+				scrollArrows : 'vertical'
 			},
 			series : {
 				0 : {
@@ -220,7 +235,7 @@
 					<%
 						if (request.getAttribute("viewChart").equals("1")) {
 					%>
-					<div id="curve_chart" style="width: 590px; height: 525px"></div>
+					<div id="curve_chart" style="width: 990px; height: 525px"></div>
 					<div id="sels">
 						<div id="selStroke">
 							<div id="selAlbumDiv" class="selAlbum"></div>
@@ -239,8 +254,8 @@
 					<%
 						} else {
 					%>
-					<div id=selContainer style="position: absolute; left: -137px;">
-						<img alt="" src="../image/logoutChart.png">
+					<div id=selContainer style="position: absolute; left: -100px;">
+						<img alt="" src="../image/logoutMyChart.png">
 					</div>
 					<%
 						}
@@ -280,9 +295,9 @@
 											<a href="musicArtistInfo.mu?a_id=${t.ARTIST_ID }">${t.ARTIST_NAME }</a>
 										</p>
 									</th>
-									<th><button style="border: none; color: white;"
+									<th><button style="border: none; color: white;background-color: white;"
 											class="music-select" data-src="../music/${t.MUSIC_NAME}.mp3">
-											<img class="download" src="../image/download.png" alt="">
+											<img class="download" src="../image/btn_right.png" alt="">
 										</button></th>
 								</tr>
 							</c:forEach>

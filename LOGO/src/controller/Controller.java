@@ -54,10 +54,25 @@ public class Controller extends javax.servlet.http.HttpServlet implements javax.
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-		} 
-		else if (command.equals("/pages/musicListenUpdate.mu")) {
+		} else if (command.equals("/pages/musicPlayList.mu")) {
+			action = new MusicPlayListAction();
+			try {
+				actionFoward = action.execute(req, res);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		} else if (command.equals("/pages/musicPlayListCreate.mu")) {
+			action = new MusicPlayListCreateAction();
+			try {
+				actionFoward = action.execute(req, res);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		} else if (command.equals("/pages/musicListenUpdate.mu")) {
 			String m_name = req.getParameter("songName");
-			String userID = (String)session.getAttribute("userID");
+			String userID = (String) session.getAttribute("userID");
 			ListenUpdateService lus = new ListenUpdateService();
 			lus.listenUpdate(m_name, userID);
 		}

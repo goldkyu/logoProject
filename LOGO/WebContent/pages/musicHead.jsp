@@ -93,7 +93,7 @@
 				</ul>
 				<ul>
 					<li><a href="musicOnlyMyChart.mu" class="my-text"> 나만의 차트</a></li>
-					<li style="width: 120px"><a href="" class="my-text">
+					<li style="width: 120px"><a href="musicPlayList.mu" class="my-text">
 							플레이리스트</a></li>
 					<li><a href="" class="my-text"> 맞춤 추천</a></li>
 				</ul>

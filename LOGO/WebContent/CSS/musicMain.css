@@ -25,7 +25,7 @@ section {
 }
 
 #newMusic {
-	width: 900px;
+	width: 550px;
 }
 
 #albums {
@@ -48,7 +48,7 @@ section {
 #onlyMyChart {
 	width: 490px;
 	height: 425px;
-	margin-left: 6px;
+	margin-left: -35px;
 }
 
 #curChart {
