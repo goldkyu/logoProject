@@ -27,8 +27,8 @@
 	Statement st = null;
 
 	try {
-		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	      conn = DriverManager.getConnection("jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "logouser", "1234");
 		
 		if (conn == null) {
 			throw new Exception("연결 없음");

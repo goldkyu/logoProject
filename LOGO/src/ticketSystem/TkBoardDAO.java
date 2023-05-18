@@ -17,11 +17,11 @@ public class TkBoardDAO {
 	Statement st = null;
 
 	public TkBoardDAO() throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 	}
 
 	public void dbCon() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music?useSSL=false&characterEncoding=utf-8", "root", "1234");
+	      conn = DriverManager.getConnection("jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "logouser", "1234");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 

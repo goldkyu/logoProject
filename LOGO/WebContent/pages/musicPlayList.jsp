@@ -1,24 +1,19 @@
-<%@page import="vo.Music"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	System.out.println("앨범페이지");
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>LOGO</title>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
 </head>
-
-<style type="text/css">
+<style>
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
@@ -46,12 +41,6 @@ body {
 
 .artist-name {
 	font-size: 24px;
-	margin: 0;
-	padding: 0;
-}
-
-.release-date {
-	font-size: 18px;
 	margin: 0;
 	padding: 0;
 }
@@ -89,26 +78,29 @@ td {
 	border-radius: 4px;
 }
 </style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <body>
-	<%
-		ArrayList<Music> musicList = (ArrayList<Music>) request.getAttribute("musics");
-	%>
-	<jsp:include page="musicHead.jsp" />
+	<jsp:include page="musicHead.jsp"></jsp:include>
 	<section style="width: 1000px; margin: 0 auto; margin-top: 200px;">
+
 		<div>
 			<div class="album-info">
-				<img alt="" src="../albums/<%=musicList.get(0).getALBUM_PHOTO()%>"
+				<img alt="" src="../albums/${pl_ml[0].ALBUM_PHOTO }"
 					class="album-image" style="object-fit: contain;">
 				<div class="album-details">
-					<h1 class="album-title"><%=musicList.get(0).getALBUM_NAME() %></h1>
-					<h2 class="artist-name"><%=musicList.get(0).getARTIST_NAME() %></h2>
-					<p class="release-date"><%=musicList.get(0).getMUSIC_DATE() %></p>
+					<h1 class="album-title">
+						<c:out value="${param.pl_name }"></c:out>
+					</h1>
+					<h2 class="artist-name">
+						<c:out value="${sessionScope.userID }"></c:out>
+					</h2>
 				</div>
 			</div>
+
 			<table>
 				<thead>
 					<tr>
-						<th>Track Number</th>
 						<th>Music Title</th>
 						<th>Play Time</th>
 						<th>Artist</th>
@@ -117,22 +109,22 @@ td {
 				</thead>
 				<tbody>
 
+					<c:if test="${pl_ml != null }">
+						<c:forEach items="${pl_ml }" var="ml">
 
-					<c:forEach items="${musics }" var="m">
-
-						<tr>
-							<td>${m.MUSIC_TRACK_NUM }</td>
-							<td>${m.MUSIC_NAME }</td>
-							<td>${m.MUSIC_PLAYTIME }</td>
-							<td>${m.ARTIST_NAME }</td>
-							<td><button class="play-button music-select" style="background-color: white;"
-									data-src="../music/${m.MUSIC_NAME}.mp3">
-									<img style="width: 30px; height: 30px;" class="download"
-										src="../image/btn_right.png" alt="">
-								</button></td>
-						</tr>
-					</c:forEach>
-
+							<tr>
+								<td>${ml.MUSIC_NAME }</td>
+								<td>${ml.MUSIC_PLAYTIME }</td>
+								<td>${ml.ARTIST_NAME }</td>
+								<td><button class="play-button music-select"
+										style="background-color: white;"
+										data-src="../music/${ml.MUSIC_NAME}.mp3">
+										<img style="width: 30px; height: 30px;" class="download"
+											src="../image/btn_right.png" alt="">
+									</button></td>
+							</tr>
+						</c:forEach>
+					</c:if>
 
 
 
@@ -142,8 +134,10 @@ td {
 		</div>
 	</section>
 </body>
-</html>
 
-
-</body>
+<script type="text/javascript">
+	$(".audio").on("ended", function(){
+		
+	})
+</script>
 </html>

@@ -19,8 +19,8 @@ pageEncoding="utf-8" %>
 
 
     try {
-        Class.forName("com.mysql.jdbc.Driver");
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
+    	Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "logouser", "1234");
         //localhost:3306/테이블 이름, root, 비밀번호
 
         if (conn == null) {

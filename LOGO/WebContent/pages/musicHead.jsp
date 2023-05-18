@@ -59,7 +59,7 @@
 			</form>
 			<!-- 플레이어 -->
 			<div class="audio-player">
-				<audio src="" class="audio" controls controlsList="nodownload" ></audio>
+				<audio src="" class="audio" controls controlsList="nodownload"></audio>
 
 			</div>
 			<!-- 플레이어 -->
@@ -93,8 +93,8 @@
 				</ul>
 				<ul>
 					<li><a href="musicOnlyMyChart.mu" class="my-text"> 나만의 차트</a></li>
-					<li style="width: 120px"><a href="musicPlayList.mu" class="my-text">
-							플레이리스트</a></li>
+					<li style="width: 120px"><a href="musicPlayList.mu"
+						class="my-text"> 플레이리스트</a></li>
 					<li><a href="" class="my-text"> 맞춤 추천</a></li>
 				</ul>
 				<ul>
@@ -105,7 +105,9 @@
 		</div>
 	</header>
 </body>
-<%if(session.getAttribute("userID")!=null) {%>
+<%
+	if (session.getAttribute("userID") != null) {
+%>
 <script>
 	$(".audio").on("ended", function() {
 		var songName = $(this).attr("src");
@@ -128,9 +130,10 @@
 			}
 		});
 	});
-	
-	
+
 	
 </script>
-<% } %>
+<%
+	}
+%>
 </html>

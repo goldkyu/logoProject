@@ -14,8 +14,8 @@ pageEncoding="utf-8" %>
         String uJoin = "";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "okek8277");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://13.209.21.167:3306/LOGODB", "logouser", "1234");
             if (conn == null) {
                 throw new Exception("데베 연결 없음");
             }

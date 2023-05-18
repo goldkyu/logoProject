@@ -8,12 +8,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.sql.DataSource;
 
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
 import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 import vo.TicketArena;
 import vo.TicketInfo;
-import vo.TicketReserve;
 
 public class TicketDAO {
 	Statement st = null;

@@ -11,11 +11,13 @@ public class ShoppingBoardDAO {
 	Statement st = null;
 
 	public ShoppingBoardDAO() throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 	}
 
 	public void dbConnect() throws Exception {
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/melon_music", "root", "1234");
+		conn = DriverManager.getConnection(
+				"jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
+				"logouser", "1234");
 		if (conn == null) {
 			throw new Exception("DataBase can't found.");
 
@@ -69,11 +71,11 @@ public class ShoppingBoardDAO {
 				rv.setPd_reply(rs.getString("pd_reply"));
 				rv.setPd_image(rs.getString("pd_image"));
 				rv.setHits(rs.getInt("hits"));
-				
+
 				/*
 				 * int hits = rs.getInt("hits"); rv.setHits(hits); hits++; countUpdate(pd_id);
 				 */
-				 
+
 				arr.add(rv);
 			}
 		} finally {

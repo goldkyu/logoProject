@@ -1,6 +1,7 @@
 package svc;
 
 import dao.MusicDAO;
+import vo.Music;
 import vo.PlayList;
 
 import static db.JdbcUtil.*;
@@ -27,17 +28,33 @@ public class MusicPlayListCreateService {
 
 	public ArrayList<PlayList> musicPlayListSelectService(String userID) {
 		ArrayList<PlayList> pl = new ArrayList<PlayList>();
-		
+
 		Connection conn = getConnection();
-		
+
 		MusicDAO m = MusicDAO.getInstance();
-		
+
 		m.setConnection(conn);
-		
+
 		pl = m.playlistSelect(userID);
+
+		close(conn);
+
+		return pl;
+	}
+
+	public ArrayList<Music> musicPlayListService(int pl_id) {
+		ArrayList<Music> pl_musics = new ArrayList<Music>();
+
+		Connection conn = getConnection();
+
+		MusicDAO m = MusicDAO.getInstance();
+
+		m.setConnection(conn);
+
+		pl_musics = m.playlistMusics(pl_id);
 		
 		close(conn);
 		
-		return pl;
+		return pl_musics;
 	}
 }

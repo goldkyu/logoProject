@@ -175,8 +175,8 @@
 					albumImg = '<img src="../albums/<%= ml.get(j).getALBUM_PHOTO() %>" alt="">';
 				}
 				
-				if (column == <%=j+1%>) {
-					aName = '<%= ml.get(j).getARTIST_NAME() %>';
+				if (column == <%=j + 1%>) {
+					aName = '<%=ml.get(j).getARTIST_NAME()%>';
 				} 
 				
 				<%}%>
@@ -226,6 +226,7 @@
 										<a href="musicAlbumInfo.mu?album_id=${a.ALBUM_ID }">${a.ALBUM_NAME }</a>
 									</p>
 								</div>
+
 							</div>
 						</c:forEach>
 
@@ -295,13 +296,37 @@
 											<a href="musicArtistInfo.mu?a_id=${t.ARTIST_ID }">${t.ARTIST_NAME }</a>
 										</p>
 									</th>
-									<th><button style="border: none; color: white;background-color: white;"
+									<th><button
+											style="border: none; color: white; background-color: white;"
 											class="music-select" data-src="../music/${t.MUSIC_NAME}.mp3">
 											<img class="download" src="../image/btn_right.png" alt="">
 										</button></th>
+									<th><button
+											style="border: none; color: white; background-color: white;"
+											class="list-select">
+											<img class="download" src="../image/download.png" alt="">
+										</button> <input type="hidden" value="${t.MUSIC_ID }" /></th>
 								</tr>
 							</c:forEach>
+							<%
+								if (request.getAttribute("viewChart").equals("1")) {
+							%>
+							<div class="popup-container">
+								<div class="playlist-popup">
+									<ul class="playlist-list">
+										<!-- 플레이리스트 목록을 동적으로 생성하거나 서버에서 가져와야 함 -->
+										<c:forEach items="${pl }" var="p">
+											<li class="pl-add">${p.pl_name }<input class="pl-id"
+												type="hidden" value="${p.pl_id }" /></li>
 
+										</c:forEach>
+									</ul>
+									<button class="close-button">Close</button>
+								</div>
+							</div>
+							<%
+								}
+							%>
 						</table>
 
 					</div>
@@ -345,5 +370,32 @@
 
 	<jsp:include page="siteFooter.jsp" />
 </body>
+<script type="text/javascript">
 
+var list
+$(".list-select").on("click", function() {
+	$(".popup-container").fadeIn();
+	list = $(this);
+});
+
+$(".close-button").on("click", function() {
+	$(".popup-container").fadeOut();
+});
+
+$(".pl-add").on("click", function(){
+	var plname = $(this).find(".pl-id").val();
+	var mId = list.closest("tr").find("input[type='hidden']").val();
+	$.ajax({
+        url:"plUpdate.mu",
+        type:"POST",
+        data:{}, // 전달할 데이터
+		success : function(data) {
+			// 서블릿에서 전달한 응답을 처리
+		},
+		error : function(xhr, status, error) {
+			// 에러 발생 시 처리
+			alert("ajax 실패");
+		}
+     })
+})</script>
 </html>

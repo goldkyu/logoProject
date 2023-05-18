@@ -1,31 +1,32 @@
 package action;
 
 import java.util.ArrayList;
-import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import svc.MusicPlayListCreateService;
 import vo.ActionForward;
-import vo.PlayList;
+import vo.Music;
 
-import javax.servlet.http.HttpSession;
-
-public class MusicPlayListAction implements Action {
+public class MusicPlayListView implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		ActionForward actionForward = new ActionForward();
-		HttpSession session = request.getSession();
-		MusicPlayListCreateService pls = new MusicPlayListCreateService();
-		if(session.getAttribute("userID") != null) {
-			String userID = (String) session.getAttribute("userID");
-			ArrayList<PlayList> pl = pls.musicPlayListSelectService(userID);
-			session.setAttribute("pl", pl);
-		}
 		
-		actionForward.setPath("musicMyPlayList.jsp");
+		int pl_id = Integer.parseInt(request.getParameter("pl_id"));
+		MusicPlayListCreateService mpl = new MusicPlayListCreateService();
+		ArrayList<Music> ml = mpl.musicPlayListService(pl_id);
+		
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("pl_ml", ml);
+		
+		actionForward.setPath("musicPlayList.jsp");
+		
 		return actionForward;
 	}
 

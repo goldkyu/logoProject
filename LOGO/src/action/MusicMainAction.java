@@ -10,11 +10,13 @@ import svc.MusicMainMyChartInfoService;
 import svc.MusicMainMyChartService;
 import svc.MusicMainService;
 import svc.MusicMainTopChartService;
+import svc.MusicPlayListCreateService;
 import vo.ActionForward;
 
 import vo.ActionForward;
 import vo.Album;
 import vo.Music;
+import vo.PlayList;
 import vo.UserListen;
 
 // execute 인터페이스를 활용하기위해 Action 클래스를 임플리먼트합니다.
@@ -40,11 +42,13 @@ public class MusicMainAction implements Action {
 			userListen = mcs.getChartInfo((String) session.getAttribute("userID"));
 			if (userListen.size() > 0) {
 				request.setAttribute("chartInfo", userListen);
-
+				MusicPlayListCreateService mpc = new MusicPlayListCreateService();
 				MusicMainMyChartInfoService mcis = new MusicMainMyChartInfoService();
 				ArrayList<Music> userMusic = mcis.getChartMusicInfo((String) session.getAttribute("userID"));
+				ArrayList<PlayList> pl = mpc.musicPlayListSelectService((String) session.getAttribute("userID"));
 				request.setAttribute("chartMusic", userMusic);
 				request.setAttribute("viewChart", "1");
+				request.setAttribute("pl", pl);
 				System.out.println("차트데이터 존재");
 				System.out.println(userMusic.size());
 			} else {

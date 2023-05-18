@@ -2,11 +2,21 @@ package vo;
 
 public class PlayList {
 
+	int pl_id;
 	String pl_name;
 	String pl_prof_photo;
 	String pl_prof_message;
 	String pl_hash;
 	String u_id;
+
+	
+	public int getPl_id() {
+		return pl_id;
+	}
+
+	public void setPl_id(int pl_id) {
+		this.pl_id = pl_id;
+	}
 
 	public String getPl_name() {
 		return pl_name;

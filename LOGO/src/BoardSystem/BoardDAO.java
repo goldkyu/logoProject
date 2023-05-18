@@ -16,13 +16,13 @@ public class BoardDAO {
     // DB 기본 설정 메소드들입니다.
 
     public BoardDAO() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
     }
 
     public void conn() throws Exception {
         conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/melon_music?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
-                "root", "okek8277");
+                "jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
+                "logouser", "1234");
         if (conn == null) {
             throw new Exception("DataBase can't found.");
         }
