@@ -135,6 +135,8 @@ public class ShoppingProductService {
 		ShoppingDAO dao = ShoppingDAO.getInstance();
 		dao.setConnection(con);
 		ArrayList<ShoppingProduct> list = dao.mainList();
+		
+		close(con);
 
 		return list;
 	}
@@ -147,7 +149,7 @@ public class ShoppingProductService {
 		ShoppingDAO dao = ShoppingDAO.getInstance();
 		dao.setConnection(con);
 		ArrayList<ShoppingProduct> weekly = dao.weeklyUpdate();
-		
+		close(con);
 		return weekly;
 	}
 	
@@ -158,7 +160,7 @@ public class ShoppingProductService {
 		ShoppingDAO dao = ShoppingDAO.getInstance();
 		dao.setConnection(con);
 		int updateCount = dao.updateCount(pd_number);
-		
+		close(con);
 		return updateCount;
 	}
 

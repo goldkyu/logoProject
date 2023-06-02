@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import action.*;
 import svc.ListenUpdateService;
+import svc.MusicPlayListCreateService;
 import vo.*;
 
 //music 관련 페이지 전용 서블릿
@@ -80,16 +81,27 @@ public class Controller extends javax.servlet.http.HttpServlet implements javax.
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-		} else if (command.equals("/pages/musicListenUpdate.mu"))
+		} else if (command.equals("/pages/musicAlbumList.mu")) {
+			action = new AlbumListAction();
+			try {
+				actionFoward = action.execute(req, res);
 
-		{
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		} else if (command.equals("/pages/musicListenUpdate.mu")) {
 			String m_name = req.getParameter("songName");
 			String userID = (String) session.getAttribute("userID");
 			ListenUpdateService lus = new ListenUpdateService();
 			lus.listenUpdate(m_name, userID);
-		} else if(command.equals("/pages/plUpdate.mu")) {
-			int pl_id = Integer.parseInt(req.getParameter("pl_id")) ;
+
+		} else if (command.equals("/pages/plUpdate.mu")) {
+			int pl_id = Integer.parseInt(req.getParameter("pl_id"));
 			int m_id = Integer.parseInt(req.getParameter("m_id"));
+			MusicPlayListCreateService mpl = new MusicPlayListCreateService();
+			mpl.musicPlayListAddService(pl_id, m_id);
+
 		}
 
 		if (actionFoward != null) { // 액션 포워드가 설정되었을 경우

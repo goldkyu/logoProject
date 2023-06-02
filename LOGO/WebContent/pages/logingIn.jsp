@@ -46,10 +46,10 @@ pageEncoding="utf-8" %>
                     %>
                     <script>
                     alert("로그인 성공.");
-                        history.go(-2);
+                     
                     </script> 
                     <%
-                }
+                    response.sendRedirect("index.jsp");                }
             }
             finally{
                 try {

@@ -32,7 +32,7 @@
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 
-<% if(request.getAttribute("viewChart").equals("1")){
+<% if((Integer)request.getAttribute("viewChart") == 1){
 	ArrayList<UserListen> ul = (ArrayList<UserListen>)request.getAttribute("chartInfo");
 	ArrayList<Music> ml =(ArrayList<Music>)request.getAttribute("chartMusic");
 
@@ -212,12 +212,7 @@
 				<article id="newMusic">
 					<p>NEW Albums</p>
 					<div id="albums">
-						<%
-							ArrayList<Album> albums = (ArrayList<Album>) request.getAttribute("albums");
-
-							System.out.println("메인페이지");
-						%>
-						<c:forEach items="${albums}" var="a" varStatus="as">
+						<c:forEach items="${albums}" var="a" varStatus="as" end="3">
 							<div>
 								<img id="a${as.index +1 }" src="../albums/${a.ALBUM_PHOTO }"
 									alt="">
@@ -233,41 +228,34 @@
 					</div>
 				</article>
 				<article id="onlyMyChart" style="position: relative;">
-					<%
-						if (request.getAttribute("viewChart").equals("1")) {
-					%>
-					<div id="curve_chart" style="width: 990px; height: 525px"></div>
-					<div id="sels">
-						<div id="selStroke">
-							<div id="selAlbumDiv" class="selAlbum"></div>
-							<div class="selRank">
-								<h id="chartDate" class="chartmini"> 날짜 </h>
-								<h id="alDate" class="chartbold"></h>
-								<br>
-								<p id="chartCount" class="chartmini">들은 횟수</p>
-								<p id="alCount" class="chartbold"></p>
-								<br>
-								<p id="mName" class="chartbold"></p>
-								<p id="aName" class="chartbold"></p>
+
+					<c:if test="${requestScope.viewChart == 1 }">
+						<div id="curve_chart" style="width: 990px; height: 525px"></div>
+						<div id="sels">
+							<div id="selStroke">
+								<div id="selAlbumDiv" class="selAlbum"></div>
+								<div class="selRank">
+									<h id="chartDate" class="chartmini"> 날짜 </h>
+									<h id="alDate" class="chartbold"></h>
+									<br>
+									<p id="chartCount" class="chartmini">들은 횟수</p>
+									<p id="alCount" class="chartbold"></p>
+									<br>
+									<p id="mName" class="chartbold"></p>
+									<p id="aName" class="chartbold"></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<%
-						} else {
-					%>
-					<div id=selContainer style="position: absolute; left: -100px;">
-						<img alt="" src="../image/logoutMyChart.png">
-					</div>
-					<%
-						}
-					%>
+					</c:if>
+					<c:if test="${requestScope.viewChart == 0 }">
+						<div id=selContainer style="position: absolute; left: -100px;">
+							<img alt="" src="../image/logoutMyChart.png">
+						</div>
+					</c:if>
 				</article>
 			</div>
 			<div id="bottomBox">
 
-				<%
-					ArrayList<Music> topChart = (ArrayList<Music>) request.getAttribute("topChart");
-				%>
 				<article id="curChart">
 					<p>실시간 차트 Top 10</p>
 					<br>
@@ -308,25 +296,20 @@
 										</button> <input type="hidden" value="${t.MUSIC_ID }" /></th>
 								</tr>
 							</c:forEach>
-							<%
-								if (request.getAttribute("viewChart").equals("1")) {
-							%>
-							<div class="popup-container">
-								<div class="playlist-popup">
-									<ul class="playlist-list">
-										<!-- 플레이리스트 목록을 동적으로 생성하거나 서버에서 가져와야 함 -->
-										<c:forEach items="${pl }" var="p">
-											<li class="pl-add">${p.pl_name }<input class="pl-id"
-												type="hidden" value="${p.pl_id }" /></li>
+							<c:if test="${requestScope.viewChart == 1 }">
+								<div class="popup-container">
+									<div class="playlist-popup">
+										<ul class="playlist-list">
+											<c:forEach items="${pl }" var="p">
+												<li class="pl-add">${p.pl_name }<input class="pl-id"
+													type="hidden" value="${p.pl_id }" /></li>
 
-										</c:forEach>
-									</ul>
-									<button class="close-button">Close</button>
+											</c:forEach>
+										</ul>
+										<button class="close-button">Close</button>
+									</div>
 								</div>
-							</div>
-							<%
-								}
-							%>
+							</c:if>
 						</table>
 
 					</div>
@@ -366,6 +349,7 @@
 				</article>
 			</div>
 		</div>
+
 	</section>
 
 	<jsp:include page="siteFooter.jsp" />
@@ -382,20 +366,24 @@ $(".close-button").on("click", function() {
 	$(".popup-container").fadeOut();
 });
 
-$(".pl-add").on("click", function(){
+$(".pl-add").on("click", function() {
 	var plname = $(this).find(".pl-id").val();
 	var mId = list.closest("tr").find("input[type='hidden']").val();
 	$.ajax({
-        url:"plUpdate.mu",
-        type:"POST",
-        data:{}, // 전달할 데이터
+		url : "plUpdate.mu",
+		type : "POST",
+		data : {
+			"pl_id" : plname,
+			"m_id" : mId
+		}, // 전달할 데이터
 		success : function(data) {
 			// 서블릿에서 전달한 응답을 처리
+			alert("추가되었습니다.");
 		},
 		error : function(xhr, status, error) {
 			// 에러 발생 시 처리
-			alert("ajax 실패");
+			alert("실패하였습니다.");
 		}
-     })
+	})
 })</script>
 </html>

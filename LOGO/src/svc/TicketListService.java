@@ -98,7 +98,7 @@ public class TicketListService {
 		TicketDAO tk = TicketDAO.getInstance();
 		tk.setConnection(con);
 		ArrayList<TicketInfo> arr = tk.tkindex();
-		
+		close(con);
 		return arr;
 	}
 	

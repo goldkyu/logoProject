@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import svc.MusicPlayListCreateService;
 import vo.ActionForward;
 import vo.Music;
+import vo.PlayList;
 
 public class MusicPlayListView implements Action{
 
@@ -19,11 +20,14 @@ public class MusicPlayListView implements Action{
 		
 		int pl_id = Integer.parseInt(request.getParameter("pl_id"));
 		MusicPlayListCreateService mpl = new MusicPlayListCreateService();
+		
 		ArrayList<Music> ml = mpl.musicPlayListService(pl_id);
+		PlayList pl = mpl.musicPlayListViewService(pl_id);
 		
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("pl_ml", ml);
+		session.setAttribute("pl", pl);
 		
 		actionForward.setPath("musicPlayList.jsp");
 		

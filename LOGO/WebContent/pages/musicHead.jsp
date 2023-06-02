@@ -59,7 +59,7 @@
 			</form>
 			<!-- 플레이어 -->
 			<div class="audio-player">
-				<audio src="" class="audio" controls controlsList="nodownload"></audio>
+				<audio src="" class="audio" controls controlsList="nodownload" autoplay="autoplay"></audio>
 
 			</div>
 			<!-- 플레이어 -->
@@ -84,7 +84,7 @@
 				</ul>
 				<ul>
 					<li><a href="" class="my-text"> 최신곡</a></li>
-					<li><a href="" class="my-text"> 최신 앨범</a></li>
+					<li><a href="musicAlbumList.mu" class="my-text"> 최신 앨범</a></li>
 				</ul>
 				<ul>
 					<li><a href="" class="my-text"> 국내</a></li>

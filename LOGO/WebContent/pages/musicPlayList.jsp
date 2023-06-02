@@ -82,18 +82,21 @@ td {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <body>
 	<jsp:include page="musicHead.jsp"></jsp:include>
-	<section style="width: 1000px; margin: 0 auto; margin-top: 200px;">
+	<section style="width: 1000px; margin: 0 auto; margin-top: 200px; margin-bottom: 400px">
 
 		<div>
 			<div class="album-info">
-				<img alt="" src="../albums/${pl_ml[0].ALBUM_PHOTO }"
+				<img alt="" src="../file/${pl.pl_prof_photo}"
 					class="album-image" style="object-fit: contain;">
 				<div class="album-details">
 					<h1 class="album-title">
-						<c:out value="${param.pl_name }"></c:out>
+						<c:out value="${pl.pl_name }"></c:out>
 					</h1>
 					<h2 class="artist-name">
-						<c:out value="${sessionScope.userID }"></c:out>
+						<c:out value="${pl.u_id }"></c:out>
+					</h2>
+					<h2 class="artist-name">
+						<c:out value="${pl.pl_prof_message }"></c:out>
 					</h2>
 				</div>
 			</div>
@@ -125,19 +128,20 @@ td {
 							</tr>
 						</c:forEach>
 					</c:if>
-
-
-
-
 				</tbody>
 			</table>
+			
 		</div>
+		<a href="musicAlbumList.mu"><button>음악 추가하기</button></a>
 	</section>
+	<footer>
+		<jsp:include page="siteFooter.jsp" />
+	</footer>
 </body>
 
 <script type="text/javascript">
-	$(".audio").on("ended", function(){
-		
+	$(".audio").on("ended", function() {
+
 	})
 </script>
 </html>

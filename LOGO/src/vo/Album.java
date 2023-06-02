@@ -7,6 +7,7 @@ public class Album {
 	String ALBUM_DATE;
 	int ARTIST_ID;
 	String ALBUM_PHOTO;
+	String ARTIST_NAME;
 	
 	public int getALBUM_ID() {
 		return ALBUM_ID;
@@ -43,6 +44,12 @@ public class Album {
 	}
 	public void setALBUM_PHOTO(String aLBUM_PHOTO) {
 		ALBUM_PHOTO = aLBUM_PHOTO;
+	}
+	public String getARTIST_NAME() {
+		return ARTIST_NAME;
+	}
+	public void setARTIST_NAME(String aRTIST_NAME) {
+		ARTIST_NAME = aRTIST_NAME;
 	}
 	
 	

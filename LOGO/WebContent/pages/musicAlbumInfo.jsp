@@ -88,6 +88,47 @@ td {
 	cursor: pointer;
 	border-radius: 4px;
 }
+
+.popup-container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+}
+
+.playlist-popup {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.playlist-popup h3 {
+	text-align: center;
+}
+
+.playlist-list {
+	list-style: none;
+	padding: 0;
+}
+
+.playlist-list li {
+	margin-bottom: 10px;
+}
+
+.close-button {
+	margin-top: 20px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 </style>
 <body>
 	<%
@@ -100,9 +141,9 @@ td {
 				<img alt="" src="../albums/<%=musicList.get(0).getALBUM_PHOTO()%>"
 					class="album-image" style="object-fit: contain;">
 				<div class="album-details">
-					<h1 class="album-title"><%=musicList.get(0).getALBUM_NAME() %></h1>
-					<h2 class="artist-name"><%=musicList.get(0).getARTIST_NAME() %></h2>
-					<p class="release-date"><%=musicList.get(0).getMUSIC_DATE() %></p>
+					<h1 class="album-title"><%=musicList.get(0).getALBUM_NAME()%></h1>
+					<h2 class="artist-name"><%=musicList.get(0).getARTIST_NAME()%></h2>
+					<p class="release-date"><%=musicList.get(0).getMUSIC_DATE()%></p>
 				</div>
 			</div>
 			<table>
@@ -113,6 +154,7 @@ td {
 						<th>Play Time</th>
 						<th>Artist</th>
 						<th>Play</th>
+						<th>Down</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -125,11 +167,18 @@ td {
 							<td>${m.MUSIC_NAME }</td>
 							<td>${m.MUSIC_PLAYTIME }</td>
 							<td>${m.ARTIST_NAME }</td>
-							<td><button class="play-button music-select" style="background-color: white;"
+							<td><button class="play-button music-select"
+									style="background-color: white;"
 									data-src="../music/${m.MUSIC_NAME}.mp3">
 									<img style="width: 30px; height: 30px;" class="download"
 										src="../image/btn_right.png" alt="">
 								</button></td>
+							<td><button
+									style="border: none; color: white; background-color: white; padding-left: 10px;"
+									class="list-select">
+									<img style="width: 30px; height: 30px;" class="download"
+										src="../image/download.png" alt="">
+								</button> <input type="hidden" value="${m.MUSIC_ID }" /></td>
 						</tr>
 					</c:forEach>
 
@@ -140,10 +189,61 @@ td {
 				</tbody>
 			</table>
 		</div>
+
+		<div class="popup-container">
+			<div class="playlist-popup">
+				<c:if test="${sessionScope.userID != null }">
+
+					<ul class="playlist-list">
+						<c:forEach items="${pls }" var="p">
+							<li class="pl-add"><a>${p.pl_name }</a><input class="pl-id"
+								type="hidden" value="${p.pl_id }" /></li>
+
+						</c:forEach>
+					</ul>
+				</c:if>
+				<c:if test="${sessionScope.userID eq null }">
+					<p>로그인 해주세요.</p>
+				</c:if>
+				<button class="close-button">Close</button>
+			</div>
+		</div>
 	</section>
+	<footer>
+		<jsp:include page="siteFooter.jsp" />
+	</footer>
 </body>
+<script type="text/javascript">
+	var list
+	$(".list-select").on("click", function() {
+		$(".popup-container").fadeIn();
+		list = $(this);
+	});
+
+	$(".close-button").on("click", function() {
+		$(".popup-container").fadeOut();
+	});
+
+	$(".pl-add").on("click", function() {
+		var plname = $(this).find(".pl-id").val();
+		var mId = list.closest("tr").find("input[type='hidden']").val();
+		$.ajax({
+			url : "plUpdate.mu",
+			type : "POST",
+			data : {
+				"pl_id" : plname,
+				"m_id" : mId
+			}, // 전달할 데이터
+			success : function(data) {
+				// 서블릿에서 전달한 응답을 처리
+				alert("추가되었습니다.");
+			},
+			error : function(xhr, status, error) {
+				// 에러 발생 시 처리
+				alert("실패하였습니다.");
+			}
+		})
+	})
+</script>
 </html>
 
-
-</body>
-</html>

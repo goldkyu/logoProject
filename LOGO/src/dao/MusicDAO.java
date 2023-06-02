@@ -38,7 +38,8 @@ public class MusicDAO {
 		PreparedStatement prst = null;
 		ResultSet rs = null;
 		try {
-			prst = conn.prepareStatement("select * from album_information order by album_date desc limit 4;");
+			prst = conn.prepareStatement("SELECT ai.*, a_information.a_name\r\n" + "FROM album_information ai\r\n"
+					+ "INNER JOIN a_information ON ai.a_id = a_information.a_id\r\n" + "ORDER BY ai.album_date DESC;");
 			rs = prst.executeQuery();
 			while (rs.next()) {
 				Album a = new Album();
@@ -48,6 +49,7 @@ public class MusicDAO {
 				a.setALBUM_DATE(rs.getString(4));
 				a.setARTIST_ID(rs.getInt(5));
 				a.setALBUM_PHOTO(rs.getString(6));
+				a.setARTIST_NAME(rs.getString(7));
 				albumList.add(a);
 			}
 
@@ -214,58 +216,35 @@ public class MusicDAO {
 		ArrayList<Music> topMusics = new ArrayList<Music>();
 		PreparedStatement prst = null;
 		ResultSet rs = null;
-		String selectQuery = "SELECT \r\n" + 
-				"    rt.album_prof_photo,\r\n" + 
-				"    rt.m_name,\r\n" + 
-				"    rt.a_name,\r\n" + 
-				"    rt.album_id,\r\n" + 
-				"    rt.a_id,\r\n" + 
-				"    rt.playcount,\r\n" + 
-				"    @rank:=@rank + 1 AS `rank`,\r\n" + 
-				"    COALESCE(ry.old_rank - @rank, 0) AS old_rank,\r\n" + 
-				"    rt.m_id\r\n" + 
-				"FROM\r\n" + 
-				"    (SELECT \r\n" + 
-				"        album_information.album_prof_photo,\r\n" + 
-				"            m_information.m_id,\r\n" + 
-				"            m_information.m_name,\r\n" + 
-				"            a_information.a_name,\r\n" + 
-				"            m_information.album_id,\r\n" + 
-				"            a_information.a_id,\r\n" + 
-				"            SUM(CASE\r\n" + 
-				"                WHEN u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 10 DAY) AND CURRENT_DATE() THEN u_listen.m_playcount\r\n" + 
-				"                ELSE 0\r\n" + 
-				"            END) AS playcount\r\n" + 
-				"    FROM\r\n" + 
-				"        u_listen\r\n" + 
-				"    INNER JOIN m_information ON u_listen.m_id = m_information.m_id\r\n" + 
-				"    INNER JOIN a_information ON m_information.a_id = a_information.a_id\r\n" + 
-				"    INNER JOIN album_information ON m_information.album_id = album_information.album_id\r\n" + 
-				"    GROUP BY album_information.album_prof_photo , m_information.m_id , m_information.m_name , a_information.a_name , m_information.album_id , a_information.a_id\r\n" + 
-				"    ORDER BY playcount DESC) rt\r\n" + 
-				"        LEFT JOIN\r\n" + 
-				"    (SELECT \r\n" + 
-				"        m_information.album_id,\r\n" + 
-				"            a_information.a_id,\r\n" + 
-				"            SUM(CASE\r\n" + 
-				"                WHEN u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) AND DATE_SUB(CURRENT_DATE(), INTERVAL 11 DAY) THEN u_listen.m_playcount\r\n" + 
-				"                ELSE 0\r\n" + 
-				"            END) AS old_playcount,\r\n" + 
-				"            @old_rank:=@old_rank + 1 AS old_rank\r\n" + 
-				"    FROM\r\n" + 
-				"        u_listen\r\n" + 
-				"    INNER JOIN m_information ON u_listen.m_id = m_information.m_id\r\n" + 
-				"    INNER JOIN a_information ON m_information.a_id = a_information.a_id\r\n" + 
-				"    INNER JOIN album_information ON m_information.album_id = album_information.album_id\r\n" + 
-				"    CROSS JOIN (SELECT @old_rank:=0) AS ry\r\n" + 
-				"    WHERE\r\n" + 
-				"        u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 11 DAY) AND DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\r\n" + 
-				"    GROUP BY m_information.album_id , a_information.a_id\r\n" + 
-				"    ORDER BY old_playcount DESC) ry ON rt.album_id = ry.album_id\r\n" + 
-				"        AND rt.a_id = ry.a_id\r\n" + 
-				"        CROSS JOIN\r\n" + 
-				"    (SELECT @rank:=0) AS `rank`\r\n" + 
-				"ORDER BY playcount DESC;";
+		String selectQuery = "SELECT \r\n" + "    rt.album_prof_photo,\r\n" + "    rt.m_name,\r\n"
+				+ "    rt.a_name,\r\n" + "    rt.album_id,\r\n" + "    rt.a_id,\r\n" + "    rt.playcount,\r\n"
+				+ "    @rank:=@rank + 1 AS `rank`,\r\n" + "    COALESCE(ry.old_rank - @rank, 0) AS old_rank,\r\n"
+				+ "    rt.m_id\r\n" + "FROM\r\n" + "    (SELECT \r\n"
+				+ "        album_information.album_prof_photo,\r\n" + "            m_information.m_id,\r\n"
+				+ "            m_information.m_name,\r\n" + "            a_information.a_name,\r\n"
+				+ "            m_information.album_id,\r\n" + "            a_information.a_id,\r\n"
+				+ "            SUM(CASE\r\n"
+				+ "                WHEN u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 10 DAY) AND CURRENT_DATE() THEN u_listen.m_playcount\r\n"
+				+ "                ELSE 0\r\n" + "            END) AS playcount\r\n" + "    FROM\r\n"
+				+ "        u_listen\r\n" + "    INNER JOIN m_information ON u_listen.m_id = m_information.m_id\r\n"
+				+ "    INNER JOIN a_information ON m_information.a_id = a_information.a_id\r\n"
+				+ "    INNER JOIN album_information ON m_information.album_id = album_information.album_id\r\n"
+				+ "    GROUP BY album_information.album_prof_photo , m_information.m_id , m_information.m_name , a_information.a_name , m_information.album_id , a_information.a_id\r\n"
+				+ "    ORDER BY playcount DESC) rt\r\n" + "        LEFT JOIN\r\n" + "    (SELECT \r\n"
+				+ "        m_information.album_id,\r\n" + "            a_information.a_id,\r\n"
+				+ "            SUM(CASE\r\n"
+				+ "                WHEN u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY) AND DATE_SUB(CURRENT_DATE(), INTERVAL 11 DAY) THEN u_listen.m_playcount\r\n"
+				+ "                ELSE 0\r\n" + "            END) AS old_playcount,\r\n"
+				+ "            @old_rank:=@old_rank + 1 AS old_rank\r\n" + "    FROM\r\n" + "        u_listen\r\n"
+				+ "    INNER JOIN m_information ON u_listen.m_id = m_information.m_id\r\n"
+				+ "    INNER JOIN a_information ON m_information.a_id = a_information.a_id\r\n"
+				+ "    INNER JOIN album_information ON m_information.album_id = album_information.album_id\r\n"
+				+ "    CROSS JOIN (SELECT @old_rank:=0) AS ry\r\n" + "    WHERE\r\n"
+				+ "        u_listen.m_playdate BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 11 DAY) AND DATE_SUB(CURRENT_DATE(), INTERVAL 1 DAY)\r\n"
+				+ "    GROUP BY m_information.album_id , a_information.a_id\r\n"
+				+ "    ORDER BY old_playcount DESC) ry ON rt.album_id = ry.album_id\r\n"
+				+ "        AND rt.a_id = ry.a_id\r\n" + "        CROSS JOIN\r\n" + "    (SELECT @rank:=0) AS `rank`\r\n"
+				+ "ORDER BY playcount DESC;";
 
 		try {
 			prst = conn.prepareStatement(selectQuery);
@@ -280,7 +259,6 @@ public class MusicDAO {
 				m.setMUSIC_CHART_CHANGED(rs.getInt(8));
 				m.setMUSIC_ID(rs.getInt(9));
 				topMusics.add(m);
-				System.out.println(m.getMUSIC_NAME());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -310,17 +288,20 @@ public class MusicDAO {
 		}
 	}
 
-	public int playlistCreate(String pl_name, String userID) {
+	public int playlistCreate(PlayList pl) {
 		PreparedStatement prst = null;
 		int result = 0;
-		String updateQuery = "INSERT INTO pl_information (pl_name, u_id)" + "VALUES(?, ?)";
+		String updateQuery = "INSERT INTO pl_information (pl_name, u_id, pl_prof_photo,pl_prof_massage,pl_hash)"
+				+ "VALUES(?,?,?,?,?)";
 		try {
 			prst = conn.prepareStatement(updateQuery);
-			prst.setString(1, pl_name);
-			prst.setString(2, userID);
+			prst.setString(1, pl.getPl_name());
+			prst.setString(2, pl.getU_id());
+			prst.setString(3, pl.getPl_prof_photo());
+			prst.setString(4, pl.getPl_prof_message());
+			prst.setString(5, pl.getPl_hash());
 
 			result = prst.executeUpdate();
-			System.out.println("플리 추가 성공여부 : " + result);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -330,22 +311,21 @@ public class MusicDAO {
 
 		return result;
 	}
-	
+
 	public ArrayList<PlayList> playlistSelect(String userID) {
-PreparedStatement prst = null;
-		
+		PreparedStatement prst = null;
+
 		ResultSet rs = null;
 		ArrayList<PlayList> pl = new ArrayList<PlayList>();
 		String selectQuery = "SELECT * FROM pl_information WHERE u_id = ?;";
 		try {
 			prst = conn.prepareStatement(selectQuery);
 			prst.setString(1, userID);
-			
-			rs= prst.executeQuery();
-			
-			while(rs.next()) {
+
+			rs = prst.executeQuery();
+
+			while (rs.next()) {
 				PlayList p = new PlayList();
-				System.out.println(rs.getInt(1));
 				p.setU_id(userID);
 				p.setPl_id(rs.getInt(1));
 				p.setPl_name(rs.getString(2));
@@ -360,33 +340,28 @@ PreparedStatement prst = null;
 			close(prst);
 			close(rs);
 		}
-		
+
 		return pl;
-		
+
 	}
-	
-	public ArrayList<Music> playlistMusics(int pl_id){
+
+	public ArrayList<Music> playlistMusics(int pl_id) {
 		ArrayList<Music> plm = new ArrayList<Music>();
-PreparedStatement prst = null;
-		
+		PreparedStatement prst = null;
+
 		ResultSet rs = null;
-		
-		String selectQuery = "SELECT m.*, a.*, ai.a_name\r\n" + 
-				"FROM m_information m\r\n" + 
-				"JOIN album_information a ON m.album_id = a.album_id\r\n" + 
-				"JOIN a_information ai ON m.a_id = ai.a_id\r\n" + 
-				"WHERE m.m_id IN (\r\n" + 
-				"  SELECT m_id\r\n" + 
-				"  FROM pl_musiclist\r\n" + 
-				"  WHERE pl_id = ?\r\n" + 
-				");";
+
+		String selectQuery = "SELECT m.*, a.*, ai.a_name\r\n" + "FROM m_information m\r\n"
+				+ "JOIN album_information a ON m.album_id = a.album_id\r\n"
+				+ "JOIN a_information ai ON m.a_id = ai.a_id\r\n" + "JOIN pl_musiclist pm ON m.m_id = pm.m_id\r\n"
+				+ "WHERE pm.pl_id = ?\r\n" + "ORDER BY pm.pl_date ASC;";
 		try {
 			prst = conn.prepareStatement(selectQuery);
 			prst.setInt(1, pl_id);
-			
-			rs= prst.executeQuery();
-			
-			while(rs.next()) {
+
+			rs = prst.executeQuery();
+
+			while (rs.next()) {
 				Music m = new Music();
 				m.setMUSIC_ID(rs.getInt(1));
 				m.setMUSIC_NAME(rs.getString(2));
@@ -398,13 +373,58 @@ PreparedStatement prst = null;
 				m.setALBUM_ID(rs.getInt(8));
 				plm.add(m);
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
 			close(prst);
 			close(rs);
 		}
-		
+
 		return plm;
+	}
+
+	public void musicPlayListInsert(int pl_id, int m_id) {
+		PreparedStatement prst = null;
+		int num = 0;
+		String insertQuery = "insert into pl_musiclist(pl_id, m_id) value (?, ?);";
+		try {
+			prst = conn.prepareStatement(insertQuery);
+			prst.setInt(1, pl_id);
+			prst.setInt(2, m_id);
+
+			num = prst.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			close(prst);
+		}
+	}
+	
+	public PlayList playListSelect(int pl_id) {
+		PreparedStatement prst = null;
+		ResultSet rs = null;
+		PlayList pl = null;
+		String selectQuery = "select * from pl_information where pl_id = ?;";
+		try {
+			prst = conn.prepareStatement(selectQuery);
+			prst.setInt(1, pl_id);
+			rs = prst.executeQuery();
+			if(rs.next()) {
+				pl = new PlayList();
+				pl.setPl_name(rs.getString(2));
+				pl.setPl_prof_photo(rs.getString(3));
+				pl.setPl_prof_message(rs.getString(4));
+				pl.setPl_hash(rs.getString(5));
+				pl.setU_id(rs.getString(6));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			close(prst);
+			close(rs);
+			
+		}
+		return pl;
 	}
 }
