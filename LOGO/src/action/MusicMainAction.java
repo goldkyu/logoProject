@@ -59,6 +59,7 @@ public class MusicMainAction implements Action {
 
 			mcis = new MusicMainMyChartInfoService();
 			userListen = mcis.getChartInfo((String) session.getAttribute("userID")); // 유저 그래프 정보
+			pl = mpc.musicPlayListSelectService((String) session.getAttribute("userID")); // 유저 플레이리스트
 
 			// 유저가 그래프정보를 가지고 있을때
 			if (userListen.size() > 0) {
@@ -66,7 +67,6 @@ public class MusicMainAction implements Action {
 				mpc = new MusicPlayListCreateService(); // 유저 플레이리스트 정보 서비스
 
 				userMusic = mcis.getChartMusicInfo((String) session.getAttribute("userID")); // 유저 그래프 음악
-				pl = mpc.musicPlayListSelectService((String) session.getAttribute("userID")); // 유저 플레이리스트
 
 				request.setAttribute("chartInfo", userListen);
 				request.setAttribute("chartMusic", userMusic);

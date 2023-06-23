@@ -98,9 +98,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <body>
 	<jsp:include page="musicHead.jsp"></jsp:include>
-	<section style="width: 1000px; margin: 0 auto; margin-top: 200px; margin-bottom: 300px">
+	<section
+		style="width: 1000px; margin: 0 auto; margin-top: 200px; margin-bottom: 300px">
 		<div class="container">
-		<c:if test="${userID == null }">
+			<c:if test="${userID == null }">
 				<p>로그인 해주세요~</p>
 			</c:if>
 
@@ -108,7 +109,8 @@
 				<div class="playlist-container">
 					<c:forEach items="${pl}" var="pls">
 						<div class="playlist-item">
-							<a href="mypl.mu?pl_id=${pls.pl_id}"><img src="../file/${pls.pl_prof_photo }" alt=""></a>
+							<a href="mypl.mu?pl_id=${pls.pl_id}"><img
+								src="../file/${pls.pl_prof_photo }" alt=""></a>
 							<p class="playlist-name">${pls.pl_name}</p>
 							<p class="playlist-artist">${pls.pl_prof_message }</p>
 							<p class="playlist-date">${pls.pl_hash }</p>
@@ -132,10 +134,10 @@
 				</form>
 			</div>
 
-			
+
 		</div>
 	</section>
-<footer>
+	<footer>
 		<jsp:include page="siteFooter.jsp" />
 	</footer>
 </body>

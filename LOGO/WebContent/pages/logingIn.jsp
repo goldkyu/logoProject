@@ -12,7 +12,7 @@ pageEncoding="utf-8" %>
 
         try {
         	Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "logouser", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://52.79.193.49:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false", "logouser", "1234");
             if (conn == null) {
                 throw new Exception("데베 연결 없음");
             }

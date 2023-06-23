@@ -21,7 +21,7 @@ public class BoardDAO {
 
     public void conn() throws Exception {
         conn = DriverManager.getConnection(
-                "jdbc:mysql://13.209.21.167:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
+                "jdbc:mysql://52.79.193.49:3306/LOGODB?characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
                 "logouser", "1234");
         if (conn == null) {
             throw new Exception("DataBase can't found.");
